@@ -1,0 +1,9 @@
+{
+    "greeting": "Bienvenido!",
+    "invitation": "Pregúntame cualquier cosa por aquí abajo.",
+    "input-placeholder": "Pregúntame cualquier cosa...",
+    "prompt": "Fíjate en esta situación y dime qué crees que debería hacer esta persona.",
+    "disclaimer-title": "¡Aviso!",
+    "disclaimer-description": "Precaución: esta respuesta ha sido generada por una IA y puede que no sea del todo precisa. Por favor, acude a un profesional médico para obtener un diagnóstico.",
+    "disclaimer-continue": "Seguir →"
+}

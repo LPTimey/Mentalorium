@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0855c2">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="manifest" href="manifest.json">
+    <title data-translation="index:title"></title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="shortcut icon" href="./assets/mentalorium-logo.svg" type="image/x-icon">
+    <script type="module" src="./index.mjs"></script>
+</head>
+
+<body>
+    <div id="hidden-menu">
+        <button class="hid"></button>
+        <button class="hid"></button>
+        <button class="hid"></button>
+        <button class="hid"></button>
+    </div>
+    <header></header>
+    <main>
+        <div id="content">
+            <div id="welcome">
+                <img src="./assets/mentalorium-logo.svg" alt="logo" width="50" height="50">
+                <h1 data-translation="index:greeting" class="h4"></h1>
+                <p data-translation="index:invitation"></p>
+            </div>
+            <div id="chatarea">
+                <!-- <div class="message human">
+                    <p>Can you please analyze the situation of Mathias.</p>
+                </div>
+                <div class="message ai">
+                    <p>ölkdäsöldkfäepokeäpokfölsdkfäpeoskeäpofksädöfkpäsoekäfsldfkölkmblkmxm,vmnx,jdbluehfoiuwfoisekdflöksdöifjöeoiwjiojsldkjfölksjdlkmvlmndf,mvndljkvnhglsrufjhesiuofjöeijöiojö
+                    </p>
+                </div> -->
+            </div>
+        </div>
+        <form id="inputarea">
+            <div class="input-group" data-left data-right>
+                <input type="file">
+                <textarea name="query" id="query" data-translation="index:input-placeholder" draggable="false"
+                    rows="1"></textarea>
+                <button class="microphone" type="button"></button>
+            </div>
+            <button class="send"></button>
+        </form>
+    </main>
+
+    <dialog id="disclaimer">
+        <div style="display: flex;">
+            <!-- <img src="./assets/mentalorium-logo.svg" width="50"> -->
+            <img src="./assets/attention-head.svg" width="50">
+        </div>
+        <h2 data-translation="index:disclaimer-title" class="h4"></h2>
+        <p data-translation="index:disclaimer-description"></p>
+        <button commandfor="disclaimer" command="close" data-translation="index:disclaimer-continue"></button>
+    </dialog>
+    <dialog id="settings">
+        <button commandfor="settings" command="close">x</button>
+        <h2>Settings</h2>
+        <form>
+            <label>
+                Language
+                <select name="lang" id="language-select">
+                    <option value="en">English</option>
+                    <option value="de">German</option>
+                    <option value="es">Spanish</option>
+                </select>
+            </label>
+            <br>
+            <label>
+                Mode
+                <select name="mode" id="mode-select">
+                    <option value="silent">Silent</option>
+                    <option value="loud">Loud</option>
+                </select>
+            </label>
+            <br>
+            <label>
+                Persona
+                <select name="persona" id="persona-select">
+                    <option value="amina">Amina</option>
+                    <option value="aylin">Aylin</option>
+                    <option value="lena">Lena</option>
+                    <option value="martina">Martina</option>
+                    <option value="mathias">Mathias</option>
+                </select>
+            </label>
+            <br>
+            <label>
+                Correct Answer
+                <input type="checkbox" name="answer" id="answer-bool">
+            </label>
+            <br>
+            <button>Save</button>
+        </form>
+    </dialog>
+    <script src="register-sw.js"></script>
+</body>
+
+</html>

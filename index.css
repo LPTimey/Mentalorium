@@ -1,0 +1,612 @@
+@layer utilities, reset;
+
+:root {
+    /* Font stuff */
+    --major-third: 1.25;
+    --perfect-fourth: 1.33;
+    --perfect-fifth: 1.50;
+    --golden-ratio: 1.618;
+    --ratio: var(--major-third);
+    --backup-fonts: "-apple-system-body",
+        "ui-sans-serif",
+        "-apple-system",
+        "system-ui",
+        "Segoe UI",
+        "Helvetica",
+        "Apple Color Emoji",
+        "Arial",
+        "sans-serif",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol";
+
+    /* Colors */
+    --light: #F8F1E6;
+    --dark: #07151C;
+    --accent: #0855c2;
+
+    /* Settings */
+    font-family: var(--backup-fonts);
+    scroll-behavior: smooth;
+    color: light-dark(var(--dark), var(--light));
+    color-scheme: light;
+    accent-color: var(--accent);
+}
+
+#hidden-menu {
+    opacity: 0;
+    position: fixed;
+    inset: 0;
+    display: block;
+    z-index: 100;
+    pointer-events: none;
+
+    button {
+        pointer-events: all;
+        cursor: default;
+        position: absolute;
+        width: 5ch;
+        height: 5ch;
+
+        &:nth-child(1) {
+            top: 0;
+            left: 0;
+        }
+
+        &:nth-child(2) {
+            right: 0;
+            top: 0;
+        }
+
+        &:nth-child(3) {
+            bottom: 4.5rem;
+            left: 0;
+            display: none;
+        }
+
+        &:nth-child(4) {
+            right: 0;
+            bottom: 4.5rem;
+            display: none;
+        }
+    }
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+#welcome {
+    place-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* gap: 1ch; */
+    text-align: center;
+    padding-block: 2rem;
+    &:has(+ #chatarea>.message){
+        display: none;
+    }
+}
+
+#chatarea,
+#content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+#chatarea {
+    gap: 2rem;
+}
+
+#content {
+    margin-inline: 2ch;
+    margin-bottom: 8rem;
+}
+
+.message {
+    &.human {
+        place-self: end;
+        width: fit-content;
+        max-width: 30ch;
+        padding: 0.75rem 1rem;
+        border-radius: 1rem;
+        background-color: #f3f3f3    
+    }
+
+    &.human:has(+.human) {
+        margin-bottom: -1rem;
+    }
+
+    &.ai {
+        place-self: start;
+        width: fit-content;
+        max-width: 90%;
+    }
+
+    &.file {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+#inputarea {
+    position: fixed;
+    bottom: 0.5rem;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    gap: 1ch;
+
+    &::after {
+        content: '';
+        z-index: -1;
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(#ffffff00, #ffffffff 50%);
+    }
+
+    >.input-group {
+        flex-grow: 1;
+    }
+}
+
+@property --disclaimer-time {
+    syntax: "<percentage>";
+    inherits: true;
+    initial-value: 0%;
+}
+
+#disclaimer {
+    
+    gap: 1rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 25px;
+    border: 2px solid #bcbcbc;
+
+    --disclaimer-time: 0%;
+
+    & button {
+        background: linear-gradient(to right, #FF383C var(--disclaimer-time), #DDD calc(var(--disclaimer-time) + 2.5%));
+        color: white;
+        padding: .75rem 2rem;
+        border-radius: 100vh;
+        transition-behavior: allow-discrete;
+    }
+
+    &:open{
+        display: flex;
+        
+        & button {
+            animation: gradient-fill forwards 10s linear;
+        }
+    }
+}
+
+@keyframes gradient-fill {
+    0% { --disclaimer-time: 0%; pointer-events: none }
+    99% { --disclaimer-time: 100%; pointer-events: none }
+    100% { --disclaimer-time: 100%; pointer-events: all }
+}
+
+input[type="text"] {
+    border-radius: 100vh;
+    padding: 0.5ch 2ch;
+}
+
+textarea {
+    border-radius: 1rem;
+    padding: 0.5ch 2ch;
+    height: fit-content;
+    resize: none;
+}
+
+input[type="file"] {
+    width: 2rem;
+    height: 2rem;
+
+    border: none;
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    color: transparent;
+
+    transition:
+        background 180ms ease,
+        transform 120ms ease,
+        box-shadow 180ms ease;
+
+    &:hover {
+        background: rgba(110, 168, 254, 0.12);
+        box-shadow: 0 0 0 4px rgba(110, 168, 254, 0.12);
+    }
+
+    &:active {
+        transform: scale(0.96);
+    }
+
+    &::file-selector-button {
+        width: 100%;
+        height: 100%;
+
+        border: none;
+        border-radius: 50%;
+
+        background: url("./assets/paperclip.svg") center/18px no-repeat;
+
+        color: transparent;
+
+        cursor: pointer;
+    }
+}
+
+.microphone {
+    border-radius: 100vh;
+    padding: 0.5rem;
+    width: 2rem;
+    height: 2rem;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition:
+        background 180ms ease,
+        transform 120ms ease,
+        box-shadow 180ms ease;
+
+    &:hover {
+        background: rgba(110, 168, 254, 0.12);
+        box-shadow: 0 0 0 4px rgba(110, 168, 254, 0.12);
+    }
+
+    &:active {
+        transform: scale(0.96);
+    }
+
+    &::after {
+        content: "";
+        width: 1.25rem;
+        height: auto;
+        aspect-ratio: 1;
+        background-color: black;
+
+        mask: url("./assets/microphone.svg") center/contain no-repeat;
+        -webkit-mask: url("./assets/microphone.svg") center/contain no-repeat;
+    }
+}
+
+.send {
+    border-radius: 100vh;
+    padding: 0.5rem;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--accent);
+    transition: background 180ms ease,
+        transform 120ms ease,
+        box-shadow 180ms ease;
+
+    &:hover {
+        box-shadow: 0 0 0 4px rgba(110, 168, 254, 0.12);
+    }
+
+    &:active {
+        transform: scale(0.96);
+    }
+
+    &::after {
+        content: "";
+        width: 1.25rem;
+        height: auto;
+        aspect-ratio: 1;
+        background-color: white;
+
+        mask: url("./assets/arrow-up.svg") center/contain no-repeat;
+        -webkit-mask: url("./assets/arrow-up.svg") center/contain no-repeat;
+    }
+
+    &[inert] {
+        background-color: gray;
+    }
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+
+    >input[type="text"],
+    >textarea {
+        width: 100%;
+        place-self: center;
+    }
+
+    >*:not(input[type="text"], textarea) {
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+    }
+
+    &[data-left] {
+        & :first-child {
+            left: 0.25rem;
+        }
+
+        >input[type="text"],
+        >textarea {
+            padding-left: calc(0.5rem + 1.75rem);
+        }
+    }
+
+    &[data-right] {
+        & :last-child {
+            right: 0.25rem;
+        }
+
+        >input[type="text"],
+        >textarea {
+            padding-right: calc(0.5rem + 1.75rem);
+        }
+    }
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.not-sr-only {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}
+
+@layer utilities {
+    .text-center {
+        text-align: center;
+    }
+
+    .self-center {
+        place-self: center;
+    }
+
+    .center {
+        place-items: center;
+        place-content: center;
+    }
+
+    .h1,
+    h1 {
+        font-family: var(--display-font);
+        --step: 6;
+        font-size: calc(1rem * pow(var(--ratio), var(--step)));
+    }
+
+    .h2,
+    h2 {
+        font-family: var(--display-font);
+        --step: 5;
+        font-size: calc(1rem * pow(var(--ratio), var(--step)));
+    }
+
+    .h3,
+    h3 {
+        font-family: var(--display-font);
+        --step: 4;
+        font-size: calc(1rem * pow(var(--ratio), var(--step)));
+    }
+
+    .h4,
+    h4 {
+        font-family: var(--display-font);
+        --step: 3;
+        font-size: calc(1rem * pow(var(--ratio), var(--step)));
+    }
+
+    .h5,
+    h5 {
+        font-family: var(--display-font);
+        --step: 2;
+        font-size: calc(1rem * pow(var(--ratio), var(--step)));
+    }
+
+    .h6,
+    h6 {
+        font-family: var(--display-font);
+        --step: 1;
+        font-size: calc(1rem * pow(var(--ratio), var(--step)));
+    }
+
+    .p,
+    p {
+        font-family: var(--font);
+        --step: 0;
+        font-size: calc(1rem * pow(var(--ratio), var(--step)));
+    }
+
+    .small {
+        font-family: var(--font);
+        --step: -1;
+        font-size: calc(1rem * pow(var(--ratio), var(--step)));
+    }
+
+    .display-font,
+    .font-display {
+        font-family: var(--display-font);
+    }
+
+    .body-font,
+    .font-body {
+        font-family: var(--font);
+    }
+
+    .fs-titel {
+        --step: 6;
+        font-size: calc(1rem * pow(var(--ratio), var(--step)));
+    }
+
+    .fs-larger {
+        --step: 5;
+        font-size: calc(1rem * pow(var(--ratio), var(--step)));
+    }
+
+    .fs-large {
+        --step: 4;
+        font-size: calc(1rem * pow(var(--ratio), var(--step)));
+    }
+
+    .fs-bigger {
+        --step: 3;
+        font-size: calc(1rem * pow(var(--ratio), var(--step)));
+    }
+
+    .fs-big {
+        --step: 2;
+        font-size: calc(1rem * pow(var(--ratio), var(--step)));
+    }
+
+    .fs-medium {
+        --step: 1;
+        font-size: calc(1rem * pow(var(--ratio), var(--step)));
+    }
+
+    .fs-normal {
+        --step: 0;
+        font-size: calc(1rem * pow(var(--ratio), var(--step)));
+    }
+
+    .fs-small {
+        --step: -1;
+        font-size: calc(1rem * pow(var(--ratio), var(--step)));
+    }
+}
+
+
+
+@layer reset {
+
+    /* see https://www.joshwcomeau.com/css/custom-css-reset/ */
+    /* 1. Use a more-intuitive box-sizing model */
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    /* 2. Remove default margin */
+    *:not(dialog) {
+        margin: 0;
+        padding: 0;
+    }
+
+    /* 3. Enable keyword animations */
+    @media (prefers-reduced-motion: no-preference) {
+        html {
+            interpolate-size: allow-keywords;
+        }
+    }
+
+    body {
+        /* 4. Increase line-height */
+        line-height: 1.5;
+        /* 5. Improve text rendering */
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* 6. Improve media defaults */
+    img,
+    picture,
+    video,
+    canvas,
+    svg {
+        display: block;
+        max-width: 100%;
+    }
+
+    /* 7. Inherit fonts for form controls */
+    input,
+    button,
+    textarea,
+    select {
+        font: inherit;
+    }
+
+    /* 8. Avoid text overflows */
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        overflow-wrap: break-word;
+    }
+
+    /* 9. Improve line wrapping */
+    p {
+        text-wrap: pretty;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        text-wrap: balance;
+    }
+
+    /*
+    10. Create a root stacking context
+    */
+    #root,
+    #__next {
+        isolation: isolate;
+    }
+
+    button {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    a {
+        color: currentColor;
+        text-decoration: none;
+    }
+}

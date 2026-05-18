@@ -1,0 +1,9 @@
+{
+  "greeting": "Willkommen!",
+  "invitation": "Frage mich unten was du willst.",
+  "input-placeholder": "Frage mich etwas...",
+  "prompt": "Betrachte das Szenario und sage mir in 4-6 Sätzen, was die Person tun sollte.",
+  "disclaimer-title": "Hinweis!",
+  "disclaimer-description": "Achtung: Diese Antwort ist KI-generiert und könnte nicht völlig akkurat sein. Bitte suche einen Experten auf, um eine Diagnose zu erhalten.",
+  "disclaimer-continue": "Weiter →"
+}

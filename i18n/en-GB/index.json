@@ -1,0 +1,10 @@
+{
+    "title": "Mentalorium",
+    "greeting": "Welcome!",
+    "invitation": "Go ahead and ask me anything below.",
+    "input-placeholder": "Ask anything...",
+    "prompt": "Look at this scenario and tell me what this person should do in 4-6 sentences.",
+    "disclaimer-title": "Disclaimer!",
+    "disclaimer-description": "Caution: This answer is AI-generated and might not be fully accurate. Please, seek help from a medical professional to get a diagnosis.",
+    "disclaimer-continue": "Continue →"
+}
