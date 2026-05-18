@@ -156,6 +156,4 @@ The control-group will have no differences
 
 = Prototype
 
-== Wireframe
-
-
+#link("https://lptimey.github.io/Mentalorium/")
