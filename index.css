@@ -275,20 +275,37 @@ input[type="file"] {
 form div:has(>input[type="file"]) {
     position: relative;
 
-    &:not([data-attached="0"])::after {
-        content: attr(data-attached);
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        border-radius: 100vh;
-        width: auto;
-        height: fit-content;
-        aspect-ratio: 1;
-        font-size: 10px;
-        padding: 0 0.5em;
-        color: white;
-        z-index: -2;
-        background-color: var(--accent);
+    &:not([data-attached="0"]) {
+
+        &::before,
+        &::after {
+            position: absolute;
+            translate: 50% 50%;
+            font-size: 10px;
+            bottom: 0.75em;
+            right: 0.75em;
+            width: 1.5em;
+            height: 1.5em;
+            line-height: 100%;
+            text-box-trim: trim-both;
+        }
+
+        &::before {
+            content: "";
+            z-index: -1;
+            border-radius: 100vh;
+            background-color: var(--accent);
+        }
+
+        &::after {
+            content: attr(data-attached);
+            z-index: -1;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
     }
 }
 
