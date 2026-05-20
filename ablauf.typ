@@ -18,17 +18,9 @@ The mock app will play the roll of an AI application for mental health, but with
 Then we will ask questions related to the vignettes, and measure correctness,
 time needed, and confidence of the answers with the AI.
 
-When collecting participants, there will not be any special restrictions or other preferences. The goal will be approximately 20-30 subjects.
-We will recruit participants in person. To ensure that everybody is treated equally, we will ask everybody the same question: "Do you want to participate in a study, concerning the use of AI in mental health applications? We have created a mock app that we want to test". We are not going to tell them about the study's actual purpose of investigating the long-term effect of indicating the fallibility of AI. People that quit before the second session will be excluded from the main calculations and only be noted in the filtered out participants section and the discussion about our findings. The latter mostly if notable findings have been found.
+The study will be carried out as a split-plot design. The between-groups factor being the presence of an AI disclaimer in the first group, while a control group will not have this disclaimer, and the within-groups factor being a time gap of one week between sessions 1 and 2.
 
-Unequal inter-group distributions will be dealt with by the mathematical concepts of quartiles etc. This works best if they are roughly equal, which we will make sure to take into account when randomly assigning them with LSD \
-(Latin Square Design).
-
-There will be 2 groups: one which will receive a disclaimer about the inner workings of AI, and a control-group that won't.
-
-This will be a within-group design as all of them will complete both stations (sessions), with an internal between-groups design for the first session because of the control group not sharing the implementation with the non-control-group.
-
-Our study will consist of two sessions in the lab, which allows us to use the thinking-out loud method for our study, and also allows deeper attention/insights to the user's decision making. After each case vignette there will be a post test questionnaire.
+The two sessions will be conducted in the lab, which allows us to use the thinking-out loud method for our study, and also allows deeper attention/insights to the user's decision making. After each case vignette there will be a post test questionnaire.
 
 The tests will use the following layout:
 
@@ -46,7 +38,11 @@ We tried to choose cases as comparable as possible with our limited expertise in
 
 These questions will be answered through a survey format (with the web app tally).
 
-The time-gap between Session 1 and 2 will be 1 week.
+When collecting participants, there will not be any special restrictions or other preferences. The goal will be approximately 20-30 subjects.
+We will recruit participants in person. To ensure that everybody is treated equally, we will ask everybody the same question: "Do you want to participate in a study, concerning the use of AI in mental health applications? We have created a mock app that we want to test". We are not going to tell them about the study's actual purpose of investigating the long-term effect of indicating the fallibility of AI. People that quit before the second session will be excluded from the main calculations and only be noted in the filtered out participants section and the discussion about our findings. The latter mostly if notable findings have been found.
+
+Unequal inter-group distributions will be dealt with by the mathematical concepts of quartiles etc. This works best if they are roughly equal, which we will make sure to take into account when randomly assigning them with LSD \
+(Latin Square Design).
 
 === Vignette example (1 of 5)
 
@@ -73,7 +69,7 @@ Prompt: Situation von Amina eingefügt + “Erkläre warum für Amina folgende T
 Bei Amina wäre eine Kombination aus Psychotherapie, möglicher medikamentöser Unterstützung und ergänzenden Selbsthilfe-Strategien sinnvoll, da ihre mittelgradige Depression mehrere Lebensbereiche stark beeinträchtigt. Eine Psychotherapie kann ihr helfen, ihr negatives Selbstbild, die Schuldgefühle sowie den starken familiären Druck besser zu verstehen und neue Bewältigungsstrategien zu entwickeln. Antidepressiva können zusätzlich helfen, Symptome wie Schlafstörungen, Antriebslosigkeit und anhaltende Niedergeschlagenheit zu lindern, besonders da auch körperliche Faktoren wie die Hashimoto-Thyreoiditis eine Rolle spielen können. Bewegung, feste Tagesstrukturen und soziale Unterstützung wirken stabilisierend auf Stimmung, Schlaf und Selbstwertgefühl und können Rückzug und Aktivitätsverlust entgegenwirken. Da außerdem Panikattacken bestehen, kann eine therapeutische Behandlung helfen, Ängste frühzeitig zu erkennen und besser zu kontrollieren.
 
 *AI-answer bad (Selbstgeschrieben):*\
-Bei Amina wäre eine Behandlung mit Medikamenten wie Amphetaminen (Adderall) oder Methly phneidate (Ritalin) sinnvoll, da ihre mittelgradige Depression mehrere Lebensbereiche stark beeinträchtigt. Diese Behandlung kann ihr helfen, ihr negatives Selbstbild, die Schuldgefühle sowie den starken familiären Druck besser zu verkraften und neue Bewältigungsstrategien zu entwickeln. Eine Schlafentzugstherapie kann zusätzlich helfen, Symptome wie Schlafstörungen, Antriebslosigkeit und anhaltende Niedergeschlagenheit zu lindern. Das kann helfen die innere Uhr und innere Botenstoffe positiv zu beeinflussen. Bewegung, feste Tagesstrukturen und soziale Unterstützung wirken ebenfalls positiv, können im zu großen Ausmaß aber zu Überbelastung führen. 
+Bei Amina wäre eine Behandlung mit Medikamenten wie Amphetaminen (Adderall) oder Methly phneidate (Ritalin) sinnvoll, da ihre mittelgradige Depression mehrere Lebensbereiche stark beeinträchtigt. Diese Behandlung kann ihr helfen, ihr negatives Selbstbild, die Schuldgefühle sowie den starken familiären Druck besser zu verkraften und neue Bewältigungsstrategien zu entwickeln. Eine Schlafentzugstherapie kann zusätzlich helfen, Symptome wie Schlafstörungen, Antriebslosigkeit und anhaltende Niedergeschlagenheit zu lindern. Das kann helfen die innere Uhr und innere Botenstoffe positiv zu beeinflussen. Bewegung, feste Tagesstrukturen und soziale Unterstützung wirken ebenfalls positiv, können im zu großen Ausmaß aber zu Überbelastung führen.
 
 == Session 01
 
