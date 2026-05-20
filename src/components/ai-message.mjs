@@ -7,6 +7,10 @@ import { parseURLParams } from "../params.mjs";
 export async function startProcedure(situation) {
     const { mode, lang, persona, answerQuality } = parseURLParams();
     const chatArea = document.getElementById("chatarea");
+    const fileDiv = /** @type {HTMLDivElement} */(
+        document.querySelector('form div:has(>input[type="file"]')
+    );
+    fileDiv.dataset.attached = "0";
 
     const key = answerQuality
         ? "response-good"
