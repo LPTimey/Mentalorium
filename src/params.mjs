@@ -26,7 +26,7 @@ export function parseURLParams() {
         lang: params.get("lang"),
         persona: params.get("persona"),
         answerQuality: /** @type {boolean | null} */ (
-            params.get("answer") === "true"
+            params.get("answer") === "on"
         ),
         mode: /** @type {Mode | null} */ (
             params.get("mode")
