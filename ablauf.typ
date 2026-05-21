@@ -166,5 +166,10 @@ $
   "Truthfulness" T & : ("Correct","Incorrect")
 $
 
-To fairly allocate our Resources (Cases, Control-group and Answer-quality) to our Participants we will use the following algorithm
+To fairly allocate our Resources (Cases, Control-group and Answer-quality) to our Participants we will use the following algorithm so that
+
+$
+  P_n = F_"seed" (n)
+$
+
 // TODO: use Pseudo random algo but with random and known seed
