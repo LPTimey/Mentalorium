@@ -153,3 +153,18 @@ The control-group will have no differences
 = Prototype
 
 #link("https://lptimey.github.io/Mentalorium/")
+
+= Algorithms
+== Participant allocation
+
+In this Study we have the following "Resources"
+$
+     "People" "Ps" & : P[] \
+        "Person" P & : G + (C + T)[3] + (C + T)[3] \
+         "Group" G & : ("Active", "Control") \
+          "Case" C & : ("Amina", "Aylin", "Lena", "Martina", "Mathias") \
+  "Truthfulness" T & : ("Correct","Incorrect")
+$
+
+To fairly allocate our Resources (Cases, Control-group and Answer-quality) to our Participants we will use the following algorithm
+// TODO: use Pseudo random algo but with random and known seed
