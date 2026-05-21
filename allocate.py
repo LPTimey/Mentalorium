@@ -1,7 +1,7 @@
 import random
 import sys
 
-SEED = 12345
+SEED = 403
 
 CASES = ["Amina", "Aylin", "Lena", "Martina", "Mathias"]
 
@@ -52,6 +52,20 @@ def allocate_participant(n):
         "block2": block2
     }
 
+def print_csv_header():
+    print("group,Case11,Correct11,Case12,Correct12,Case13,Correct13,Case21,Correct21,Case22,Correct22,Case23,Correct23")
+
+def print_csv_row(person):
+    print(
+        f'{person["group"]},'
+        f'{person["block1"][0][0]},{person["block1"][0][1]},'
+        f'{person["block1"][1][0]},{person["block1"][1][1]},'
+        f'{person["block1"][2][0]},{person["block1"][2][1]},'
+        f'{person["block2"][0][0]},{person["block2"][0][1]},'
+        f'{person["block2"][1][0]},{person["block2"][1][1]},'
+        f'{person["block2"][2][0]},{person["block2"][2][1]}'
+    )
+
 def usage():
 
     print("Usage:")
@@ -66,6 +80,8 @@ def main():
 
     arg = sys.argv[1]
 
+    print_csv_header();
+
     # Single participant
     if "-" not in arg:
 
@@ -76,7 +92,7 @@ def main():
             sys.exit(1)
 
         participant = allocate_participant(n)
-        print(participant)
+        print_csv_row(participant)
         return
 
     # Range of participants
@@ -96,7 +112,7 @@ def main():
 
         participant = allocate_participant(n)
 
-        print(participant)
+        print_csv_row(participant)
 
 
 if __name__ == "__main__":

@@ -198,7 +198,7 @@ $
 $
 where:
 - $n$ = participant index
-- $s$ = global study seed
+- $s$ = global study seed (for us $403$)
 - $F_s$ = deterministic pseudo-random allocation function
 
 The generated participant has the form
