@@ -166,10 +166,89 @@ $
   "Truthfulness" T & : ("Correct","Incorrect")
 $
 
+Each participant $P$ consists of:
+- exactly one group assignment $G$
+- two collections of three $(C,T)$ pairs
+
+The following constraints must hold:
+- each collection contains exactly one `"Correct"` entry
+- no collection may contain duplicate cases
+- exactly one case must be shared between the two collections
+
+=== Example of a valid Person
+
+$
+  P = & { \
+      & "Active", \
+      & [("Amina","Correct"),("Lena","Incorrect"),("Mathias","Incorrect")], \
+      & [("Mathias","Incorrect"),("Aylin","Correct"),("Martina","Incorrect")], \
+      & }
+$
+Properties:
+- exactly one `"Correct"` in each block
+- no duplicates within blocks
+- exactly one shared case between sessions: `"Mathias"`
+
+=== Allocation algorithm
+
 To fairly allocate our Resources (Cases, Control-group and Answer-quality) to our Participants we will use the following algorithm so that
 
 $
-  P_n = F_"seed" (n)
+  P_n = F_s (n)
+$
+where:
+- $n$ = participant index
+- $s$ = global study seed
+- $F_s$ = deterministic pseudo-random allocation function
+
+The generated participant has the form
+
+$
+  F_s(n) = (G_n, B_1, B_2)
 $
 
-// TODO: use Pseudo random algo but with random and known seed
+subject to the constraints
+
+$
+  forall omega in {1,2}: abs(B_omega) = 3
+$
+
+$
+  forall omega in {1,2}:
+  exists! x in B_omega: "Truthful"(x) = "Correct"
+$
+
+$
+  abs("Cases"(B_1) inter "Cases"(B_2)) = 1
+$
+
+The allocation procedure is:
+
+1. initialize a pseudo-random generator using $(s,n)$
+2. assign $G_n$ uniformly from:
+  $
+    ("Active", "Control")
+  $
+3. choose one shared case:
+  $
+    C_s in C
+  $
+4. distribute the remaining four cases such that:
+  - two unique cases are added to $B_1$
+  - two unique cases are added to $B_2$
+5. independently assign exactly one `"Correct"` label per collection
+6. shuffle ordering within each collection
+
+This guarantees:
+- deterministic reproducibility
+- balanced randomization
+- constraint satisfaction
+- auditability of participant allocation
+
+#pagebreak()
+
+=== Reference implementation (Python)
+
+The reference implementation is provided in `./allocate.py`.
+
+#raw(read("allocate.py"), lang: "py")
