@@ -20,7 +20,7 @@
 )
 #let date = datetime.today()
 // #let date = datetime(day: 27, month: 2, year: 2026) // Manuelles Datum
-#let studiengang = ("User Experience Design", "UXD", "UXD_B")
+#let studiengang = ("User Experience Design", "User Experience Design Bachelor", "UXD", "UXD_B")
 #let semester = "SoSe26"
 #let school = ("Technische Hochschule Ingolstadt", "THI")
 
@@ -31,7 +31,26 @@
     The long-term effect of indicating AI fallibility on automation bias in mental health application users.
   ],
   description: "//TODO: Description",
-  keywords: (..school, ..studiengang, semester, date.display("[year]-[month]-[day]")),
+  keywords: (
+    ..school,
+    ..studiengang,
+    semester,
+    date.display("[year]-[month]-[day]"),
+    "Mental Health",
+    "AI",
+    "Artificial Intelligence",
+    "FWS",
+    "STUD",
+    "Automation Bias",
+    "Fallibility",
+    "Mental Health Application",
+    "AI Assistant",
+    "Long-Term",
+    "Long-Term Effects",
+    "Priming",
+    "Trust",
+    "Confidence",
+  ),
 )
 
 #set page(
@@ -55,7 +74,7 @@
       inset: 0.25cm,
       align: (left, center, right),
 
-      semester, context here().page(), date.display("[day].[month].[year]"),
+      [#studiengang.at(3) #semester], context here().page(), date.display("[day].[month].[year]"),
     )
   ],
 )
@@ -111,7 +130,7 @@
 #lorem(100)
 
 #heading(numbering: no_numbering)[Keywords] <Keywords>
-#context document.keywords.join("; ")
+#context document.keywords.sorted().join("; ")
 
 #outline(title: "Table of Contents")
 
