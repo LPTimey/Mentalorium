@@ -68,6 +68,7 @@
   slashed-zero: true,
 )
 #set par(justify: true)
+#set par.line(numbering: line => text(fill: red, size: 8pt)[#line])
 
 #show raw: it => text(font: "JetBrainsMono NF")[#it]
 
@@ -150,10 +151,20 @@
 
 #align((center), pad(title(), bottom: 0.75cm, top: 0.75cm))
 
-#heading(numbering: none)[Abstract]
-// TODO: Abstract
+*Authors*\
+#context {
+  grid(
+    columns: (1fr, 1fr, 1fr),
+    align: center,
+    ..document.author.map(name => name + "*")
+  )
+}
+\*: equal contribution
 
-#heading(numbering: none)[Keywords]
+#heading(numbering: none)[Abstract] <Abstract>
+#lorem(100)
+
+#heading(numbering: none)[Keywords] <Keywords>
 #context document.keywords.join("; ")
 
 #outline(title: "Table of Contents")
@@ -175,6 +186,9 @@
 = Results <Results>
 #lorem(500)
 
-#set page(columns: 1)
+// #set page(columns: 1)
 
-#bibliography("paper.bib", style: "iso-690-numeric")
+#outline(target: figure, title:"List of Figures",)
+
+#bibliography("paper.bib", style: "iso-690-numeric", title: "References")
+// #bibliography("paper.bib", style: "ieee", title: "References")
