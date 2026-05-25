@@ -1,6 +1,7 @@
 @layer reset, utilities;
 
 :root {
+    --max-content-width: min(800px, 100%);
     /* Font stuff */
     --major-third: 1.25;
     --perfect-fourth: 1.33;
@@ -75,6 +76,9 @@ body {
     display: flex;
     flex-direction: column;
     height: 100dvh;
+    margin-inline: auto;
+    overflow: hidden;
+    max-width: var(--max-content-width);
 }
 
 main {
@@ -106,6 +110,7 @@ main {
 }
 
 #chatarea {
+    padding-block: 1rem;
     gap: 2rem;
 }
 
@@ -143,6 +148,8 @@ main {
 }
 
 #inputarea {
+    margin-inline: auto;
+    max-width: var(--max-content-width);
     position: fixed;
     bottom: 0.5rem;
     left: 0;

@@ -1,0 +1,26 @@
+name: CI
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install tytanic
+        uses: baptiste0928/cargo-install@v3
+        with:
+          crate: tytanic
+          git: https://github.com/tingerrr/tytanic.git
+      - uses: typst-community/setup-typst@v3
+        with:
+          typst-version: '0.13.1'
+      - run: |
+          typst --version
+          tt --version
+          tt run -F
