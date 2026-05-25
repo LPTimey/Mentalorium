@@ -16,47 +16,10 @@
   }
 }
 
-#let setup = (date, entry-list,school,studiengang,semester) => {
+#let setup = (entry-list) => {
   body => [
     /// from https://typst.app/universe/package/glossarium/
     #import "./vendor/glossarium-0.5.9/glossarium.typ": make-glossary, register-glossary
-
-
-    #set document(
-      author: ("Tim Ruland", "Marc Obst", "Nicolas Weber"),
-      date: date,
-      title: [
-        The long-term effect of indicating AI fallibility on automation bias in mental health application users.
-      ],
-      description: "//TODO: Description",
-      keywords: (..school, ..studiengang, semester, date.display("[year]-[month]-[day]")),
-    )
-
-    #set page(
-      paper: "a4",
-      margin: (x: 1.8cm, y: 1.5cm),
-      numbering: "1",
-      header: [
-        #set text(8pt)
-        #grid(
-          columns: (1fr, 1fr, 1fr),
-          inset: 0.25cm,
-          align: (left, center, right),
-
-          school.at(0), [STUD Study - Long Term AI Automation Bias], context document.author.join(", "),
-        )
-      ],
-      footer: [
-        #set text(8pt)
-        #grid(
-          columns: (1fr, 1fr, 1fr),
-          inset: 0.25cm,
-          align: (left, center, right),
-
-          semester, context here().page(), date.display("[day].[month].[year]"),
-        )
-      ],
-    )
 
     // text settings
     #set text(
