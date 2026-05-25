@@ -1,5 +1,10 @@
 /*
  Text boxes from < https://www.infyways.com/tools/text-box-generator/ >
+ ╔══════════════════════════════════ Section ═══════════════════════════════════╗
+ ║                                                                              ║
+ ║                                Document Setup                                ║
+ ║                                                                              ║
+ ╚══════════════════════════════════════════════════════════════════════════════╝
 */
 
 #import "setup.typ": *
@@ -102,15 +107,15 @@
 }
 \*: equal contribution
 
-#heading(numbering: none)[Abstract] <Abstract>
+#heading(numbering: no_numbering)[Abstract] <Abstract>
 #lorem(100)
 
-#heading(numbering: none)[Keywords] <Keywords>
+#heading(numbering: no_numbering)[Keywords] <Keywords>
 #context document.keywords.join("; ")
 
 #outline(title: "Table of Contents")
 
-#heading(numbering: none)[Glossary] <Glossary>
+#heading(numbering: no_numbering)[Glossary] <Glossary>
 #print-glossary(
   glossary,
   // show-all: true, // Zeigt auch nicht-verwendete Glossar-Einträge an
@@ -132,14 +137,14 @@ $x = 1$
 = Results <Results>
 #lorem(500)
 
-#heading(numbering: none)[Acknowledgements] <Acknowledgements>
+#heading(numbering: no_numbering)[Acknowledgements] <Acknowledgements>
 
 #outline(target: figure, title: "List of Figures")
 
 #bibliography("paper.bib", style: "iso-690-numeric", title: "References")
 // #bibliography("paper.bib", style: "ieee", title: "References")
 
-#heading(numbering: none)[Appendix] <Appendix>
+#heading(numbering: no_numbering)[Appendix] <Appendix>
 #set heading(numbering: appendix_numbering)
 
 == Rest

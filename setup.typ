@@ -15,6 +15,7 @@
     alpha + "." + rest.join(".")
   }
 }
+#let no_numbering = (..num) => ""
 
 #let setup = (entry-list) => {
   body => [
