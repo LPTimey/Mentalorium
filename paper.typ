@@ -11,6 +11,23 @@
  ╚══════════════════════════════════════════════════════════════════════════════╝
 */
 
+#let appendix_numbering = (..numbers) => {
+  let numbers = numbers.pos().rev()
+
+  let _ = numbers.pop()
+  let alpha = numbers.pop()
+
+  let base = str.to-unicode("A")
+  let alpha = str.from-unicode(base + alpha - 1)
+
+  let rest = numbers.rev().map(str)
+
+  if rest.len() == 0 {
+    alpha
+  } else {
+    alpha + "." + rest.join(".")
+  }
+}
 #let prototype = (
   name: "Mentalorium",
   url: link("https://lptimey.github.io/Mentalorium/"),
@@ -58,6 +75,7 @@
   ],
 )
 
+// text settings
 #set text(
   font: "libertinus serif",
   size: 11pt,
@@ -68,10 +86,13 @@
   slashed-zero: true,
 )
 #set par(justify: true)
+// Add line numbers
 #set par.line(numbering: line => text(fill: red, size: 8pt)[#line])
 
+// set Code font
 #show raw: it => text(font: "JetBrainsMono NF")[#it]
 
+// Color Links
 #show link: it => {
   if type(it.dest) == str {
     text(
@@ -106,6 +127,23 @@
   }
 }
 
+// Number equations and list them as figures
+#show figure.where(kind: "equation"): it => block[
+  #grid(
+    columns: (1fr, auto),
+    align: center,
+
+    it.body,
+    align(right)[
+      (#context counter(figure.where(kind: "equation")).display())
+    ],
+  )
+
+  #it.caption
+]
+#show math.equation.where(block: true): it => figure(kind: "equation", supplement: "Equation", it)
+
+// set heading numbering-scheme
 #set heading(numbering: "1.1.a.I")
 
 /*
@@ -149,7 +187,9 @@
  ╚══════════════════════════════════════════════════════════════════════════════╝
 */
 
-#align((center), pad(title(), bottom: 0.75cm, top: 0.75cm))
+#align((center), pad(bottom: 0.75cm, top: 0.75cm)[
+  #title()
+])
 
 *Authors*\
 #context {
@@ -181,14 +221,27 @@
 #lorem(500)
 
 = Methods <Methods>
-#lorem(500)
+#lorem(215)
+#figure(image("assets/imgs/design/Result.jpg", width: 50%))
+$ x = 1 $
+$ x = 1 $
+$x = 1$
+#lorem(215)
 
 = Results <Results>
 #lorem(500)
 
-// #set page(columns: 1)
+#heading(numbering: none)[Acknowledgements] <Acknowledgements>
 
-#outline(target: figure, title:"List of Figures",)
+#outline(target: figure, title: "List of Figures")
 
 #bibliography("paper.bib", style: "iso-690-numeric", title: "References")
 // #bibliography("paper.bib", style: "ieee", title: "References")
+
+#heading(numbering: none)[Appendix] <Appendix>
+#set heading(numbering: appendix_numbering)
+
+== Rest
+=== Test
+== Rest 2
+=== Test 2
