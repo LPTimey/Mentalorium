@@ -252,3 +252,105 @@ This guarantees:
 The reference implementation is provided in `./allocate.py`.
 
 #raw(read("allocate.py"), lang: "py")
+
+== Evaluation
+
+=== Mathematical Definition of automation bias
+
+Automation bias should be represented as a continuous function returning a value in the interval $[0,1]$, indicating the certainty that automation bias occurred.
+
+The parameters are the correctness of the given answer, the rating of said answer, and the confidence in that rating.
+
+$
+  B(i,r,c) -> [0;1]
+$
+
+where:
+- Bias $B$: $[0;1]$ certainty that automation bias was detected
+- Integrity $i$: boolean indicating whether the answer was correct
+- Rating $r$: ${1;2;dots;5}$ indicating the perceived quality of the answer (very bad $<->$ very good)
+- Confidence $c$: $[0;100]$ indicating how certain the evaluator was about the rating
+
+Implementation:
+
+$
+  B(i,r,c) = (1 - i)
+  dot ((r - 1) / (max(R) - 1))
+  dot (c / max(C))
+$
+
+with:
+- $max(R) = 5$
+- $max(C) = 100$
+
+The term $1 - i$ ensures that automation bias can only occur when the given answer was incorrect. If the answer was correct, the resulting bias score becomes zero independently of the remaining parameters.
+
+The normalized rating term $(r - 1) / (max(R) - 1)$ models the perceived quality of the answer on a continuous scale between $0$ and $1$. Higher ratings increase the bias score, as automation bias is characterized by overestimating incorrect automated outputs.
+
+The confidence term $c / max(C)$ represents the evaluator's certainty in the assigned rating. A high confidence combined with a high rating for an incorrect answer indicates a stronger manifestation of automation bias.
+
+By multiplying all normalized terms, the resulting function produces a continuous bias score in the interval $[0,1]$, where larger values indicate stronger evidence of automation bias.
+
+Minimal automation bias is assumed for ratings above $r > 3$
+and confidence values above $c > 50$.
+
+Thus, the minimal acceptable automation bias threshold is:
+
+$
+  B_"acceptable" > B(0, 3, 50)
+$
+
+Substituting the values into the bias function yields:
+
+$
+  B(0, 3, 50) & = (1 - 0)
+                dot ((3 - 1) / (5 - 1))
+                dot (50 / 100) \
+              & = 1 dot (2 / 4) dot 0.5 \
+              & = 1 dot 0.5 dot 0.5 \
+              & = 0.25
+$
+
+Therefore:
+
+$
+  B_"acceptable" > 0.25
+$
+
+=== Single data points
+
+==== General Questions
+
+Nickname: Metadata\
+Comment: used to link Session 1 and 2
+
+Age: \
+Comment:
+
+Gender: \
+Comment:
+
+==== AI Kontext
+
+==== Rounds
+
+=== Combined data Points
+
+P: Vergleich Control vs. Active
+
+Do disclaimers have a long-term effect on users?
+Vergleich active vs. active Session 2
+
+Did people who have more acceptance for AI have more automation bias
+Correlation openness and use of AI → automation bias
+
+Did people who had wrong/misleading AI-answers find the AI-answer good
+Zusammenhang Vertrauenswürdigkeit UEQ und AI-answers good/bad
+Zusammenhang Antwortqualität UEQ und AI-answers good/bad
+
+Zusammenhang Antwortverhalten UEQ und AI-answers good/bad
+Zusammenhang Risikohandhabung UEQ und Disclaimer ja/nein
+
+Vergleich Control vs. Control Session 2
+
+Correlation between demographics and automation bias
