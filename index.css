@@ -77,7 +77,6 @@ body {
     flex-direction: column;
     height: 100dvh;
     margin-inline: auto;
-    overflow: hidden;
     max-width: var(--max-content-width);
 }
 
