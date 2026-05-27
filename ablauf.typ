@@ -317,24 +317,7 @@ $
   B_"acceptable" > 0.25
 $
 
-=== Single data points
-
-==== General Questions
-
-Nickname: Metadata\
-Comment: used to link Session 1 and 2
-
-Age: \
-Comment:
-
-Gender: \
-Comment:
-
-==== AI Kontext
-
-==== Rounds
-
-=== Combined data points
+=== Comparisons and correlations
 
 With the results of the two sessions, we will have a rich dataset that includes demographic information, participants' views on AI, their interactions with the AI in both sessions, and their responses to the post-test questionnaires.
 
@@ -352,4 +335,4 @@ Finally, we will investigate if there are any correlations between the demograph
 
 = Results
 
-
+\*(see excel and tally for now)
