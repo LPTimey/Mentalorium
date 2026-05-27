@@ -283,11 +283,11 @@ with:
 - $max(R) = 5$
 - $max(C) = 100$
 
-The term $1 - i$ ensures that automation bias can only occur when the given answer was incorrect. If the answer was correct, the resulting bias score becomes zero independently of the remaining parameters.
+The term $1 - i$ ensures that automation bias can only occur when the given answer was incorrect. If the answer was correct, the resulting bias score is going to be zero independently of the remaining parameters.
 
 The normalized rating term $(r - 1) / (max(R) - 1)$ models the perceived quality of the answer on a continuous scale between $0$ and $1$. Higher ratings increase the bias score, as automation bias is characterized by overestimating incorrect automated outputs.
 
-The confidence term $c / max(C)$ represents the evaluator's certainty in the assigned rating. A high confidence combined with a high rating for an incorrect answer indicates a stronger manifestation of automation bias.
+The confidence term $c / max(C)$ represents the evaluator's certainty in the assigned rating. A high confidence combined with a high rating for an incorrect answer suggests higher certainty of automation bias.
 
 By multiplying all normalized terms, the resulting function produces a continuous bias score in the interval $[0,1]$, where larger values indicate stronger evidence of automation bias.
 
