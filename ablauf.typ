@@ -349,6 +349,7 @@ Moreover, we will analyze the correlations between the different dimensions of t
 Then we will analyze the correlation between the Risk Handling dimension of the UEQ+ and the presence of disclaimers to see if disclaimers influence users' perceptions of risk.
 
 Finally, we will investigate if there are any correlations between the demographic information (age, gender) and the participants' views on AI, their interactions with the AI, and their responses to the post-test questionnaires to see if there are any demographic factors that influence these outcomes.
-=== Results
+
+= Results
 
 
