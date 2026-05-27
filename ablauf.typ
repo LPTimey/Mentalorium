@@ -334,23 +334,21 @@ Comment:
 
 ==== Rounds
 
-=== Combined data Points
+=== Combined data points
 
-P: Vergleich Control vs. Active
+With the results of the two sessions, we will have a rich dataset that includes demographic information, participants' views on AI, their interactions with the AI in both sessions, and their responses to the post-test questionnaires.
 
-Do disclaimers have a long-term effect on users?
-Vergleich active vs. active Session 2
+To analyze the data further, we will perform comparisons and correlations of the collected data. Firstly, we will compare the results of the active group (with disclaimers) and the control group (without disclaimers) in both sessions to see if there are any significant differences in their responses.
 
-Did people who have more acceptance for AI have more automation bias
-Correlation openness and use of AI → automation bias
+Secondly, we will investigate if there is a correlation between the acceptance of AI and the presence of automation bias. This will help us understand if individuals who are more accepting of AI are more likely to exhibit automation bias.
 
-Did people who had wrong/misleading AI-answers find the AI-answer good
-Zusammenhang Vertrauenswürdigkeit UEQ und AI-answers good/bad
-Zusammenhang Antwortqualität UEQ und AI-answers good/bad
+Furthermore, we will compare the results of the two sessions within the active group to determine if disclaimers have a long-term effect on users.
+Also, we will compare the control group with itself across the two sessions to check for any changes over time that are not influenced by the disclaimers.
 
-Zusammenhang Antwortverhalten UEQ und AI-answers good/bad
-Zusammenhang Risikohandhabung UEQ und Disclaimer ja/nein
+Moreover, we will analyze the correlations between the different dimensions of the UEQ+ (Trustworthiness, Response Behavior, Response Quality) and the participants' ratings of the AI answers (good/bad) to see if there are any significant relationships.
+Then we will analyze the correlation between the Risk Handling dimension of the UEQ+ and the presence of disclaimers to see if disclaimers influence users' perceptions of risk.
 
-Vergleich Control vs. Control Session 2
+Finally, we will investigate if there are any correlations between the demographic information (age, gender) and the participants' views on AI, their interactions with the AI, and their responses to the post-test questionnaires to see if there are any demographic factors that influence these outcomes.
+=== Results
 
-Correlation between demographics and automation bias
+
