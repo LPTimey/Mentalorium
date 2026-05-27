@@ -154,8 +154,8 @@ The control-group will have no differences
 
 #link("https://lptimey.github.io/Mentalorium/")
 
-= Algorithms
-== Participant allocation
+
+= Participant allocation
 
 In this Study we have the following "Resources"
 $
@@ -175,7 +175,7 @@ The following constraints must hold:
 - no collection may contain duplicate cases
 - exactly one case must be shared between the two collections
 
-=== Example of a valid Person
+== Example of a valid Person
 
 $
   P = & { \
@@ -189,7 +189,7 @@ Properties:
 - no duplicates within blocks
 - exactly one shared case between sessions: `"Mathias"`
 
-=== Allocation algorithm
+== Allocation algorithm
 
 To fairly allocate our Resources (Cases, Control-group and Answer-quality) to our Participants we will use the following algorithm so that
 
@@ -247,15 +247,13 @@ This guarantees:
 
 #pagebreak()
 
-=== Reference implementation (Python)
+== Reference implementation (Python)
 
 The reference implementation is provided in `./allocate.py`.
 
 #raw(read("allocate.py"), lang: "py")
 
-== Evaluation
-
-=== Mathematical Definition of automation bias
+= Mathematical Definition of automation bias
 
 Automation bias should be represented as a continuous function returning a value in the interval $[0,1]$, indicating the certainty that automation bias occurred.
 
@@ -317,7 +315,7 @@ $
   B_"acceptable" > 0.25
 $
 
-=== Comparisons and correlations
+= Evaluation: Comparisons and correlations
 
 With the results of the two sessions, we will have a rich dataset that includes demographic information, participants' views on AI, their interactions with the AI in both sessions, and their responses to the post-test questionnaires.
 
