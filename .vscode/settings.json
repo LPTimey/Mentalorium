@@ -1,0 +1,6 @@
+{
+    "latex-workshop.bibtex-fields.sort.enabled": true,
+    "latex-workshop.formatting.latex": "latexindent",
+    "latex-workshop.intellisense.citation.backend": "biblatex",
+    "latex-workshop.latex.autoClean.run": "onSucceeded"
+}
