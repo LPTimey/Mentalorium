@@ -20,7 +20,7 @@
 #let setup = (entry-list) => {
   body => [
     /// from https://typst.app/universe/package/glossarium/
-    #import "./vendor/glossarium-0.5.9/glossarium.typ": make-glossary, register-glossary
+    #import "../vendor/glossarium-0.5.9/glossarium.typ": make-glossary, register-glossary
 
     // text settings
     #set text(

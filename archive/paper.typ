@@ -10,7 +10,7 @@
 #import "setup.typ": *
 #import "glossary.typ": glossary
 /// from https://typst.app/universe/package/glossarium/
-#import "./vendor/glossarium-0.5.9/glossarium.typ": (
+#import "../vendor/glossarium-0.5.9/glossarium.typ": (
   agls, gls, gls-description, gls-long, gls-longplural, gls-plural, gls-short, glspl, print-glossary,
 )
 
@@ -133,7 +133,7 @@
 
 = Methods <Methods>
 #lorem(215)
-#figure(image("assets/imgs/design/Result.jpg", width: 50%))
+#figure(image("../assets/imgs/design/Result.jpg", width: 50%))
 $ x = 1 $
 $ x = 1 $
 $x = 1$

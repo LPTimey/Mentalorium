@@ -158,17 +158,19 @@ The control-group will have no differences
 = Participant allocation
 
 In this Study we have the following "Resources"
+
 $
-     "People" "Ps" & : P[] \
-        "Person" P & : G + (C + T)[3] + (C + T)[3] \
-         "Group" G & : ("Active", "Control") \
-          "Case" C & : ("Amina", "Aylin", "Lena", "Martina", "Mathias") \
-  "Truthfulness" T & : ("Correct","Incorrect")
+          "Groups" G & := {"Active","Control"} \
+  "Case Vignettes" C & := {"Amina", "Aylin", "Lena", "Martina", "Mathias"} \
+    "Truthfulness" T & := {"Truth","Untruth"} \
+          "Rounds" R & := T times C \
+        "Sessions" S & := R^3 \
+    "Participants" P & := G times S times S \
 $
 
-Each participant $P$ consists of:
-- exactly one group assignment $G$
-- two collections of three $(C,T)$ pairs
+$forall p in P$:
+- exactly one group assignment $g in G$
+- two collections of three $(c in C,t in T)$ pairs
 
 The following constraints must hold:
 - each collection contains exactly one `"Correct"` entry
@@ -178,11 +180,11 @@ The following constraints must hold:
 == Example of a valid Person
 
 $
-  P = & { \
-      & "Active", \
-      & [("Amina","Correct"),("Lena","Incorrect"),("Mathias","Incorrect")], \
-      & [("Mathias","Incorrect"),("Aylin","Correct"),("Martina","Incorrect")], \
-      & }
+  p_"example" = & ( \
+                & "Active", \
+                & (("Amina","Correct"),("Lena","Incorrect"),("Mathias","Incorrect")), \
+                & (("Mathias","Incorrect"),("Aylin","Correct"),("Martina","Incorrect")), \
+                & )
 $
 Properties:
 - exactly one `"Correct"` in each block

@@ -1,0 +1,355 @@
+\documentclass[sigconf,authordraft,natbib=false]{acmart}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{glossaries}
+\usepackage{blindtext}
+\usepackage{listings}
+\usepackage{attachfile}
+    
+\acmConference[FWS2026]{Abschlusskonferenz FWS/SDUT Sommersemester 2026}{July 01, 2026}{Ingolstadt, DE}
+
+%% Bibliography style
+\RequirePackage[
+  datamodel=acmdatamodel,
+  style=acmnumeric,
+  ]{biblatex}
+
+%% Declare bibliography sources (one \addbibresource command per source)
+\addbibresource{ai-automation-bias.bib}
+
+\title[AI Fallibility \& Automation Bias long-term Effects]{The long-term effect of indicating AI fallibility on automation bias in mental health application users.}
+
+\author{Tim Ruland}
+\authornote{Authors contributed equally to this research.}
+% \email{tir6126@thi.de}
+
+\author{Marc Obst}
+\authornotemark[1]
+% \email{mao3216@thi.de}
+
+\author{Nicolas Weber}
+\authornotemark[1]
+\affiliation{%
+  \institution{Technische Hochschule Ingolstadt}
+  \city{Ingolstadt}
+  \country{Germany}}
+% \email{niw5756@thi.de}
+
+\renewcommand{\shortauthors}{Gerhardinger et al.}
+
+\input{glossary}
+
+\begin{document}
+\begin{abstract}
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam
+lobortis facilisis sem.
+\end{abstract}
+
+\input{ccs}
+
+%%
+%% Keywords. The author(s) should pick words that accurately describe
+%% the work being presented. Separate the keywords with commas.
+\keywords{Mental Health, AI, Artificial Intelligence, FWS, STUD, Automation Bias, Fallibility, Mental Health Application, AI Assistant, Long-Term, Long-Term Effects, Priming, Trust, Confidence}
+
+%% A "teaser" image appears between the author and affiliation
+%% information and the body of the document, and typically spans the
+%% page.
+\begin{teaserfigure}
+  \includegraphics[width=\textwidth]{Template/sampleteaser}
+  \caption{Seattle Mariners at Spring Training, 2010.}
+  \Description{Enjoying the baseball game from the third-base
+  seats. Ichiro Suzuki preparing to bat.}
+  \label{fig:teaser}
+\end{teaserfigure}
+
+%%
+%% This command processes the author and affiliation and title
+%% information and builds the first part of the formatted document.
+\maketitle
+
+\tableofcontents
+\clearpage
+
+\section{Introduction}
+\blindtext[1].
+\cite{test}
+
+The \Gls{latex} typesetting markup language is specially suitable 
+for documents that include \gls{maths}. 
+
+\section{Definitions}
+\subsection{Participants}
+
+We define the following sets:
+\[
+\begin{aligned}
+\mathrm{Groups}\ G &:= \{\mathrm{Active}, \mathrm{Control}\},\\
+\mathrm{Case\ Vignettes}\ C &:= \{\mathrm{Amina}, \mathrm{Aylin}, \mathrm{Lena},
+        \mathrm{Martina}, \mathrm{Mathias}\},\\
+\mathrm{Truthfulness}\ T &:= \{\mathrm{Truth}, \mathrm{Untruth}\}.
+\end{aligned}
+\]
+
+A \emph{round} is a pair consisting of a case vignette and a
+truthfulness label. Hence, the set of all rounds is
+\[
+R := C \times T.
+\]
+
+A \emph{session} consists of exactly three rounds.
+Formally, a session is an ordered triple
+\[
+s = (r_1,r_2,r_3) \in R^3.
+\]
+
+However, not every element of \(R^3\) is considered valid.
+A valid session must satisfy the following constraints:
+\[
+\left|
+\left\{
+i \in \{1,2,3\}
+\mid
+r_i = (c,\mathrm{Truth})
+\text{ for some } c \in C
+\right\}
+\right|
+= 1,
+\]
+
+i.e.\ exactly one round in the session is labelled
+\(\mathrm{Truth}\).
+
+Furthermore,
+\[
+\forall i,j \in \{1,2,3\}:
+\quad
+i \neq j
+\Rightarrow
+c_i \neq c_j,
+\]
+where \(r_i = (c_i,t_i)\).
+That is, no case vignette may occur more than once within the same
+session.
+
+We denote the set of all valid sessions by
+\[
+S \subseteq R^3.
+\]
+
+A participant is a triple
+\[
+p = (g,s_1,s_2) \in G \times S \times S,
+\]
+where
+\[
+g \in G,
+\qquad
+s_1,s_2 \in S.
+\]
+
+The two sessions of a participant must share exactly one case
+vignette. Formally,
+\[
+\left|
+\left\{
+c \in C
+\mid
+\exists\, t_1,t_2 \in T:
+(c,t_1) \in \{r_1,r_2,r_3\}
+\land
+(c,t_2) \in \{r'_1,r'_2,r'_3\}
+\right\}
+\right|
+= 1,
+\]
+where
+\[
+s_1 = (r_1,r_2,r_3),
+\qquad
+s_2 = (r'_1,r'_2,r'_3).
+\]
+
+An example of a valid participant is
+\[
+\begin{aligned}
+p = (
+&\mathrm{Active},\\[2pt]
+&((\mathrm{Amina},\mathrm{Truth}),
+  (\mathrm{Lena},\mathrm{Untruth}),
+  (\mathrm{Mathias},\mathrm{Untruth})),\\[2pt]
+&((\mathrm{Martina},\mathrm{Truth}),
+  (\mathrm{Aylin},\mathrm{Untruth}),
+  (\mathrm{Mathias},\mathrm{Untruth}))
+).
+\end{aligned}
+\]
+\subsection{Participant Allocation}
+
+To generate participants satisfying the constraints defined in the
+previous subsection, we employ a deterministic pseudo-random allocation
+algorithm, denoted by \(A_s\) (Participant Allocator).
+
+For a fixed pseudo-random seed \(s\), the algorithm defines a mapping
+
+\[
+A_s : \mathbb{N}_0 \to P,
+\]
+
+where
+
+\[
+A_s(n) = p_n,
+\]
+
+with
+
+\begin{itemize}
+    \item \(P\) denoting the set of valid participants defined previously,
+    \item \(n \in \mathbb{N}_0\) denoting the participant index,
+    \item \(p_n \in P\) denoting the generated participant corresponding
+    to index \(n\),
+    \item \(s \in \mathbb{N}\) denoting the global pseudo-random seed.
+\end{itemize}
+
+In the present study, the seed value
+\(
+s = 403
+\)
+was used.
+The algorithm is deterministic with respect to the seed \(s\),
+thereby ensuring reproducibility of the participant allocation.
+
+The reference Python implementation is provided in the attached file
+\textattachfile[color=0.5 0.5 0.5]{allocate.py}{allocate.py}.
+
+\subsection{Automation bias}
+
+Automation bias is modelled as a continuous function that maps
+evaluation parameters to a scalar value in the interval $[0,1]$,
+representing the degree of evidence that automation bias has occurred.
+
+The function is defined as:
+
+\[
+B : \{0,1\} \times \{1,2,3,4,5\} \times [0,100] \to [0,1],
+\]
+\[
+B(i,r,c),
+\]
+
+where:
+\begin{itemize}
+    \item $B(i,r,c) \in [0,1]$ denotes the automation bias score,
+    \item $i \in \{0,1\}$ indicates correctness of the automated answer
+          ($1$ = correct, $0$ = incorrect),
+    \item $r \in \{1,2,3,4,5\}$ denotes the evaluator's rating of the answer
+          (1 = very bad, 5 = very good),
+    \item $c \in [0,100]$ denotes the evaluator's confidence in the rating.
+\end{itemize}
+
+\subsubsection{Definition of the Bias Function}
+
+The function is defined as:
+
+\[
+B(i,r,c)
+=
+(1 - i)
+\cdot
+\frac{r - 1}{5 - 1}
+\cdot
+\frac{c}{100}.
+\]
+
+\subsubsection{Interpretation}
+
+The term $(1 - i)$ ensures that automation bias is only considered when the
+automated answer is incorrect. If the answer is correct ($i=1$), then
+$B(i,r,c)=0$ regardless of the other parameters.
+
+The term
+\(
+\frac{r - 1}{4}
+\)
+maps the rating to a normalized interval $[0,1]$, where higher ratings
+indicate stronger perceived quality of the answer. In the context of
+automation bias, higher ratings for incorrect answers indicate a stronger
+tendency toward bias.
+
+The term
+\(
+\frac{c}{100}
+\)
+represents the evaluator's confidence in their rating. Higher confidence
+strengthens the evidence of automation bias.
+
+By construction, \(B(i,r,c) \in [0,1]\).
+
+\subsubsection{Threshold for Minimal Automation Bias}
+
+We define a reference threshold based on a minimally biased configuration:
+
+\[
+(i,r,c) = (0,3,50).
+\]
+
+Substituting into the function yields:
+
+\[
+\begin{aligned}
+B(0,3,50)
+&= (1 - 0)
+\cdot \frac{3 - 1}{4}
+\cdot \frac{50}{100} \\[4pt]
+&= 1 \cdot \frac{2}{4} \cdot 0.5 \\[4pt]
+&= 1 \cdot 0.5 \cdot 0.5 \\[4pt]
+&= 0.25.
+\end{aligned}
+\]
+
+We therefore define the minimal automation bias threshold as:
+
+\[
+B_{\text{threshold}} = 0.25,
+\quad \text{and we consider}
+\quad
+B(i,r,c) > 0.25
+\]
+as indicating evidence of automation bias.
+
+\section{Testing Methods}
+\subsection{General}
+\subsection{Session 1}
+\subsection{Session 2}
+
+
+\section{Results}
+
+
+
+
+
+%%
+%% The acknowledgments section is defined using the "acks" environment
+%% (and NOT an unnumbered section). This ensures the proper
+%% identification of the section in the article metadata, and the
+%% consistent spelling of the heading.
+\begin{acks}
+We would like to thank our instructor, Rosbach, E., for their guidance and support throughout this project.\\
+We also thank all testers who participated in the study and made this work possible.
+\end{acks}
+
+
+\listoffigures
+\listoftables
+\printglossaries
+\printbibliography
+
+\appendix
+
+\section{Palloc Python Implementation}
+\textattachfile[color=1 0 0]{allocate.py}{allocate.py}
+
+
+\end{document}
