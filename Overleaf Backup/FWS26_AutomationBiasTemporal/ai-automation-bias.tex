@@ -18,7 +18,7 @@
 %% Declare bibliography sources (one \addbibresource command per source)
 \addbibresource{ai-automation-bias.bib}
 
-\title[AI Fallibility \& Automation Bias long-term Effects]{The long-term effect of indicating AI fallibility on automation bias in mental health application users.}
+\title[AI Fallibility \& Automation Bias long-term Effects]{The Long-Term Effects of Indicating AI Fallibility on Automation Bias in Mental Health Application Users}
 
 \author{Tim Ruland}
 \authornote{Authors contributed equally to this research.}
@@ -171,6 +171,12 @@ s_1 = (r_1,r_2,r_3),
 s_2 = (r'_1,r'_2,r'_3).
 \]
 
+Thus:
+\[
+\mathrm{Participants}\ P := G \times S \times S
+\]
+where both $S$ fulfill all previous conditions
+
 An example of a valid participant is
 \[
 \begin{aligned}
@@ -194,7 +200,7 @@ algorithm, denoted by \(A_s\) (Participant Allocator).
 For a fixed pseudo-random seed \(s\), the algorithm defines a mapping
 
 \[
-A_s : \mathbb{N}_0 \to P,
+A_s : \{0,\dots,N-1\} \to P
 \]
 
 where
@@ -226,7 +232,9 @@ The reference Python implementation is provided in the attached file
 
 \subsection{Automation bias}
 
-Automation bias is modelled as a continuous function that maps
+For the purposes of this study, we define a heuristic automation-bias 
+score $B$ that serves as an operational measure of automation bias.
+$B$ is modelled as a continuous function that maps
 evaluation parameters to a scalar value in the interval $[0,1]$,
 representing the degree of evidence that automation bias has occurred.
 
@@ -289,7 +297,8 @@ By construction, \(B(i,r,c) \in [0,1]\).
 
 \subsubsection{Threshold for Minimal Automation Bias}
 
-We define a reference threshold based on a minimally biased configuration:
+The threshold value of $0.25$ was selected a priori as an operational cutoff corresponding to a neutral evaluation ($r=3$) combined with moderate confidence ($c=50$) of an incorrect recommendation.
+This value was resolved like this:
 
 \[
 (i,r,c) = (0,3,50).
@@ -319,15 +328,15 @@ B(i,r,c) > 0.25
 \]
 as indicating evidence of automation bias.
 
-\section{Testing Methods}
+\section{Methodology}
 \subsection{General}
 Our tests followed this formula:
 
 \begin{enumerate}
     \item Participant gives consent
     \item Participant is given a short context description \\
-    \textit{"Wir haben einen App für eine KI für mentale Gesundheit vorbereitet. 
-Sie kann Fälle von Patienten einschätzen und Vorschläge für Behandlungen geben."}
+    \textit{"Wir haben eine App für KI-gestützte mentale Gesundheit vorbereitet.
+            Sie kann Patientenfälle einschätzen und Behandlungsvorschläge geben."}
     \item Participant gives themselves a nickname
     \item Participant answers demographics questions
     \begin{itemize}
@@ -368,10 +377,10 @@ Sie kann Fälle von Patienten einschätzen und Vorschläge für Behandlungen geb
     \item participant reads Answer
     \item participant answers questions
     \begin{itemize}
-        \item How do rate the AI Answer?\\
+        \item How do you rate the AI Answer?\\
         Likert Scale \(\{1,2,3,4,5\} \in\) very bad $\leftrightarrow$ very good
         \item How certain are you in your choice?\\
-        \([0;100]\)
+        \([0,100]\)
         \item questions from UEQ+
         \begin{itemize}
             \item Intuitive Use
@@ -382,7 +391,7 @@ Sie kann Fälle von Patienten einschätzen und Vorschläge für Behandlungen geb
             \item Risk Handling
         \end{itemize}
     \end{itemize}
-    \item repeat (6) 2 more times
+    \item Steps 6–16 were repeated two additional times using different case vignettes.
     \item end of study Session
     \item 1 week passes
     \item repeat (1)
@@ -393,8 +402,17 @@ Sie kann Fälle von Patienten einschätzen und Vorschläge für Behandlungen geb
 
 
 \subsection{Session 1}
+During Session 1 (Steps 1–17), participants in the Active group were presented with a full-screen disclaimer before interacting with the application and an additional inline disclaimer while waiting for the AI response. Participants in the Control group did not receive either disclaimer.
 \subsection{Session 2}
 
+\section{Hypotheses}
+We conducted our study under the following hypotheses:
+
+\begin{description}
+\item[$H_1$] Exposure to a design intervention in a mental health AI application leads to a sustained reduction in automation bias, such that participants in the intervention group also exhibit a lower automation bias scores than participants in the control group during a subsequent usage session in which no additional intervention is provided.
+
+\item[$H_0$] There are no differences between the intervention and control groups in terms of changes in automation bias over time. The design intervention does not lead to a long-term effect on automation bias.
+\end{description}
 
 \section{Results}
 
@@ -420,7 +438,7 @@ We also thank all testers who participated in the study and made this work possi
 
 \appendix
 
-\section{Palloc Python Implementation}
+\section{Participant Allocation Python Implementation}
 \textattachfile[color=1 0 0]{allocate.py}{allocate.py}
 
 

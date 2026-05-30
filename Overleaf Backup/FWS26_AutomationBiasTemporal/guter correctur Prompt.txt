@@ -1,0 +1,1 @@
+you are a profesional auther and LaTeX / Math master, please criteque the following text. Only point to the errors and give a better version per error.
