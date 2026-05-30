@@ -1,4 +1,5 @@
-\documentclass[sigconf,authordraft,natbib=false]{acmart}
+\documentclass[sigconf,natbib=false]{acmart}
+% \documentclass[sigconf,authordraft,natbib=false]{acmart}
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}
 \usepackage{glossaries}
@@ -320,6 +321,77 @@ as indicating evidence of automation bias.
 
 \section{Testing Methods}
 \subsection{General}
+Our tests followed this formula:
+
+\begin{enumerate}
+    \item Participant gives consent
+    \item Participant is given a short context description \\
+    \textit{"Wir haben einen App für eine KI für mentale Gesundheit vorbereitet. 
+Sie kann Fälle von Patienten einschätzen und Vorschläge für Behandlungen geben."}
+    \item Participant gives themselves a nickname
+    \item Participant answers demographics questions
+    \begin{itemize}
+        \item Gender
+        \begin{itemize}
+            \item Male
+            \item Female
+            \item Nonbinary
+            \item Other
+            \item Prefer not to say
+        \end{itemize}
+        \item Age
+    \end{itemize}
+    \item Question About AI
+    \begin{itemize}
+        \item How do you view the use of Artificial Intelligence in terms of usefulness?\\
+        Likert Scale \(\{1,2,3,4,5\} \in\) Not useful at all $\leftrightarrow$ very useful
+        \item How do you view the use of Artificial Intelligence in terms of acceptability?\\
+        Likert Scale \(\{1,2,3,4,5\} \in\) Very unacceptable $\leftrightarrow$ very acceptable
+        \item How do you view the use of Artificial Intelligence in the field of mental health in terms of usefulness?\\
+        Likert Scale \(\{1,2,3,4,5\} \in\) Not useful at all $\leftrightarrow$ very useful
+        \item How do you view the use of Artificial Intelligence in the field of mental health in terms of acceptability?\\
+        Likert Scale \(\{1,2,3,4,5\} \in\) Very unacceptable $\leftrightarrow$ very acceptable
+        \item How frequently do you use Artificial Intelligence in the field of mental health?\\
+        Likert Scale \(\{1,2,3,4,5\} \in\) Not at all $\leftrightarrow$ very often
+        \item How frequently do you use Artificial Intelligence otherwise?\\
+        Likert Scale \(\{1,2,3,4,5\} \in\) Not at all $\leftrightarrow$ very often
+    \end{itemize}
+    %% this is (6)
+    \item Participant is handed Case Vignette \& Instructor sets up App and enters values into database %% <- this is (6)
+    \item participant reads case vignette
+    \item participant signals to continue
+    \item participant gets App
+    \item (If Active) participant gets Disclaimer
+    \item (If Active) participant waits out and reads Disclaimer
+    \item participant sends Prompt
+    \item (If Active) participant gets inline Disclaimer
+    \item participant reads Answer
+    \item participant answers questions
+    \begin{itemize}
+        \item How do rate the AI Answer?\\
+        Likert Scale \(\{1,2,3,4,5\} \in\) very bad $\leftrightarrow$ very good
+        \item How certain are you in your choice?\\
+        \([0;100]\)
+        \item questions from UEQ+
+        \begin{itemize}
+            \item Intuitive Use
+            \item Trustworthiness of Content
+            \item Response behavior
+            \item Response quality
+            \item Clarity
+            \item Risk Handling
+        \end{itemize}
+    \end{itemize}
+    \item repeat (6) 2 more times
+    \item end of study Session
+    \item 1 week passes
+    \item repeat (1)
+    \item remind of context
+    \item patient remembers nickname or is told if they forgot
+    \item repeat (5) to (16) but always without disclaimers
+\end{enumerate}
+
+
 \subsection{Session 1}
 \subsection{Session 2}
 
