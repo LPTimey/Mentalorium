@@ -1,11 +1,12 @@
-\documentclass[sigconf,natbib=false]{acmart}
-% \documentclass[sigconf,authordraft,natbib=false]{acmart}
+% \documentclass[sigconf,natbib=false]{acmart}
+\documentclass[sigconf,authordraft,natbib=false]{acmart}
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}
 \usepackage{glossaries}
 \usepackage{blindtext}
 \usepackage{listings}
 \usepackage{attachfile}
+\usepackage{cleveref}
     
 \acmConference[FWS2026]{Abschlusskonferenz FWS/SDUT Sommersemester 2026}{July 01, 2026}{Ingolstadt, DE}
 
@@ -81,6 +82,7 @@ for documents that include \gls{maths}.
 
 \section{Definitions}
 \subsection{Participants}
+\label{sec:participants}
 
 We define the following sets:
 \[
@@ -192,6 +194,7 @@ p = (
 \end{aligned}
 \]
 \subsection{Participant Allocation}
+\label{sec:participant-allocation}
 
 To generate participants satisfying the constraints defined in the
 previous subsection, we employ a deterministic pseudo-random allocation
@@ -231,6 +234,7 @@ The reference Python implementation is provided in the attached file
 \textattachfile[color=0.5 0.5 0.5]{allocate.py}{allocate.py}.
 
 \subsection{Automation bias}
+\label{sec:automation-bias}
 
 For the purposes of this study, we define a heuristic automation-bias 
 score $B$ that serves as an operational measure of automation bias.
@@ -328,82 +332,197 @@ B(i,r,c) > 0.25
 \]
 as indicating evidence of automation bias.
 
+% \section{Methodology}
+% \subsection{General}
+% Our tests followed this formula:
+
+% \begin{enumerate}
+%     \item Participant gives consent
+%     \item Participant is given a short context description \\
+%     \textit{"We have prepared an app for AI-supported mental health. It can assess patient cases and provides treatment recommendations."}
+%     \item Participant gives themselves a nickname
+%     \item Participant answers demographics questions
+%     \begin{itemize}
+%         \item Gender
+%         \begin{itemize}
+%             \item Male
+%             \item Female
+%             \item Nonbinary
+%             \item Other
+%             \item Prefer not to say
+%         \end{itemize}
+%         \item Age
+%     \end{itemize}
+%     \item Question About AI
+%     \begin{itemize}
+%         \item How do you view the use of Artificial Intelligence in terms of usefulness?\\
+%         Likert Scale \(\{1,2,3,4,5\} \in\) Not useful at all $\leftrightarrow$ very useful
+%         \item How do you view the use of Artificial Intelligence in terms of acceptability?\\
+%         Likert Scale \(\{1,2,3,4,5\} \in\) Very unacceptable $\leftrightarrow$ very acceptable
+%         \item How do you view the use of Artificial Intelligence in the field of mental health in terms of usefulness?\\
+%         Likert Scale \(\{1,2,3,4,5\} \in\) Not useful at all $\leftrightarrow$ very useful
+%         \item How do you view the use of Artificial Intelligence in the field of mental health in terms of acceptability?\\
+%         Likert Scale \(\{1,2,3,4,5\} \in\) Very unacceptable $\leftrightarrow$ very acceptable
+%         \item How frequently do you use Artificial Intelligence in the field of mental health?\\
+%         Likert Scale \(\{1,2,3,4,5\} \in\) Not at all $\leftrightarrow$ very often
+%         \item How frequently do you use Artificial Intelligence otherwise?\\
+%         Likert Scale \(\{1,2,3,4,5\} \in\) Not at all $\leftrightarrow$ very often
+%     \end{itemize}
+%     %% this is (6)
+%     \item Participant is handed Case Vignette \& Instructor sets up App and enters values into database %% <- this is (6)
+%     \item participant reads case vignette
+%     \item participant signals to continue
+%     \item participant gets App
+%     \item (If Active) participant gets Disclaimer
+%     \item (If Active) participant waits out and reads Disclaimer
+%     \item participant sends Prompt
+%     \item (If Active) participant gets inline Disclaimer
+%     \item participant reads Answer
+%     \item participant answers questions
+%     \begin{itemize}
+%         \item How do you rate the AI Answer?\\
+%         Likert Scale \(\{1,2,3,4,5\} \in\) very bad $\leftrightarrow$ very good
+%         \item How certain are you in your choice?\\
+%         \([0,100]\)
+%         \item questions from UEQ+
+%         \begin{itemize}
+%             \item Intuitive Use
+%             \item Trustworthiness of Content
+%             \item Response behavior
+%             \item Response quality
+%             \item Clarity
+%             \item Risk Handling
+%         \end{itemize}
+%     \end{itemize}
+%     \item Steps 6–16 were repeated two additional times using different case vignettes.
+%     \item end of study Session
+%     \item 1 week passes
+%     \item repeat (1)
+%     \item remind of context
+%     \item patient remembers nickname or is told if they forgot
+%     \item repeat (5) to (16) but always without disclaimers
+% \end{enumerate}
+
+
+% \subsection{Session 1}
+% During Session 1 (Steps 1–17), participants in the Active group were presented with a full-screen disclaimer before interacting with the application and an additional inline disclaimer while waiting for the AI response. Participants in the Control group did not receive either disclaimer.
+% \subsection{Session 2}
+
 \section{Methodology}
-\subsection{General}
-Our tests followed this formula:
+
+\subsection{Study Design}
+
+This study employed a mixed longitudinal design consisting of two experimental sessions separated by an interval of one week.
+Participants were allocated to either the \textit{Active} or \textit{Control} group according to the allocation procedure defined in Section~\ref{sec:participant-allocation}.
+
+Each participant completed two sessions \(s_1\) and \(s_2\), where each session consisted of three rounds as defined in Section~\ref{sec:participants}.
+In every session, exactly one round contained a truthful AI recommendation and two rounds contained intentionally untruthful recommendations. 
+Furthermore, the two sessions shared exactly one case vignette, as specified by the participant construction constraints.
+
+The primary objective of the study was to investigate the direct and long-term influence of disclaimer messages on participants' evaluations of AI-generated mental-health recommendations and on the occurrence of automation bias.
+
+\subsection{Procedure}
+
+\subsubsection{Session Introduction}
+
+At the beginning of the first session, participants provided informed consent and received the following study description:
+
+\begin{quote}
+"We have prepared an app for AI-supported mental health. It can assess patient cases and provides treatment recommendations."
+\end{quote}
+
+Participants then selected a nickname that was used to re-identify them during the second session.
+
+Subsequently, demographic information was collected, including age and gender (Male, Female, Non-binary, Other, Prefer not to say).
+
+\subsubsection{Pre-Study Questionnaire}
+
+Before interacting with the application, participants completed a questionnaire assessing their attitudes toward Artificial Intelligence. The questionnaire contained six items measured on five-point Likert scales:
+
+\begin{itemize}
+\item Perceived usefulness of AI,
+\item Acceptability of AI,
+\item Perceived usefulness of AI in mental-health applications,
+\item Acceptability of AI in mental-health applications,
+\item Frequency of AI use in mental-health contexts,
+\item Frequency of AI use in other contexts.
+\end{itemize}
+
+Higher values indicated greater perceived usefulness, greater acceptability, or more frequent usage, respectively and lower values the opposite, with the middle being medium/unsure.
+
+\subsubsection{Round Procedure}
+
+For each round, participants were presented with a case vignette describing a mental-health scenario. %% TODO: credit the vignettes
+While the participant reviewed the vignette, the experimenter prepared the application and loaded the corresponding case data.
+
+After reading the vignette, participants indicated that they were ready to proceed and were given access to the application. Participants then submitted a prompt requesting an assessment of the presented case.
+
+The application generated a treatment recommendation based on the underlying case data. Participants reviewed the generated response and subsequently completed a post-interaction questionnaire.
+
+This procedure was repeated for all three rounds of the session.
+
+\subsubsection{Post-Round Questionnaire}
+
+Following each AI recommendation, participants evaluated the generated answer using the following measures:
+
+\begin{itemize}
+\item Overall answer quality
+\begin{itemize}
+\item 1 = Very bad
+\item 5 = Very good
+\end{itemize}
+
+\item Confidence in the evaluation
+\begin{itemize}
+    \item Scale from 0 to 100
+\end{itemize}
+
+\item UEQ+ scales
+\begin{itemize}
+    \item Intuitive Use
+    \item Trustworthiness of Content
+    \item Response Behaviour
+    \item Response Quality
+    \item Clarity
+    \item Risk Handling
+\end{itemize}
+
+\end{itemize}
+
+\subsection{Experimental Conditions}
+\subsection{Session 1}
+
+Participants assigned to the \textit{Active} group received two disclaimer interventions during Session~1:
 
 \begin{enumerate}
-    \item Participant gives consent
-    \item Participant is given a short context description \\
-    \textit{"Wir haben eine App für KI-gestützte mentale Gesundheit vorbereitet.
-            Sie kann Patientenfälle einschätzen und Behandlungsvorschläge geben."}
-    \item Participant gives themselves a nickname
-    \item Participant answers demographics questions
-    \begin{itemize}
-        \item Gender
-        \begin{itemize}
-            \item Male
-            \item Female
-            \item Nonbinary
-            \item Other
-            \item Prefer not to say
-        \end{itemize}
-        \item Age
-    \end{itemize}
-    \item Question About AI
-    \begin{itemize}
-        \item How do you view the use of Artificial Intelligence in terms of usefulness?\\
-        Likert Scale \(\{1,2,3,4,5\} \in\) Not useful at all $\leftrightarrow$ very useful
-        \item How do you view the use of Artificial Intelligence in terms of acceptability?\\
-        Likert Scale \(\{1,2,3,4,5\} \in\) Very unacceptable $\leftrightarrow$ very acceptable
-        \item How do you view the use of Artificial Intelligence in the field of mental health in terms of usefulness?\\
-        Likert Scale \(\{1,2,3,4,5\} \in\) Not useful at all $\leftrightarrow$ very useful
-        \item How do you view the use of Artificial Intelligence in the field of mental health in terms of acceptability?\\
-        Likert Scale \(\{1,2,3,4,5\} \in\) Very unacceptable $\leftrightarrow$ very acceptable
-        \item How frequently do you use Artificial Intelligence in the field of mental health?\\
-        Likert Scale \(\{1,2,3,4,5\} \in\) Not at all $\leftrightarrow$ very often
-        \item How frequently do you use Artificial Intelligence otherwise?\\
-        Likert Scale \(\{1,2,3,4,5\} \in\) Not at all $\leftrightarrow$ very often
-    \end{itemize}
-    %% this is (6)
-    \item Participant is handed Case Vignette \& Instructor sets up App and enters values into database %% <- this is (6)
-    \item participant reads case vignette
-    \item participant signals to continue
-    \item participant gets App
-    \item (If Active) participant gets Disclaimer
-    \item (If Active) participant waits out and reads Disclaimer
-    \item participant sends Prompt
-    \item (If Active) participant gets inline Disclaimer
-    \item participant reads Answer
-    \item participant answers questions
-    \begin{itemize}
-        \item How do you rate the AI Answer?\\
-        Likert Scale \(\{1,2,3,4,5\} \in\) very bad $\leftrightarrow$ very good
-        \item How certain are you in your choice?\\
-        \([0,100]\)
-        \item questions from UEQ+
-        \begin{itemize}
-            \item Intuitive Use
-            \item Trustworthiness of Content
-            \item Response behavior
-            \item Response quality
-            \item Clarity
-            \item Risk Handling
-        \end{itemize}
-    \end{itemize}
-    \item Steps 6–16 were repeated two additional times using different case vignettes.
-    \item end of study Session
-    \item 1 week passes
-    \item repeat (1)
-    \item remind of context
-    \item patient remembers nickname or is told if they forgot
-    \item repeat (5) to (16) but always without disclaimers
+\item A full-screen disclaimer before interacting with the application.
+\item An inline disclaimer is displayed while waiting for the AI-generated response.
 \end{enumerate}
+%% Figure of both
 
+Participants assigned to the \textit{Control} group did not receive either disclaimer.
 
-\subsection{Session 1}
-During Session 1 (Steps 1–17), participants in the Active group were presented with a full-screen disclaimer before interacting with the application and an additional inline disclaimer while waiting for the AI response. Participants in the Control group did not receive either disclaimer.
 \subsection{Session 2}
+
+One week after completing Session~1, participants returned for Session~2.
+
+Participants again provided consent, were reminded of the study context, and were re-identified using their previously selected nickname. They then completed the same AI-attitude questionnaire and proceeded through the three rounds assigned to their second session.
+
+To investigate potential persistence effects, no disclaimer messages were shown during Session~2, regardless of the participant's original group assignment. All participants therefore interacted with the application under identical conditions during the second session.
+
+\subsection{Automation Bias Assessment}
+
+Automation bias was operationalized using the bias score \(B(i,r,c)\) defined in Section~\ref{sec:automation-bias}.
+For each evaluated AI recommendation, the correctness of the recommendation ((i)), the participant's quality rating \((r)\), and the participant's confidence \((c)\) were recorded.
+
+Bias scores exceeding the predefined threshold
+
+\[
+B(i,r,c) > 0.25
+\]
+
+were considered indicative of automation bias.
+
 
 \section{Hypotheses}
 We conducted our study under the following hypotheses:
