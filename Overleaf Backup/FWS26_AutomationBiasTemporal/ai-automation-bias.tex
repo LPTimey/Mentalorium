@@ -2,11 +2,11 @@
 \documentclass[sigconf,authordraft,natbib=false]{acmart}
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}
-\usepackage{glossaries}
 \usepackage{blindtext}
 \usepackage{listings}
 \usepackage{attachfile}
 \usepackage{cleveref}
+\usepackage{fontawesome}
     
 \acmConference[FWS2026]{Abschlusskonferenz FWS/SDUT Sommersemester 2026}{July 01, 2026}{Ingolstadt, DE}
 
@@ -94,20 +94,20 @@ We define the following sets:
 \end{aligned}
 \]
 
-A \emph{round} is a pair consisting of a case vignette and a
-truthfulness label. Hence, the set of all rounds is
+A \emph{\gls{round}} is a pair consisting of a \glspl{casevignette} and a
+truthfulness label. Hence, the set of all \glspl{round} is
 \[
 R := C \times T.
 \]
 
-A \emph{session} consists of exactly three rounds.
-Formally, a session is an ordered triple
+A \emph{\gls{session}} consists of exactly three rounds.
+Formally, a \gls{session} $s$ is an ordered triple
 \[
 s = (r_1,r_2,r_3) \in R^3.
 \]
 
 However, not every element of \(R^3\) is considered valid.
-A valid session must satisfy the following constraints:
+A valid \gls{session} must satisfy the following constraints:
 \[
 \left|
 \left\{
@@ -120,7 +120,7 @@ r_i = (c,\mathrm{Truth})
 = 1,
 \]
 
-i.e.\ exactly one round in the session is labelled
+i.e.\ exactly one \gls{round} in the \gls{session} is labelled
 \(\mathrm{Truth}\).
 
 Furthermore,
@@ -132,15 +132,15 @@ i \neq j
 c_i \neq c_j,
 \]
 where \(r_i = (c_i,t_i)\).
-That is, no case vignette may occur more than once within the same
+That is, no \gls{casevignette} may occur more than once within the same
 session.
 
-We denote the set of all valid sessions by
+We denote the set of all valid \glspl{session} by
 \[
 S \subseteq R^3.
 \]
 
-A participant is a triple
+A \gls{participant} is a triple
 \[
 p = (g,s_1,s_2) \in G \times S \times S,
 \]
@@ -151,8 +151,8 @@ g \in G,
 s_1,s_2 \in S.
 \]
 
-The two sessions of a participant must share exactly one case
-vignette. Formally,
+The two sessions of a \gls{participant} must share exactly one \gls{casevignette}.
+Formally,
 \[
 \left|
 \left\{
@@ -196,11 +196,11 @@ p = (
 \subsection{Participant Allocation}
 \label{sec:participant-allocation}
 
-To generate participants satisfying the constraints defined in the
+To generate \glspl{participant} satisfying the constraints defined in the
 previous subsection, we employ a deterministic pseudo-random allocation
-algorithm, denoted by \(A_s\) (Participant Allocator).
+algorithm, denoted by \(A_s\) (\gls{participantallocator}).
 
-For a fixed pseudo-random seed \(s\), the algorithm defines a mapping
+For a fixed \gls{pseudorandomseed} \(s\), the algorithm defines a mapping
 
 \[
 A_s : \{0,\dots,N-1\} \to P
@@ -215,11 +215,11 @@ A_s(n) = p_n,
 with
 
 \begin{itemize}
-    \item \(P\) denoting the set of valid participants defined previously,
+    \item \(P\) denoting the set of valid \glspl{participant} defined previously,
     \item \(n \in \mathbb{N}_0\) denoting the participant index,
-    \item \(p_n \in P\) denoting the generated participant corresponding
+    \item \(p_n \in P\) denoting the generated \glspl{participant} corresponding
     to index \(n\),
-    \item \(s \in \mathbb{N}\) denoting the global pseudo-random seed.
+    \item \(s \in \mathbb{N}\) denoting the global \gls{pseudorandomseed}.
 \end{itemize}
 
 In the present study, the seed value
@@ -231,16 +231,16 @@ The algorithm is deterministic with respect to the seed \(s\),
 thereby ensuring reproducibility of the participant allocation.
 
 The reference Python implementation is provided in the attached file
-\textattachfile[color=0.5 0.5 0.5]{allocate.py}{allocate.py}.
+allocate.py. (see \ref{sec:palloc})
 
 \subsection{Automation bias}
 \label{sec:automation-bias}
 
-For the purposes of this study, we define a heuristic automation-bias 
-score $B$ that serves as an operational measure of automation bias.
+For the purposes of this study, we define a heuristic \gls{automationbias} 
+score $B$ that serves as an operational measure of \gls{automationbias}.
 $B$ is modelled as a continuous function that maps
 evaluation parameters to a scalar value in the interval $[0,1]$,
-representing the degree of evidence that automation bias has occurred.
+representing the degree of evidence that \gls{automationbias} has occurred.
 
 The function is defined as:
 
@@ -253,7 +253,7 @@ B(i,r,c),
 
 where:
 \begin{itemize}
-    \item $B(i,r,c) \in [0,1]$ denotes the automation bias score,
+    \item $B(i,r,c) \in [0,1]$ denotes the \gls{automationbias} score,
     \item $i \in \{0,1\}$ indicates correctness of the automated answer
           ($1$ = correct, $0$ = incorrect),
     \item $r \in \{1,2,3,4,5\}$ denotes the evaluator's rating of the answer
@@ -277,7 +277,7 @@ B(i,r,c)
 
 \subsubsection{Interpretation}
 
-The term $(1 - i)$ ensures that automation bias is only considered when the
+The term $(1 - i)$ ensures that \gls{automationbias} is only considered when the
 automated answer is incorrect. If the answer is correct ($i=1$), then
 $B(i,r,c)=0$ regardless of the other parameters.
 
@@ -295,7 +295,7 @@ The term
 \frac{c}{100}
 \)
 represents the evaluator's confidence in their rating. Higher confidence
-strengthens the evidence of automation bias.
+strengthens the evidence of \gls{automationbias}.
 
 By construction, \(B(i,r,c) \in [0,1]\).
 
@@ -322,7 +322,7 @@ B(0,3,50)
 \end{aligned}
 \]
 
-We therefore define the minimal automation bias threshold as:
+We therefore define the minimal \gls{automationbias} threshold as:
 
 \[
 B_{\text{threshold}} = 0.25,
@@ -513,7 +513,7 @@ To investigate potential persistence effects, no disclaimer messages were shown 
 \subsection{Automation Bias Assessment}
 
 Automation bias was operationalized using the bias score \(B(i,r,c)\) defined in Section~\ref{sec:automation-bias}.
-For each evaluated AI recommendation, the correctness of the recommendation ((i)), the participant's quality rating \((r)\), and the participant's confidence \((c)\) were recorded.
+For each evaluated AI recommendation, the correctness of the recommendation \((i)\), the participant's quality rating \((r)\), and the participant's confidence \((c)\) were recorded.
 
 Bias scores exceeding the predefined threshold
 
@@ -558,7 +558,8 @@ We also thank all testers who participated in the study and made this work possi
 \appendix
 
 \section{Participant Allocation Python Implementation}
-\textattachfile[color=1 0 0]{allocate.py}{allocate.py}
+\label{sec:palloc}
+\textattachfile[color=0 0 0]{allocate.py}{allocate.py} \faDownload
 
 
 \end{document}
