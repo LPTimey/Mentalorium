@@ -7,6 +7,7 @@
 \usepackage{attachfile}
 \usepackage{cleveref}
 \usepackage{fontawesome}
+\usepackage{csquotes}
     
 \acmConference[FWS2026]{Abschlusskonferenz FWS/SDUT Sommersemester 2026}{July 01, 2026}{Ingolstadt, DE}
 
@@ -43,7 +44,21 @@
 
 \begin{document}
 \begin{abstract}
-% This study investigated the direct and long-term influence of disclaimer messages on participants' evaluations of AI-generated mental-health recommendations and on the occurrence of automation bias. The study employed a mixed longitudinal design consisting of two experimental sessions separated by an interval of one week. Participants completed a questionnaire assessing their attitudes toward Artificial Intelligence. Participants were then presented with a case vignette describing a mental health scenario. Participants then submitted a prompt requesting an assessment of the presented case data. Participants reviewed the generated response and subsequently completed an post-interaction questionnaire. Participants assigned to the textitActive group received two disclaimers during Session1: one was a textit Active intervention, and the other was an atextit activation intervention. The application generated a treatment recommendation based on underlying case data, and participants reviewed and completed the generated responses. The results of this study suggest that the AI-supported mental health recommendation has the potential to be a useful tool for the assessment of mental health.
+This study investigated the direct and long-term influence of disclaimer messages on \glspl{participant}' evaluations of AI-generated mental-health recommendations and on the occurrence of \gls{automationbias}.
+The study employed a mixed longitudinal design consisting of two experimental sessions separated by an interval of one week.
+\Glspl{participant} completed a questionnaire assessing their attitudes toward Artificial Intelligence. 
+\Glspl{participant} were then presented with a case vignettes describing a mental health scenario. 
+\Glspl{participant} then submitted a prompt requesting an assessment of the presented case data. 
+\Glspl{participant} reviewed the generated response and subsequently completed a post-interaction questionnaire.
+
+\Glspl{participant} assigned to the \textit{Active} group received two disclaimers during Session~1: 
+one was an \textit{active intervention}, and the other was an activation intervention. 
+
+The application generated a treatment recommendation based on underlying case data, and participants reviewed and evaluated the generated responses.
+
+
+The results of this study suggest 
+
 %% TODO: Abstract
 \end{abstract}
 
@@ -58,13 +73,13 @@
 %% A "teaser" image appears between the author and affiliation
 %% information and the body of the document, and typically spans the
 %% page.
-\begin{teaserfigure}
-  \includegraphics[width=\textwidth]{Template/sampleteaser}
-  \caption{Seattle Mariners at Spring Training, 2010.}
-  \Description{Enjoying the baseball game from the third-base
-  seats. Ichiro Suzuki preparing to bat.}
-  \label{fig:teaser}
-\end{teaserfigure}
+% \begin{teaserfigure}
+%   \includegraphics[width=\textwidth]{Template/sampleteaser}
+%   \caption{Seattle Mariners at Spring Training, 2010.}
+%   \Description{Enjoying the baseball game from the third-base
+%   seats. Ichiro Suzuki preparing to bat.}
+%   \label{fig:teaser}
+% \end{teaserfigure}
 
 %%
 %% This command processes the author and affiliation and title
@@ -179,6 +194,7 @@ Thus:
 \]
 where both $S$ fulfill all previous conditions
 
+\subsubsection{Valid Participant}
 An example of a valid participant is
 \[
 \begin{aligned}
@@ -428,7 +444,7 @@ The primary objective of the study was to investigate the direct and long-term i
 At the beginning of the first session, participants provided informed consent and received the following study description:
 
 \begin{quote}
-"We have prepared an app for AI-supported mental health. It can assess patient cases and provides treatment recommendations."
+\enquote{We have prepared an app for AI-supported mental health. It can assess patient cases and provides treatment recommendations.}
 \end{quote}
 
 Participants then selected a nickname that was used to re-identify them during the second session.
