@@ -8,6 +8,7 @@
 \usepackage{cleveref}
 \usepackage{fontawesome}
 \usepackage{csquotes}
+\usepackage{subcaption}
     
 \acmConference[FWS2026]{Abschlusskonferenz FWS/SDUT Sommersemester 2026}{July 01, 2026}{Ingolstadt, DE}
 
@@ -46,20 +47,17 @@
 \begin{abstract}
 This study investigated the direct and long-term influence of disclaimer messages on \glspl{participant}' evaluations of AI-generated mental-health recommendations and on the occurrence of \gls{automationbias}.
 The study employed a mixed longitudinal design consisting of two experimental sessions separated by an interval of one week.
-\Glspl{participant} completed a questionnaire assessing their attitudes toward Artificial Intelligence. 
+\Glspl{participant} completed a questionnaire assessing their attitudes toward \gls{ai}. 
 \Glspl{participant} were then presented with a case vignettes describing a mental health scenario. 
 \Glspl{participant} then submitted a prompt requesting an assessment of the presented case data. 
 \Glspl{participant} reviewed the generated response and subsequently completed a post-interaction questionnaire.
 
 \Glspl{participant} assigned to the \textit{Active} group received two disclaimers during Session~1: 
 one was an \textit{active intervention}, and the other was an activation intervention. 
-
 The application generated a treatment recommendation based on underlying case data, and participants reviewed and evaluated the generated responses.
 
 
 The results of this study suggest 
-
-%% TODO: Abstract
 \end{abstract}
 
 
@@ -506,6 +504,90 @@ Following each AI recommendation, participants evaluated the generated answer us
 \end{itemize}
 
 \subsection{Experimental Conditions}
+
+%% TODO: In the Lab, Geräte und PWA
+
+\begin{figure*}[t]
+    \centering
+
+    \begin{subfigure}{\textwidth/7}
+        \includegraphics[width=\linewidth]{assets/Design/Disclaimer.jpg}
+        \caption{Disclaimer}
+    \end{subfigure}
+    \begin{subfigure}{\textwidth/7}
+        \includegraphics[width=\linewidth]{assets/Design/Disclaimer 2.jpg}
+        \caption{Disclaimer done}
+    \end{subfigure}
+    \begin{subfigure}{\textwidth/7}
+        \includegraphics[width=\linewidth]{assets/Design/Auto Eingabe.jpg}
+        \caption{Prompt}
+    \end{subfigure}
+    \begin{subfigure}{\textwidth/7}
+        \includegraphics[width=\linewidth]{assets/Design/Senden.jpg}
+        \caption{Sent}
+    \end{subfigure}
+    \begin{subfigure}{\textwidth/7}
+        \includegraphics[width=\linewidth]{assets/Design/Disclaimer Inline.jpg}
+        \caption{Inline Disclaimer}
+    \end{subfigure}
+    \begin{subfigure}{\textwidth/7}
+        \includegraphics[width=\linewidth]{assets/Design/Result.jpg}
+        \caption{Response}
+    \end{subfigure}
+
+    \caption{App Design}
+    \Description{Six screens we designed in the ideation phase for our testing application.}
+    \label{fig:design}
+\end{figure*}
+
+\begin{figure*}[t]
+    \centering
+    \begin{subfigure}{\linewidth/6}
+        \includegraphics[width=\linewidth]{assets/PWA/English_empty.PNG}
+        \caption{
+            \centering
+            EN: Default State\\
+            \vphantom{()}
+        }
+    \end{subfigure}
+    \begin{subfigure}{\linewidth/6}
+        \includegraphics[width=\linewidth]{assets/PWA/English_Disclaimer.PNG}
+        \caption{
+            \centering
+            EN: Disclaimer\\
+            (+ Prompt in BG)
+        }
+    \end{subfigure}
+    \begin{subfigure}{\linewidth/6}
+        \includegraphics[width=\linewidth]{assets/PWA/Englisch_Answer_Full_Disclaimer.PNG}
+        \caption{
+            \centering
+            EN: Answer\\
+            + inline Disclaimer
+        }
+    \end{subfigure}
+    \begin{subfigure}{\linewidth/6}
+        \includegraphics[width=\linewidth]{assets/PWA/German_Answer_Full_No_Disclaimer.PNG}
+        \caption{
+            \centering
+            DE: Answer\\
+            \vphantom{()}
+        }
+    \end{subfigure}
+    \begin{subfigure}{\linewidth/6}
+        \includegraphics[width=\linewidth]{assets/PWA/German_No_Disclaimer_Inline.PNG}
+        \caption{
+            \centering
+            DE: Sent\\
+            no Disclaimer
+        }
+    \end{subfigure}
+    \caption{Progressive Web App}
+    \Description{Example screenshots of our progressive web app showing disclaimers, prompts, and answers in in differing languages.}
+    \label{fig:pwa}
+\end{figure*}
+
+
 \subsection{Session 1}
 
 Participants assigned to the \textit{Active} group received two disclaimer interventions during Session~1:
