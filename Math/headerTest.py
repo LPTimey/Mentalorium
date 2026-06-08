@@ -3,6 +3,7 @@
 import argparse
 import csv
 from glob import glob
+from collections import defaultdict
 
 
 def expand_files(patterns: list[str]) -> list[str]:
@@ -11,7 +12,6 @@ def expand_files(patterns: list[str]) -> list[str]:
         matches = glob(pattern)
         files.extend(matches if matches else [pattern])
 
-    # remove duplicates, keep order
     seen = set()
     result = []
     for f in files:
@@ -29,21 +29,11 @@ def read_header(path: str, delimiter: str) -> list[str]:
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Check if all CSV files have identical headers"
+        description="Compare CSV headers across multiple files"
     )
 
-    parser.add_argument(
-        "files",
-        nargs="+",
-        help="CSV files or glob patterns",
-    )
-
-    parser.add_argument(
-        "-d",
-        "--delimiter",
-        default=",",
-        help="CSV delimiter (default: ,)",
-    )
+    parser.add_argument("files", nargs="+", help="CSV files or glob patterns")
+    parser.add_argument("-d", "--delimiter", default=",")
 
     args = parser.parse_args()
 
@@ -52,39 +42,38 @@ def main():
     if len(files) < 2:
         parser.error("Need at least two files.")
 
-    headers = {}
+    headers = {f: read_header(f, args.delimiter) for f in files}
 
-    for path in files:
-        headers[path] = read_header(path, args.delimiter)
-
-    reference_file = files[0]
-    reference_header = headers[reference_file]
+    max_len = max(len(h) for h in headers.values())
 
     all_equal = True
 
-    for path in files[1:]:
-        if headers[path] == reference_header:
-            print(f"✓ {path}")
-        else:
-            all_equal = False
-            print(f"\n=== {path} ===")
-            print("❌ Header mismatch")
+    for i in range(max_len):
+        value_map = defaultdict(list)
 
-            ref_set = set(reference_header)
-            cur_set = set(headers[path])
+        for f in files:
+            h = headers[f]
+            val = h[i] if i < len(h) else "<MISSING>"
+            value_map[val].append(f)
 
-            only_in_ref = ref_set - cur_set
-            only_in_cur = cur_set - ref_set
+        if len(value_map) <= 1:
+            continue
 
-            if only_in_ref:
-                print(f"Only in {reference_file}:")
-                for el in sorted(only_in_ref):
-                    print(f"\t{el}")
+        all_equal = False
 
-            if only_in_cur:
-                print(f"Only in {path}:")
-                for el in sorted(only_in_cur):
-                    print(f"\t{el}")
+        spellings = list(value_map.keys())
+
+        print(f"position {i}:")
+
+        for idx, spelling in enumerate(spellings, start=1):
+            print(f"{idx}: {spelling}")
+
+        print("in:")
+        for idx, file_list in enumerate(value_map.values(), start=1):
+            for path in file_list:
+                print(f"{idx}: {path}")
+
+        print()
 
     if all_equal:
         print("✓ All files have identical headers")
