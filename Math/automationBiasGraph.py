@@ -92,7 +92,7 @@ def main():
 
     # Rechtecke
     rect_handles = []
-    rect_handles.append(plot_rectangle(ax, RECT1, color='lightgreen', alpha=0.3, edgecolor='green'))
+    rect_handles.append(plot_rectangle(ax, RECT1, color='lightcoral', alpha=0.3, edgecolor='red'))
     rect_handles.append(plot_rectangle(ax, RECT2, color='lightblue', alpha=0.3, edgecolor='blue'))
 
     # --- SAUBERE LEGENDENLISTE ---
