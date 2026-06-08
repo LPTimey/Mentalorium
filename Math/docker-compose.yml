@@ -16,7 +16,7 @@ services:
     # Falls du CSVs außerhalb mounten willst:
     # - ./data:/app/data
 
-    command: ["python3", "headerTest.py", "./data/temp/session 2/*.csv"]
+    command: ["python3", "headerTest.py", "./data/session 2/*.csv"]
 
     environment:
       - PYTHONDONTWRITEBYTECODE=1
