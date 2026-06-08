@@ -37,7 +37,7 @@ RECT2 = [1, 5, 0, 1, "solution space R"]
 
 # Plot-Einstellungen
 X_LIM = (0, 6)
-Y_LIM = (0, 8)
+Y_LIM = (0, 6)
 GRID = True
 FIG_SIZE = (10, 8)
 
