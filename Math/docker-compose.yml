@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    image: mentalorium-app
+
+    container_name: mentalorium-container
+
+    working_dir: /app
+
+    volumes:
+      - .:/app
+
+    # Falls du CSVs außerhalb mounten willst:
+      # - ./data:/app/data
+
+    command: ["python3", "headerTest.py", "./data/temp/session 2/*.csv"]
+
+    environment:
+      - PYTHONDONTWRITEBYTECODE=1
+      - PYTHONUNBUFFERED=1
