@@ -204,6 +204,30 @@ def main():
 
     # ---------------------------------------
     # Plot 2
+    # Session 2: Disclaimer On vs Off
+    # ---------------------------------------
+
+    plt.figure(figsize=(6, 5))
+
+    sns.boxplot(
+        data=combined[combined["session"] == "Session 2"],
+        x="DISCLAIMER_LABEL",
+        y="bias_mean",
+    )
+
+    plt.title("Session 2: Automation Bias")
+    plt.xlabel("")
+    plt.ylabel("Mean Automation Bias")
+
+    plt.tight_layout()
+    plt.savefig(
+        os.path.join(OUTPATH, "boxplot_session2_disclaimer.png"),
+        dpi=300,
+    )
+    plt.close()
+
+    # ---------------------------------------
+    # Plot 3
     # Disclaimer ON: Session 1 vs Session 2
     # ---------------------------------------
 
@@ -227,7 +251,7 @@ def main():
     plt.close()
 
     # ---------------------------------------
-    # Plot 3
+    # Plot 4
     # Disclaimer OFF: Session 1 vs Session 2
     # ---------------------------------------
 
