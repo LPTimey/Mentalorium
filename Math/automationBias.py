@@ -5,6 +5,7 @@ import pandas as pd
 import os
 import seaborn as sns
 from scipy.stats import ttest_ind
+from itertools import product
 
 
 MIN_BIAS = 0.25
@@ -102,6 +103,16 @@ def normalize_disclaimer(x):
         return 0
     return np.nan
 
+def normalize_bool(x):
+    x = str(x).strip().lower()
+
+    if x in ["ja", "yes", "true", "1"]:
+        return 1
+    if x in ["nein", "no", "false", "0"]:
+        return 0
+
+    return np.nan
+
 
 def main():
     session1_list = []
@@ -135,37 +146,30 @@ def main():
 
     # bias columns
     bias_cols = [f"bias rating ({i+1})" for i in range(3)]
+    correct_cols = [i for i in ANSWER_CORRECT]
 
-    # FIXED: mean only over non-zero bias values
-    if not session1.empty:
-        session1["bias_mean"] = session1.apply(
-            lambda row: np.mean([row[c] for c in bias_cols if row[c] > 0]),
-            axis=1
-        )
+    session1["bias_mean"] = session1.apply(
+        lambda row: np.mean([
+            row[bias_col]
+            for bias_col, corr_col in zip(bias_cols, correct_cols)
+            if normalize_bool(row[corr_col]) == 0
+        ]),
+        axis=1
+    )
 
-    if not session2.empty:
-        session2["bias_mean"] = session2.apply(
-            lambda row: np.mean([row[c] for c in bias_cols if row[c] > 0]),
-            axis=1
-        )
+    session2["bias_mean"] = session2.apply(
+        lambda row: np.mean([
+            row[bias_col]
+            for bias_col, corr_col in zip(bias_cols, correct_cols)
+            if normalize_bool(row[corr_col]) == 0
+        ]),
+        axis=1
+    )
 
     print("Done. Files saved.")
 
     session1["session"] = "Session 1"
     session2["session"] = "Session 2"
-
-    #TODO: 3 boxplots
-    # 1: session 1 disclaimer on vs disclaimer off
-    # 2: disclaimer on Session 1 vs session 2
-    # 2: disclaimer off Session 1 vs session 2
-
-    combined = pd.concat(
-        [
-            session1[["nickname","session", "DISCLAIMER", "bias_mean"]],
-            session2[["nickname","session", "DISCLAIMER", "bias_mean"]],
-        ],
-        ignore_index=True,
-    )
 
     # ---------------------------------------
     # Nickname consistency check
@@ -193,19 +197,21 @@ def main():
     )
 
 
-    # remove rows without bias
-    combined = combined.dropna(subset=["bias_mean"])
-
-    # prettier labels
-    combined["DISCLAIMER_LABEL"] = combined["DISCLAIMER"].map(
-        {
-            0: "Disclaimer Off",
-            1: "Disclaimer On"
-        }
+    combined = session1[["nickname", "DISCLAIMER", "bias_mean"]].merge(
+        session2[["nickname", "bias_mean"]],
+        on="nickname",
+        how="left",
+        suffixes=("_s1", "_s2")
     )
 
-    #TODO: t & p tests pro Vergleich
+    # remove rows without bias
+    combined = combined.dropna(subset=["bias_mean_s1"])
 
+    # prettier labels
+    combined["DISCLAIMER_LABEL"] = combined["DISCLAIMER"].map({
+        0: "Control",
+        1: "Active"
+    })
     # ---------------------------------------
     # Plot 1
     # Session 1: Disclaimer On vs Off
@@ -214,9 +220,9 @@ def main():
     plt.figure(figsize=(6, 5))
 
     sns.boxplot(
-        data=combined[combined["session"] == "Session 1"],
+        data=combined,
         x="DISCLAIMER_LABEL",
-        y="bias_mean",
+        y="bias_mean_s1",
     )
 
     plt.title("Session 1: Automation Bias")
@@ -231,7 +237,6 @@ def main():
     plt.close()
 
 
-    #TODO: fix because all session 1 actives also have false in Disclaimer Off in session 2
     # ---------------------------------------
     # Plot 2
     # Session 2: Disclaimer On vs Off
@@ -240,9 +245,9 @@ def main():
     plt.figure(figsize=(6, 5))
 
     sns.boxplot(
-        data=combined[combined["session"] == "Session 2"],
+        data=combined,
         x="DISCLAIMER_LABEL",
-        y="bias_mean",
+        y="bias_mean_s2",
     )
 
     plt.title("Session 2: Automation Bias")
@@ -256,18 +261,35 @@ def main():
     )
     plt.close()
 
-    #TODO: fix because all session 1 actives also have false in Disclaimer Off in session 2
+
     # ---------------------------------------
     # Plot 3
     # Disclaimer ON: Session 1 vs Session 2
     # ---------------------------------------
 
+    on_data = combined[combined["DISCLAIMER"] == 1]
+
+    plot_data = pd.melt(
+        on_data,
+        id_vars=["nickname"],
+        value_vars=["bias_mean_s1", "bias_mean_s2"],
+        var_name="session",
+        value_name="bias_mean_value",
+    )
+
+    plot_data["session"] = plot_data["session"].map(
+        {
+            "bias_mean_s1": "Session 1",
+            "bias_mean_s2": "Session 2",
+        }
+    )
+
     plt.figure(figsize=(6, 5))
 
     sns.boxplot(
-        data=combined[combined["DISCLAIMER"] == 1],
+        data=plot_data,
         x="session",
-        y="bias_mean",
+        y="bias_mean_value",
     )
 
     plt.title("Disclaimer ON")
@@ -281,17 +303,35 @@ def main():
     )
     plt.close()
 
+
     # ---------------------------------------
     # Plot 4
     # Disclaimer OFF: Session 1 vs Session 2
     # ---------------------------------------
 
+    off_data = combined[combined["DISCLAIMER"] == 0]
+
+    plot_data = pd.melt(
+        off_data,
+        id_vars=["nickname"],
+        value_vars=["bias_mean_s1", "bias_mean_s2"],
+        var_name="session",
+        value_name="bias_mean_value",
+    )
+
+    plot_data["session"] = plot_data["session"].map(
+        {
+            "bias_mean_s1": "Session 1",
+            "bias_mean_s2": "Session 2",
+        }
+    )
+
     plt.figure(figsize=(6, 5))
 
     sns.boxplot(
-        data=combined[combined["DISCLAIMER"] == 0],
+        data=plot_data,
         x="session",
-        y="bias_mean",
+        y="bias_mean_value",
     )
 
     plt.title("Disclaimer OFF")

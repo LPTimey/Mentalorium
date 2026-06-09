@@ -1,47 +1,25 @@
-nickname,session,DISCLAIMER,bias_mean,DISCLAIMER_LABEL
-Sina,Session 1,1,0.225,Disclaimer On
-VJ,Session 1,1,0.675,Disclaimer On
-Sina,Session 1,0,0.475,Disclaimer Off
-Maria,Session 1,1,0.30000000000000004,Disclaimer On
-Dirty Harry,Session 1,0,0.5249999999999999,Disclaimer Off
-woop woop,Session 1,1,0.08750000000000001,Disclaimer On
-Maxi,Session 1,0,0.6000000000000001,Disclaimer Off
-Min,Session 1,1,0.2625,Disclaimer On
-Vespafahrer,Session 1,0,0.46249999999999997,Disclaimer Off
-Jessi,Session 1,1,0.37499999999999994,Disclaimer On
-Amalia ,Session 1,1,0.61875,Disclaimer On
-Soxi,Session 1,1,0.425,Disclaimer On
-Steffi,Session 1,0,0.5249999999999999,Disclaimer Off
-Bless,Session 1,1,0.7875000000000001,Disclaimer On
-Sylvie,Session 1,0,0.9,Disclaimer Off
-Piet,Session 1,1,1.0,Disclaimer On
-Preta,Session 1,1,0.45,Disclaimer On
-Xandi,Session 1,0,0.75,Disclaimer Off
-steidl bua,Session 1,1,0.5375000000000001,Disclaimer On
-GEILSTER MENSCH AUF DER WELT,Session 1,0,0.46249999999999997,Disclaimer Off
-Günter,Session 1,1,0.375,Disclaimer On
-mar,Session 1,1,0.275,Disclaimer On
-LK,Session 1,1,0.475,Disclaimer On
-Tita,Session 1,0,0.35624999999999996,Disclaimer Off
-VJ,Session 2,0,0.75,Disclaimer Off
-Steffi,Session 2,0,0.325,Disclaimer Off
-Amalia,Session 2,0,0.125,Disclaimer Off
-Maxi,Session 2,0,0.41250000000000003,Disclaimer Off
-min,Session 2,0,0.69375,Disclaimer Off
-woop woop,Session 2,0,0.025,Disclaimer Off
-Catarina,Session 2,0,0.225,Disclaimer Off
-Xandi,Session 2,0,0.375,Disclaimer Off
-Preta,Session 2,0,0.59375,Disclaimer Off
-Vespafahrer,Session 2,0,0.625,Disclaimer Off
-Jessi,Session 2,0,0.48749999999999993,Disclaimer Off
-Maria,Session 2,0,0.42500000000000004,Disclaimer Off
-Sina,Session 2,0,0.5,Disclaimer Off
-Steidl Bua,Session 2,0,0.675,Disclaimer Off
-Soxi,Session 2,0,0.875,Disclaimer Off
-sylvie,Session 2,0,0.4,Disclaimer Off
-Piet,Session 2,0,0.625,Disclaimer Off
-Bless,Session 2,0,0.6375000000000001,Disclaimer Off
-Günter,Session 2,0,0.4,Disclaimer Off
-LK,Session 2,0,0.35624999999999996,Disclaimer Off
-mar,Session 2,0,0.5249999999999999,Disclaimer Off
-tita,Session 2,0,0.5625,Disclaimer Off
+nickname,DISCLAIMER,bias_mean_s1,bias_mean_s2,DISCLAIMER_LABEL
+Sina,1,0.1125,0.5,Active
+VJ,1,0.3375,0.375,Active
+Sina,0,0.475,0.5,Control
+Maria,1,0.30000000000000004,0.42500000000000004,Active
+Dirty Harry,0,0.26249999999999996,0.0,Control
+woop woop,1,0.08750000000000001,0.025,Active
+Maxi,0,0.6000000000000001,0.41250000000000003,Control
+Min,1,0.2625,0.69375,Active
+Vespafahrer,0,0.46249999999999997,0.625,Control
+Jessi,1,0.37499999999999994,0.48749999999999993,Active
+Amalia ,1,0.61875,,Active
+Soxi,1,0.425,0.875,Active
+Steffi,0,0.26249999999999996,0.325,Control
+Bless,1,0.7875000000000001,0.6375000000000001,Active
+Sylvie,0,0.9,0.4,Control
+Piet,1,1.0,0.625,Active
+Preta,1,0.45,0.59375,Active
+Xandi,0,0.75,0.375,Control
+steidl bua,1,0.5375000000000001,0.675,Active
+GEILSTER MENSCH AUF DER WELT,0,0.46249999999999997,,Control
+Günter,1,0.375,0.4,Active
+mar,1,0.275,0.5249999999999999,Active
+LK,1,0.475,0.35624999999999996,Active
+Tita,0,0.35624999999999996,0.5625,Control
