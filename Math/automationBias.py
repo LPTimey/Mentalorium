@@ -178,6 +178,8 @@ def main():
         }
     )
 
+    #TODO: t & p tests pro Vergleich
+
     # ---------------------------------------
     # Plot 1
     # Session 1: Disclaimer On vs Off
