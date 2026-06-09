@@ -161,11 +161,37 @@ def main():
 
     combined = pd.concat(
         [
-            session1[["session", "DISCLAIMER", "bias_mean"]],
-            session2[["session", "DISCLAIMER", "bias_mean"]],
+            session1[["nickname","session", "DISCLAIMER", "bias_mean"]],
+            session2[["nickname","session", "DISCLAIMER", "bias_mean"]],
         ],
         ignore_index=True,
     )
+
+    # ---------------------------------------
+    # Nickname consistency check
+    # ---------------------------------------
+
+    names_s1 = set(session1["nickname"].dropna().astype(str).str.strip())
+    names_s2 = set(session2["nickname"].dropna().astype(str).str.strip())
+
+    only_s1 = sorted(names_s1 - names_s2)
+    only_s2 = sorted(names_s2 - names_s1)
+
+    print("\nParticipants in Session 1:", len(names_s1))
+    print("Participants in Session 2:", len(names_s2))
+
+    print("\nOnly in Session 1:")
+    for n in only_s1:
+        print("  ", n)
+
+    print("\nOnly in Session 2:")
+    for n in only_s2:
+        print("  ", n)
+
+    print(
+        f"\nMatched participants: {len(names_s1.intersection(names_s2))}"
+    )
+
 
     # remove rows without bias
     combined = combined.dropna(subset=["bias_mean"])
@@ -204,6 +230,8 @@ def main():
     )
     plt.close()
 
+
+    #TODO: fix because all session 1 actives also have false in Disclaimer Off in session 2
     # ---------------------------------------
     # Plot 2
     # Session 2: Disclaimer On vs Off
@@ -228,6 +256,7 @@ def main():
     )
     plt.close()
 
+    #TODO: fix because all session 1 actives also have false in Disclaimer Off in session 2
     # ---------------------------------------
     # Plot 3
     # Disclaimer ON: Session 1 vs Session 2
@@ -279,6 +308,7 @@ def main():
     # export
     session1.to_csv("out/session1_output.csv", index=False)
     session2.to_csv("out/session2_output.csv", index=False)
+    combined.to_csv("out/combined_output.csv", index=False)
 
 
 if __name__ == "__main__":
