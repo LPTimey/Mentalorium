@@ -20,7 +20,7 @@ GRAPH1_POINTS = [
     (2, GRAPH1_fn(2), "R_2"),
     (3, GRAPH1_fn(3), "R_3"),
     (4, GRAPH1_fn(4), "R_4"),
-    (5, GRAPH1_fn(5), "R_5")
+    (5, GRAPH1_fn(5), "R_5"),
 ]
 
 # Punkte auf Graph 2
@@ -28,7 +28,7 @@ GRAPH2_POINTS = [
     (GRAPH2_fn_neg(2), 2, "C_2"),
     (GRAPH2_fn_neg(3), 3, "C_3"),
     (GRAPH2_fn_neg(4), 4, "C_4"),
-    (GRAPH2_fn_neg(5), 5, "C_5")
+    (GRAPH2_fn_neg(5), 5, "C_5"),
 ]
 
 # Rechtecke
@@ -46,18 +46,18 @@ def plot_graph_with_points(ax, x_vals, y_vals, name, color, points):
     ax.plot(x_vals, y_vals, label=name, color=color, linewidth=2)
 
     for x, y, point_name in points:
-        ax.plot(x, y, 'o', color=color, markersize=8, zorder=5)
+        ax.plot(x, y, "o", color=color, markersize=8, zorder=5)
         ax.annotate(
             f"{point_name}\n({x:.2f}, {y:.2f})",
             (x, y),
             xytext=(5, 5),
-            textcoords='offset points',
+            textcoords="offset points",
             fontsize=9,
-            bbox=dict(boxstyle='round,pad=0.3', facecolor='white', alpha=0.7)
+            bbox=dict(boxstyle="round,pad=0.3", facecolor="white", alpha=0.7),
         )
 
 
-def plot_rectangle(ax, rect, color='green', alpha=0.3, edgecolor='darkgreen'):
+def plot_rectangle(ax, rect, color="green", alpha=0.3, edgecolor="darkgreen"):
     x_min, x_max, y_min, y_max, name = rect
 
     rect_patch = plt.Rectangle(
@@ -67,14 +67,20 @@ def plot_rectangle(ax, rect, color='green', alpha=0.3, edgecolor='darkgreen'):
         linewidth=2,
         edgecolor=edgecolor,
         facecolor=color,
-        alpha=alpha
+        alpha=alpha,
     )
     ax.add_patch(rect_patch)
 
     return Patch(facecolor=color, edgecolor=edgecolor, alpha=alpha, label=name)
 
 
-def main():
+def print_formula_graph(out_path: str, display: bool = False) -> None:
+    """Prints the Graph showing the relationship between rating, confidence and min. acceptable automation-bias
+
+    Args:
+        out_path (str): path to save the .png to
+        display (bool, optional): show the plot in a window. Defaults to False.
+    """
     x_range = np.linspace(X_LIM[0], X_LIM[1], 100)
 
     y1 = np.ma.masked_invalid(GRAPH1_fn(x_range))
@@ -83,8 +89,8 @@ def main():
     fig, ax = plt.subplots(figsize=FIG_SIZE)
 
     # --- Graphen + Handles speichern ---
-    line1, = ax.plot(x_range, y1, label=GRAPH1_NAME, color=GRAPH1_COLOR, linewidth=2)
-    line2, = ax.plot(x_range, y2, label=GRAPH2_NAME, color=GRAPH2_COLOR, linewidth=2)
+    (line1,) = ax.plot(x_range, y1, label=GRAPH1_NAME, color=GRAPH1_COLOR, linewidth=2)
+    (line2,) = ax.plot(x_range, y2, label=GRAPH2_NAME, color=GRAPH2_COLOR, linewidth=2)
 
     # Punkte zeichnen (wie gehabt)
     plot_graph_with_points(ax, x_range, y1, GRAPH1_NAME, GRAPH1_COLOR, GRAPH1_POINTS)
@@ -92,26 +98,34 @@ def main():
 
     # Rechtecke
     rect_handles = []
-    rect_handles.append(plot_rectangle(ax, RECT1, color='lightcoral', alpha=0.3, edgecolor='red'))
-    rect_handles.append(plot_rectangle(ax, RECT2, color='lightblue', alpha=0.3, edgecolor='blue'))
+    rect_handles.append(
+        plot_rectangle(ax, RECT1, color="lightcoral", alpha=0.3, edgecolor="red")
+    )
+    rect_handles.append(
+        plot_rectangle(ax, RECT2, color="lightblue", alpha=0.3, edgecolor="blue")
+    )
 
     # --- SAUBERE LEGENDENLISTE ---
     handles = [line1, line2] + rect_handles
 
-    ax.legend(handles=handles, loc='upper right', fontsize=10)
+    ax.legend(handles=handles, loc="upper right", fontsize=10)
 
     ax.set_xlim(X_LIM)
     ax.set_ylim(Y_LIM)
-    ax.set_xlabel('x')
-    ax.set_ylabel('y')
-    ax.set_title('Automation Bias: Confidence-Rating Relationship')
+    ax.set_xlabel("x")
+    ax.set_ylabel("y")
+    ax.set_title("Automation Bias: Confidence-Rating Relationship")
     ax.grid(True, alpha=0.3)
 
     plt.tight_layout()
 
-    os.makedirs("out", exist_ok=True)
-    plt.savefig(OUTPATH, dpi=300, bbox_inches='tight')
-    plt.show()
+    plt.savefig(out_path, dpi=300, bbox_inches="tight")
+    if display:
+        plt.show()
+
+
+def main():
+    print_graph(OUTPATH)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,25 @@
+nickname,age,gender,is_active_group,usefulness (session 1),acceptability (session 1),usefulness (mental health) (session 1),acceptability (mental health) (session 1),persona (round 1) (session 1),integrity (round 1) (session 1),rating (round 1) (session 1),confidence (round 1) (session 1),persona (round 2) (session 1),integrity (round 2) (session 1),rating (round 2) (session 1),confidence (round 2) (session 1),persona (round 3) (session 1),integrity (round 3) (session 1),rating (round 3) (session 1),confidence (round 3) (session 1),usefulness (session 2),acceptability (session 2),usefulness (mental health) (session 2),acceptability (mental health) (session 2),persona (round 1) (session 2),integrity (round 1) (session 2),rating (round 1) (session 2),confidence (round 1) (session 2),persona (round 2) (session 2),integrity (round 2) (session 2),rating (round 2) (session 2),confidence (round 2) (session 2),persona (round 3) (session 2),integrity (round 3) (session 2),rating (round 3) (session 2),confidence (round 3) (session 2)
+Catarina,22,Frau,true,4,2,2,1,Martina,true,3,75.0,Mathias,false,2,90.0,Amina,false,1,100.0,4,2,2,2,Amina,false,2,90.0,Aylin,true,4,70.0,Lena,false,1,90.0
+VJ,21,Mann,true,5,5,5,5,Amina,false,1,95.0,Aylin,true,5,100.0,Lena,false,4,90.0,5,4,4,2,Martina,true,4,100.0,Mathias,false,1,100.0,Lena,false,4,100.0
+Sina,23,Frau,false,4,3,4,3,Lena,false,3,90.0,Martina,true,4,100.0,Mathias,false,3,100.0,4,3,3,1,Mathias,false,4,100.0,Aylin,true,3,90.0,Amina,false,2,100.0
+Maria,57,Frau,true,3,3,3,3,Mathias,false,3,80.0,Amina,true,4,80.0,Martina,false,2,80.0,3,3,3,3,Amina,false,3,90.0,Lena,true,4,90.0,Aylin,false,3,80.0
+Dirty Harry,62,Mann,false,3,3,3,3,Aylin,false,4,70.0,Mathias,true,1,90.0,Amina,false,1,100.0,3,3,1,1,Amina,false,1,100.0,Martina,false,1,100.0,Lena,true,1,100.0
+woop woop,21,Frau,true,4,3,1,1,Lena,false,4,10.0,Amina,false,3,20.0,Mathias,true,3,10.0,4,2,1,1,Mathias,false,2,10.0,Aylin,false,2,10.0,Martina,true,2,10.0
+Maxi,21,Mann,false,4,3,2,2,Martina,false,4,80.0,Amina,true,4,80.0,Aylin,false,4,80.0,4,3,3,2,Aylin,true,4,80.0,Lena,false,4,80.0,Mathias,false,2,90.0
+Min,22,Frau,true,2,2,3,2,Lena,false,3,65.0,Mathias,false,2,80.0,Amina,true,4,70.0,3,2,2,2,Lena,true,3,100.0,Aylin,false,4,90.0,Martina,false,4,95.0
+Vespafahrer,22,Mann,false,4,3,3,3,Amina,false,4,70.0,Aylin,true,4,75.0,Mathias,false,3,80.0,4,4,3,4,Martina,false,4,100.0,Amina,true,3,100.0,Lena,false,3,100.0
+Jessi,22,Frau,true,5,4,4,4,Mathias,true,5,90.0,Martina,false,4,70.0,Amina,false,2,90.0,5,4,5,2,Amina,true,5,90.0,Lena,false,4,70.0,Aylin,false,4,60.0
+Amalia,25,Frau,true,3,3,2,2,Lena,true,4,80.0,Amina,false,4,85.0,Aylin,false,4,80.0,4,4,5,2,Martina,true,3,67.0,Mathias,false,2,50.0,Amina,false,2,50.0
+Soxi,28,Frau,true,5,5,4,5,Martina,false,3,70.0,Amina,false,3,100.0,Lena,true,5,100.0,5,5,5,5,Aylin,false,4,100.0,Amina,false,5,100.0,Mathias,true,5,100.0
+Steffi,31,Frau,false,2,1,1,1,Mathias,true,3,60.0,Lena,false,4,70.0,Amina,false,1,70.0,2,1,1,1,Mathias,false,2,80.0,Aylin,true,3,90.0,Martina,false,3,90.0
+Bless,63,Mann,true,4,2,4,2,Aylin,false,5,90.0,Lena,false,4,90.0,Amina,true,4,90.0,3,3,3,3,Amina,false,4,90.0,Mathias,false,4,80.0,Martina,true,4,90.0
+Sylvie,57,Frau,false,5,4,3,2,Lena,false,5,90.0,Aylin,false,5,90.0,Mathias,true,5,90.0,5,3,3,3,Lena,false,3,80.0,Martina,true,3,80.0,Amina,false,3,80.0
+Piet,25,Mann,true,5,4,5,4,Mathias,false,5,100.0,Lena,false,5,100.0,Aylin,true,5,100.0,5,4,5,3,Martina,false,4,100.0,Aylin,true,4,100.0,Amina,false,3,100.0
+Preta,52,Frau,true,5,3,4,3,Aylin,true,4,90.0,Amina,false,3,90.0,Lena,false,3,90.0,4,4,4,4,Lena,false,3,95.0,Martina,false,4,95.0,Mathias,true,3,95.0
+Xandi,56,Mann,false,5,3,3,3,Aylin,false,4,100.0,Lena,false,4,100.0,Martina,true,5,100.0,3,3,2,2,Aylin,false,3,100.0,Amina,false,2,100.0,Mathias,true,4,100.0
+Steidl Bua,69,Mann,true,5,5,4,4,Aylin,true,5,90.0,Amina,false,3,80.0,Mathias,false,4,90.0,5,5,4,5,Lena,false,5,90.0,Martina,true,4,90.0,Mathias,false,4,60.0
+GEILSTER MENSCH AUF DER WELT,22,Mann,false,4,4,2,2,Mathias,false,2,85.0,Lena,false,4,95.0,Aylin,true,4,85.0,4,3,2,2,Amina,false,2,70.0,Mathias,false,3,80.0,Martina,true,4,80.0
+Günter,32,Mann,true,4,4,5,4,Mathias,false,3,70.0,Amina,false,3,80.0,Aylin,true,4,70.0,4,4,4,4,Martina,true,4,70.0,Amina,false,3,80.0,Lena,false,3,80.0
+mar,19,Female,true,5,2,2,2,Martina,false,3,70.0,Aylin,false,2,80.0,Amina,true,3,70.0,4,2,3,2,Mathias,false,4,70.0,Aylin,true,3,50.0,Lena,false,4,70.0
+LK,23,Female,true,3,2,3,2,Aylin,true,3,90.0,Lena,false,3,95.0,Amina,false,3,95.0,3,3,4,3,Lena,true,3,95.0,Mathias,false,2,95.0,Martina,false,3,95.0
+Tita,60,mujer,false,3,3,1,2,Amina,false,2,95.0,Lena,false,3,95.0,Mathias,true,3,95.0,3,3,3,3,Martina,true,4,90.0,Lena,false,3,90.0,Aylin,false,4,90.0
