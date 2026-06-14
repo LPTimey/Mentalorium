@@ -1,12 +1,15 @@
 from __future__ import annotations
+from utils import automationBiasFunction, ROUNDING
 from utils.likert import Likert5
 from utils.parsers import parse_bool
 from dataclasses import dataclass
 from enum import StrEnum
 import pandas as pd
+import statistics
 from typing import List
 
 # Eventuell pydantic statt dataclass aber unsure
+
 
 class Persona(StrEnum):
     Amina = "Amina"
@@ -23,6 +26,10 @@ class Vignette:
     rating: Likert5
     confidence: float
 
+    @property
+    def bias_score(self) -> float:
+        return automationBiasFunction(self.integrity, self.rating, self.confidence)
+
     @classmethod
     def from_df_row(cls, row: pd.Series, round_idx: int) -> "Vignette":
         return cls(
@@ -38,6 +45,7 @@ class Vignette:
             f"integrity (round {round_idx})": str(self.integrity).lower(),
             f"rating (round {round_idx})": int(self.rating),
             f"confidence (round {round_idx})": float(self.confidence),
+            f"bias_score (round {round_idx})": round(self.bias_score, ROUNDING),
         }
 
 
@@ -50,6 +58,18 @@ class Session:
     vignette1: Vignette
     vignette2: Vignette
     vignette3: Vignette
+
+    @property
+    def mean_bias_score(self) -> float:
+        values = [
+            self.vignette1.bias_score,
+            self.vignette2.bias_score,
+            self.vignette3.bias_score,
+        ]
+
+        filtered = [x for x in values if x != 0]
+
+        return statistics.mean(filtered) if filtered else 0.0
 
     @classmethod
     def from_df_row(cls, row: pd.Series) -> "Session":
@@ -69,6 +89,7 @@ class Session:
             "acceptability": int(self.acceptability_gen),
             "usefulness (mental health)": int(self.usefulness_men),
             "acceptability (mental health)": int(self.acceptability_men),
+            "mean_bias_score": round(self.mean_bias_score, ROUNDING),
         }
         row.update(self.vignette1.to_dict(1))
         row.update(self.vignette2.to_dict(2))
@@ -84,6 +105,15 @@ class Participant:
     is_active: bool
     session1: Session
     session2: Session
+
+    @property
+    def mean_bias_score(self) -> float:
+        return statistics.mean(
+            [
+                self.session1.mean_bias_score,
+                self.session2.mean_bias_score,
+            ]
+        )
 
     @classmethod
     def parse_many_from_csvs(
@@ -115,14 +145,16 @@ class Participant:
             "age": self.age,
             "gender": self.gender,
             "is_active_group": str(self.is_active).lower(),
+            "mean_bias_score": round(self.mean_bias_score, ROUNDING),
         }
 
         postfix = " (session 1)"
-        row.update({(k + postfix): v for k,v in self.session1.to_dict().items()})
+        row.update({(k + postfix): v for k, v in self.session1.to_dict().items()})
         postfix = " (session 2)"
-        row.update({(k + postfix): v for k,v in self.session2.to_dict().items()})
+        row.update({(k + postfix): v for k, v in self.session2.to_dict().items()})
 
         return row
+
     @staticmethod
     def participants_to_df(participants: List[Participant]) -> pd.DataFrame:
         return pd.DataFrame([p.to_dict() for p in participants])
