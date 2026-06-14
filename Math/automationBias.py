@@ -15,12 +15,12 @@ OUTPATH = "out/AutomationBias/"
 os.makedirs(OUTPATH, exist_ok=True)
 
 PATHS = (
-    "data/session 1/[SESSION 1] STUD Studie (German)_Submissions_2026-06-08.csv",
-    "data/session 1/[SESSION 1] STUD Study (English)_Submissions_2026-06-08.csv",
-    "data/session 1/[SESSION 1] STUD Study (Español)_Submissions_2026-06-08.csv",
-    "data/session 2/[SESSION 2] STUD Study (German)_Submissions_2026-06-08.csv",
-    "data/session 2/[SESSION 2] STUD Study (English)_Submissions_2026-06-08.csv",
-    "data/session 2/[SESSION 2] STUD Study (Español)_Submissions_2026-06-08.csv",
+    "data/session 1/[SESSION 1] STUD Studie (German)_Submissions_2026-06-14.csv",
+    "data/session 1/[SESSION 1] STUD Study (English)_Submissions_2026-06-14.csv",
+    "data/session 1/[SESSION 1] STUD Study (Español)_Submissions_2026-06-14.csv",
+    "data/session 2/[SESSION 2] STUD Study (German)_Submissions_2026-06-14.csv",
+    "data/session 2/[SESSION 2] STUD Study (English)_Submissions_2026-06-14.csv",
+    "data/session 2/[SESSION 2] STUD Study (Español)_Submissions_2026-06-14.csv",
 )
 
 CASE = (
