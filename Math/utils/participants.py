@@ -1,7 +1,7 @@
 from __future__ import annotations
 from utils import automationBiasFunction, ROUNDING
 from utils.likert import Likert5
-from utils.parsers import parse_bool
+from utils import parse_bool
 from dataclasses import dataclass
 from enum import StrEnum
 import pandas as pd
