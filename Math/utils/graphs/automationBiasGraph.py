@@ -74,11 +74,14 @@ def plot_rectangle(ax, rect, color="green", alpha=0.3, edgecolor="darkgreen"):
     return Patch(facecolor=color, edgecolor=edgecolor, alpha=alpha, label=name)
 
 
-def print_formula_graph(out_path: str, display: bool = False) -> None:
+def print_formula_graph(
+    out_path: str, formats: list[str] = ["png"], display: bool = False
+) -> None:
     """Prints the Graph showing the relationship between rating, confidence and min. acceptable automation-bias
 
     Args:
-        out_path (str): path to save the .png to
+        out_path (str): path to save the file to and its name without extension
+        formats (list[str]): extensions to save as
         display (bool, optional): show the plot in a window. Defaults to False.
     """
     x_range = np.linspace(X_LIM[0], X_LIM[1], 100)
@@ -119,7 +122,9 @@ def print_formula_graph(out_path: str, display: bool = False) -> None:
 
     plt.tight_layout()
 
-    plt.savefig(out_path, dpi=300, bbox_inches="tight")
+    for format in formats:
+        plt.savefig(f"{out_path}.{format}", dpi=300, bbox_inches="tight")
+
     if display:
         plt.show()
 

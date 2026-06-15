@@ -1,112 +1,65 @@
 from utils.collect_csv import collect_into
-from utils.automationBiasGraph import print_formula_graph
+from utils.graphs.automationBiasGraph import print_formula_graph
+from utils.mixed_anova import anova_into
+import utils.graphs.plots as plots
 import pingouin as pg
 import pandas as pd
+import seaborn as sns
+from pathlib import Path
 
 
 def main():
-    print_formula_graph("out/min automation bias graph.png")
-    participants, dataframe = collect_into("out/collected.csv")
-    df = dataframe
+    Path("out").mkdir(parents=True, exist_ok=True)
+    print_formula_graph("out/min automation bias graph", ["png", "svg"])
+    _, dataframe = collect_into("out/collected.csv")
 
-    # ------------------------------------------
+    anova_into(dataframe, "out/Anova.csv", "out/Deskriptive.csv", "out/result.txt")
 
-    # 2. Daten ins Long-Format bringen
-
-    # ------------------------------------------
-
-    long_df = pd.melt(
-        df,
-        id_vars=["nickname", "is_active_group"],
-        value_vars=["mean_bias_score (session 1)", "mean_bias_score (session 2)"],
-        var_name="session",
-        value_name="bias",
+    Path("out/strip").mkdir(parents=True, exist_ok=True)
+    plots.groups(
+        lambda long_df: sns.stripplot(
+            data=long_df, x="session", y="score", color="black", alpha=0.3
+        ),
+        dataframe,
+        True,
+        "out/strip/active",
+        ["png", "svg"],
+    )
+    plots.groups(
+        lambda long_df: sns.stripplot(
+            data=long_df, x="session", y="score", color="black", alpha=0.3
+        ),
+        dataframe,
+        False,
+        "out/strip/control",
+        ["png", "svg"],
     )
 
-    # ------------------------------------------
-
-    # 3. Session umkodieren
-
-    # ------------------------------------------
-
-    long_df["session"] = long_df["session"].str.extract(r"session (\d)").astype(int)
-
-    # ------------------------------------------
-
-    # 4. Gruppe umkodieren
-
-    # ------------------------------------------
-
-    long_df["group"] = long_df["is_active_group"].replace(
-        {True: "Active", False: "Control", 1: "Active", 0: "Control"}
+    Path("out/box").mkdir(parents=True, exist_ok=True)
+    plots.groups(
+        lambda long_df: sns.boxplot(
+            data=long_df,
+            x="session",
+            y="score",
+        ),
+        dataframe,
+        True,
+        "out/box/active",
+        ["png", "svg"],
     )
-
-    # ------------------------------------------
-
-    # 5. Mixed ANOVA berechnen
-
-    # ------------------------------------------
-
-    anova: pd.DataFrame = pg.mixed_anova(
-        data=long_df, dv="bias", within="session", between="group", subject="nickname"
+    plots.groups(
+        lambda long_df: sns.boxplot(
+            data=long_df,
+            x="session",
+            y="score",
+        ),
+        dataframe,
+        False,
+        "out/box/control",
+        ["png", "svg"],
     )
-
-    print("\n===== MIXED ANOVA =====")
-
-    anova.to_csv("out/Anova.csv")
-
-    print(anova)
-
-    # ------------------------------------------
-
-    # 6. Deskriptive Statistik
-
-    # ------------------------------------------
-
-    descriptives = long_df.groupby(["group", "session"])["bias"].agg(
-        ["mean", "std", "count"]
-    )
-
-    print("\n===== DESKRIPTIVE STATISTIK =====")
-
-    descriptives.to_csv("out/Deskriptive.csv")
-    print(descriptives)
-
-    # ------------------------------------------
-
-    # 7. APA-Ausgabe erzeugen
-
-    # ------------------------------------------
-
-    print("\n===== APA REPORT =====")
-
-    res = ""
-
-    for _, row in anova.iterrows():
-
-        effect = row["Source"]
-
-        F = row["F"]
-
-        p = row["p_unc"]
-
-        eta = row["np2"]
-
-        df1 = int(row["DF1"])
-
-        df2 = int(row["DF2"])
-
-        res += (
-            f"{effect}: "
-            f"F({df1},{df2}) = {F:.2f}, "
-            f"p = {p:.3f}, "
-            f"η²p = {eta:.3f}\n"
-        )
-
-    with open("out/result.txt", "w", encoding="utf-8") as f:
-        print(res, file=f)
-
-    print(res)
+    plots.session_plot(dataframe, 1, "out/box/session1", ["png", "svg"])
+    plots.session_plot(dataframe, 2, "out/box/session2", ["png", "svg"])
 
 
 if __name__ == "__main__":

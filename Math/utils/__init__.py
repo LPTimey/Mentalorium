@@ -53,4 +53,25 @@ def parse_bool(val) -> bool:
     raise ValueError(f"Cannot parse boolean: {val}")
 
 
+def str_bool_to_float_series(s):
+    return (
+        s.astype(str)
+        .str.strip()
+        .str.lower()
+        .map(
+            {
+                "ja": 1,
+                "yes": 1,
+                "true": 1,
+                "1": 1,
+                "nein": 0,
+                "no": 0,
+                "false": 0,
+                "0": 0,
+            }
+        )
+        .fillna(0)
+    )
+
+
 ROUNDING = 4
