@@ -9,11 +9,17 @@ from pathlib import Path
 
 
 def main():
-    Path("out").mkdir(parents=True, exist_ok=True)
-    print_formula_graph("out/min automation bias graph", ["png", "svg"])
     _, dataframe = collect_into("out/collected.csv")
 
     anova_into(dataframe, "out/Anova.csv", "out/Deskriptive.csv", "out/result.txt")
+
+    # --------------------------------------------------------- #
+    #                                                           #
+    #                           Plots                           #
+    #                                                           #
+    # --------------------------------------------------------- #
+    Path("out").mkdir(parents=True, exist_ok=True)
+    print_formula_graph("out/min automation bias graph", ["png", "svg"])
 
     Path("out/strip").mkdir(parents=True, exist_ok=True)
     plots.groups(
