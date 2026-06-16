@@ -38,6 +38,7 @@ def groups(
     plt.figure(figsize=(8, 5))
 
     plot(long_df)
+    plt.ylim(0, 1.1)
 
     if active:
         plt.title("Automation Bias Across Sessions (Active Group)")
@@ -73,6 +74,7 @@ def session_plot(
 
     plt.figure(figsize=(6, 5))
     sns.boxplot(data=dataframe, x="group", y=score_col)
+    plt.ylim(0, 1.1)
 
     plt.title(f"Session {session}: Automation Bias")
     plt.xlabel("")
