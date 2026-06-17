@@ -1,6 +1,6 @@
 from utils.collect_csv import collect_into
 from utils.graphs.automationBiasGraph import print_formula_graph
-from utils.mixed_anova import anova_into, wilcoxon_into
+from utils.mixed_anova import anova_into, wilcoxon_into, check_shapiro
 import utils.graphs.plots as plots
 import pingouin as pg
 import pandas as pd
@@ -10,6 +10,8 @@ from pathlib import Path
 
 def main():
     _, dataframe = collect_into("out/collected.csv")
+
+    _ = check_shapiro(dataframe,"out/shapiro.csv")
 
     _ = wilcoxon_into(dataframe, "out/wilcoxon.csv")
     _, _, _ = anova_into(
