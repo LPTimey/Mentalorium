@@ -1,10 +1,9 @@
 import pingouin as pg
 import pandas as pd
+from scipy.stats import shapiro
 
 
-def anova_into(
-    df: pd.DataFrame, anova_path: str, descriptive_path: str, result_path: str
-) -> (pd.DataFrame, pd.DataFrame, str):
+def make_long_df(df: pd.DataFrame) -> pd.DataFrame:
     # ------------------------------------------
 
     # 2. Daten ins Long-Format bringen
@@ -36,6 +35,51 @@ def anova_into(
     long_df["group"] = long_df["is_active_group"].replace(
         {True: "Active", False: "Control", 1: "Active", 0: "Control"}
     )
+    return long_df
+
+
+def check_shapiro(df: pd.DataFrame, outpath: str) -> pd.DataFrame:
+    long_df = make_long_df(df)
+
+    results = []
+
+    for group in long_df["group"].unique():
+        for session in long_df["session"].unique():
+            vals = long_df[
+                (long_df["group"] == group) & (long_df["session"] == session)
+            ]["bias"]
+
+            stat, p = shapiro(vals)
+
+            results.append(
+                {
+                    "group": group,
+                    "session": session,
+                    "W": stat,
+                    "p": p,
+                }
+            )
+
+            print(f"{group}, Session {session}: W={stat:.3f}, p={p:.3f}")
+
+    results_df = pd.DataFrame(results)
+    results_df.to_csv(outpath, index=False)
+
+    return results_df
+
+
+def wilcoxon_into(df: pd.DataFrame, outpath: str) -> pd.DataFrame:
+    res: pd.DataFrame = pg.wilcoxon(
+        x=df["mean_bias_score (session 1)"], y=df["mean_bias_score (session 2)"]
+    )
+    res.to_csv(outpath)
+    return res
+
+
+def anova_into(
+    df: pd.DataFrame, anova_path: str, descriptive_path: str, result_path: str
+) -> (pd.DataFrame, pd.DataFrame, str):
+    long_df = make_long_df(df)
 
     # ------------------------------------------
 
