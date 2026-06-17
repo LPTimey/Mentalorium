@@ -2,6 +2,14 @@ import pingouin as pg
 import pandas as pd
 
 
+def wilcoxon_into(df: pd.DataFrame, outpath: str) -> pd.DataFrame:
+    res: pd.DataFrame = pg.wilcoxon(
+        x=df["mean_bias_score (session 1)"], y=df["mean_bias_score (session 2)"]
+    )
+    res.to_csv(outpath)
+    return res
+
+
 def anova_into(
     df: pd.DataFrame, anova_path: str, descriptive_path: str, result_path: str
 ) -> (pd.DataFrame, pd.DataFrame, str):
