@@ -1,4 +1,5 @@
 % \documentclass[sigconf,natbib=false]{acmart}
+% TODO: Reactivate
 \documentclass[sigconf,authordraft,natbib=false]{acmart}
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}
@@ -9,13 +10,14 @@
 \usepackage{fontawesome}
 \usepackage{csquotes}
 \usepackage{subcaption}
+\usepackage{float}
     
 \acmConference[FWS2026]{Abschlusskonferenz FWS/SDUT Sommersemester 2026}{July 01, 2026}{Ingolstadt, DE}
 
 %% Bibliography style
 \RequirePackage[
   datamodel=acmdatamodel,
-  style=acmnumeric,
+  style=acmauthoryear,
   ]{biblatex}
 
 %% Declare bibliography sources (one \addbibresource command per source)
@@ -39,6 +41,13 @@
   \country{Germany}}
 % \email{niw5756@thi.de}
 
+\author{Emely Rosbach}
+\affiliation{%
+  \institution{Technische Hochschule Ingolstadt}
+  \city{Ingolstadt}
+  \country{Germany}}
+\email{emr@thi.de}
+
 \renewcommand{\shortauthors}{Gerhardinger et al.}
 
 \input{glossary}
@@ -48,151 +57,102 @@
 This study investigated the direct and long-term influence of disclaimer messages on \glspl{participant}' evaluations of AI-generated mental-health recommendations and on the occurrence of \gls{automationbias}.
 The study employed a mixed longitudinal design consisting of two experimental sessions separated by an interval of one week.
 \Glspl{participant} completed a questionnaire assessing their attitudes toward \gls{ai}. 
-\Glspl{participant} were then presented with a case vignettes describing a mental health scenario. 
+\Glspl{participant} were then presented with case vignettes describing a mental health scenario. 
 \Glspl{participant} then submitted a prompt requesting an assessment of the presented case data. 
-\Glspl{participant} reviewed the generated response and subsequently completed a post-interaction questionnaire.
-
-\Glspl{participant} assigned to the \textit{Active} group received two disclaimers during Session~1: 
-one was an \textit{active intervention}, and the other was an activation intervention. 
+\Glspl{participant} reviewed the generated response and subsequently completed a post-interaction questionnaire. \Glspl{participant} assigned to the \textit{Active} group received two disclaimers during Session~1: 
+one was a full-screen disclaimer and the other was an inline disclaimer.
 The application generated a treatment recommendation based on underlying case data, and participants reviewed and evaluated the generated responses.
 
 
-The results of this study suggest 
+The results suggest that disclaimers may reduce automation bias, although the effect does not appear to persist over time. A rebound effect occurred in which participants who had not seen disclaimers, improved results after one week, whereas participants who had seen the disclaimers exhibited increased automation bias scores.
+% TODO: write rest 
 \end{abstract}
-
 
 \input{ccs}
 
-%%
-%% Keywords. The author(s) should pick words that accurately describe
-%% the work being presented. Separate the keywords with commas.
 \keywords{Mental Health, AI, Artificial Intelligence, FWS, STUD, Automation Bias, Fallibility, Mental Health Application, AI Assistant, Long-Term, Long-Term Effects, Priming, Trust, Confidence}
 
-%% A "teaser" image appears between the author and affiliation
-%% information and the body of the document, and typically spans the
-%% page.
-% \begin{teaserfigure}
-%   \includegraphics[width=\textwidth]{Template/sampleteaser}
-%   \caption{Seattle Mariners at Spring Training, 2010.}
-%   \Description{Enjoying the baseball game from the third-base
-%   seats. Ichiro Suzuki preparing to bat.}
-%   \label{fig:teaser}
-% \end{teaserfigure}
 
-%%
-%% This command processes the author and affiliation and title
-%% information and builds the first part of the formatted document.
 \maketitle
 
-\tableofcontents
-\clearpage
 
 \section{Introduction}
-Mental health has been one of the most prevalent, but underrepresented topics in society to this day.
-Particularly during the 2020 COVID pandemic and the years thereafter, a remarkable negative trend regarding the mental well-being in adults could be observed \autocite[]{robert_koch_public_health_reporting}.
-Given the simultaneous rise of \Gls{ai} and its use throughout many different areas, one can observe it being implemented within the sector of mental health.
+Mental health has been one of the most prevalent but underrepresented topics in society to this day.
+Particularly during the 2020 COVID pandemic and the years thereafter, a significant decline in adult mental well-being could be observed \autocite[]{robert_koch_public_health_reporting}.
+Simultaneously \Gls{ai} is being implemented into many different areas, including mental health.
+It has the potential to enhance support in mental health, offering tools for early detection, personalized treatments, and prevention of symptom escalation \autocite[]{mikaeili_reimagining_2025}.
+Nevertheless, it raises concerns with accessibility, data security, and cultural diversity.
+It is also known that biases in and about the algorithm can have negative influences \autocite[]{ali_artificial_2025}.
+However, human biases in the use of \Gls{ai} for mental health has not yet been covered by previous research.
+Since the human factor in the use of \Gls{ai} in mental health shall not be ignored, we dedicated this study to exploring human automation bias in the usage of \Gls{ai} in mental health.
+Specifically, we investigate how disclaimers affect users.
+\citeauthor*[]{wingerter_mitigating_2025} indicated the fallibility of \Gls{ai} through warning nudges in the interface, which, although only to some degree, have been proven to be effective.
+As the results should not be generalized, we will measure the effect of warning nudges --- in our case disclaimers --- in mental health. 
+\autocite[]{wingerter_mitigating_2025}
 
-\section{Related Works}
-\blindtext[1]
+
+\section{Related Work}
+Artificial Intelligence (AI) is increasingly being integrated into mental health care, where it is used for diagnostic support, therapy assistance, behavioral monitoring, and clinical decision-making. \citeauthor[]{ali_artificial_2025} provide a comprehensive overview of current AI applications in mental health and highlight the potential of machine learning, deep learning, and natural language processing to improve accessibility, personalization, and early detection of mental health conditions.
+In particular, AI-powered chatbots and recommendation systems have emerged as scalable tools capable of delivering therapeutic support and psychoeducation.
+At the same time, the authors emphasize several challenges, including privacy concerns, algorithmic bias, transparency, and the risk of over-reliance on automated recommendations.
+They conclude that successful deployment of AI in mental health requires not only technical accuracy but also responsible human-AI interaction and appropriate safeguards against misuse \autocite[]{ali_artificial_2025}.
+
+One important challenge associated with human-AI interaction is automation bias.
+Automation bias describes the tendency of users to place excessive trust in automated recommendations and insufficiently verify their correctness.
+While automation bias has traditionally been studied in domains such as aviation and healthcare, recent research has shown that the phenomenon also occurs when interacting with generative AI systems. % TODO: Zitat 
+\citeauthor[]{wingerter_mitigating_2025} investigated this effect using a Cognitive Reflection Test (CRT) in which participants received deliberately incorrect AI-generated recommendations.
+Their results demonstrated that participants exposed to faulty AI advice performed significantly worse than participants without AI support, indicating a substantial automation bias effect. % TODO: Zitat 
+
+To mitigate this effect, \citeauthor[]{wingerter_mitigating_2025} introduced a warning nudge reminding users that AI-generated outputs may be inaccurate or biased.
+Participants who received this warning achieved substantially better performance than participants who received incorrect AI advice without a warning.
+The warning nearly doubled performance relative to the faulty-AI condition and reduced automation bias to a level comparable to the control group.
+Interestingly, self-reported AI literacy did not significantly reduce susceptibility to automation bias, suggesting that interface design interventions may be more effective than user experience or prior AI knowledge alone. 
+
+While \citeauthor[]{wingerter_mitigating_2025} demonstrate that warning nudges can reduce automation bias during a single interaction with generative AI, their study does not investigate whether such effects persist over time.
+Furthermore, their experiment was conducted using abstract cognitive-reflection tasks rather than domain-specific scenarios.
+At the same time, recent reviews of AI in mental health emphasize that user trust, transparency, and human-AI interaction are critical factors for the successful adoption of AI-supported mental health applications, while long-term behavioral effects remain largely unexplored \autocite[]{mikaeili_reimagining_2025}.
+In contrast, the present study examines the influence of AI-fallibility disclaimers within a mental health context and investigates not only their immediate impact but also their potential long-term effects after a one-week interval.
+By combining research on AI-supported mental health applications with findings on automation bias mitigation through nudging, this work addresses an important gap in the current literature.
+
+
 
 \section{Definitions}
+
 \subsection{Participants}
 \label{sec:participants}
 
-We define the following sets:
 \[
 \begin{aligned}
-\mathrm{Groups}\ G &:= \{\mathrm{Active}, \mathrm{Control}\},\\
-\mathrm{Case\ Vignettes}\ C &:= \{\mathrm{Amina}, \mathrm{Aylin}, \mathrm{Lena},
+G &:= \{\mathrm{Active}, \mathrm{Control}\},\\
+C &:= \{\mathrm{Amina}, \mathrm{Aylin}, \mathrm{Lena},
         \mathrm{Martina}, \mathrm{Mathias}\},\\
-\mathrm{Truthfulness}\ T &:= \{\mathrm{Truth}, \mathrm{Untruth}\}.
+T &:= \{\mathrm{Truth}, \mathrm{Untruth}\},\\
+R &:= C \times T,\\
+S &:= \Bigl\{
+\bigl((c_1,t_1),(c_2,t_2),(c_3,t_3)\bigr)\in R^3
+\;\Big|\;
+\exists!\, c\in C :
+\bigl|\{i\in\{1,2,3\}:c_i=c\}\bigr|=2
+\Bigr\},\\
+P &\subseteq G \times S \times S.
 \end{aligned}
 \]
 
-A \emph{\gls{round}} is a pair consisting of a \glspl{casevignette} and a
-truthfulness label. Hence, the set of all \glspl{round} is
-\[
-R := C \times T.
-\]
+Let $G$ be the set of all possible groups participants can be assigned to,
+$C$ the set of all possible case vignettes,
+$T$ the set of truthfulness conditions of the AI-generated answer,
+and $R = C \times T$ the set of all possible rounds.
 
-A \emph{\gls{session}} consists of exactly three rounds.
-Formally, a \gls{session} $s$ is an ordered triple
-\[
-s = (r_1,r_2,r_3) \in R^3.
-\]
+Furthermore, let $S$ denote the set of all valid sessions consisting of three rounds,
+such that exactly one case vignette occurs twice within a session.
 
-However, not every element of \(R^3\) is considered valid.
-A valid \gls{session} must satisfy the following constraints:
+It follows that
 \[
-\left|
-\left\{
-i \in \{1,2,3\}
-\mid
-r_i = (c,\mathrm{Truth})
-\text{ for some } c \in C
-\right\}
-\right|
-= 1,
+P \subseteq G \times S \times S
 \]
+is the set of all valid participant allocations, where each participant is assigned
+to a group and two sessions.
 
-i.e.\ exactly one \gls{round} in the \gls{session} is labelled
-\(\mathrm{Truth}\).
-
-Furthermore,
-\[
-\forall i,j \in \{1,2,3\}:
-\quad
-i \neq j
-\Rightarrow
-c_i \neq c_j,
-\]
-where \(r_i = (c_i,t_i)\).
-That is, no \gls{casevignette} may occur more than once within the same
-session.
-
-We denote the set of all valid \glspl{session} by
-\[
-S \subseteq R^3.
-\]
-
-A \gls{participant} is a triple
-\[
-p = (g,s_1,s_2) \in G \times S \times S,
-\]
-where
-\[
-g \in G,
-\qquad
-s_1,s_2 \in S.
-\]
-
-The two sessions of a \gls{participant} must share exactly one \gls{casevignette}.
-Formally,
-\[
-\left|
-\left\{
-c \in C
-\mid
-\exists\, t_1,t_2 \in T:
-(c,t_1) \in \{r_1,r_2,r_3\}
-\land
-(c,t_2) \in \{r'_1,r'_2,r'_3\}
-\right\}
-\right|
-= 1,
-\]
-where
-\[
-s_1 = (r_1,r_2,r_3),
-\qquad
-s_2 = (r'_1,r'_2,r'_3).
-\]
-
-Thus:
-\[
-\mathrm{Participants}\ P := G \times S \times S
-\]
-where both $S$ fulfill all previous conditions
 
 \subsubsection{Valid Participant}
 An example of a valid participant is
@@ -209,6 +169,9 @@ p = (
 ).
 \end{aligned}
 \]
+
+
+
 \subsection{Participant Allocation}
 \label{sec:participant-allocation}
 
@@ -219,7 +182,7 @@ algorithm, denoted by \(A_s\) (\gls{participantallocator}).
 For a fixed \gls{pseudorandomseed} \(s\), the algorithm defines a mapping
 
 \[
-A_s : \{0,\dots,N-1\} \to P
+A_s : \mathbb{N}_0 \to P
 \]
 
 where
@@ -279,7 +242,7 @@ where:
 
 \subsubsection{Definition of the Bias Function}
 
-The function is defined as:
+The function is defined as follows:
 
 \[
 B(i,r,c)
@@ -465,90 +428,12 @@ Following each AI recommendation, participants evaluated the generated answer us
 \subsubsection{PWA}
 %% TODO: warum die disclaimer so designt
 
-\begin{figure*}[t]
-    \centering
 
-    \begin{subfigure}{\textwidth/7}
-        \includegraphics[width=\linewidth]{assets/Design/Disclaimer.jpg}
-        \caption{Disclaimer}
-    \end{subfigure}
-    \begin{subfigure}{\textwidth/7}
-        \includegraphics[width=\linewidth]{assets/Design/Disclaimer 2.jpg}
-        \caption{Disclaimer done}
-    \end{subfigure}
-    \begin{subfigure}{\textwidth/7}
-        \includegraphics[width=\linewidth]{assets/Design/Auto Eingabe.jpg}
-        \caption{Prompt}
-    \end{subfigure}
-    \begin{subfigure}{\textwidth/7}
-        \includegraphics[width=\linewidth]{assets/Design/Senden.jpg}
-        \caption{Sent}
-    \end{subfigure}
-    \begin{subfigure}{\textwidth/7}
-        \includegraphics[width=\linewidth]{assets/Design/Disclaimer Inline.jpg}
-        \caption{Inline Disclaimer}
-    \end{subfigure}
-    \begin{subfigure}{\textwidth/7}
-        \includegraphics[width=\linewidth]{assets/Design/Result.jpg}
-        \caption{Response}
-    \end{subfigure}
-
-    \caption{App Design}
-    \Description{Six screens we designed in the ideation phase for our testing application.}
-    \label{fig:design}
-\end{figure*}
-
-\begin{figure*}[t]
-    \centering
-    \begin{subfigure}{\linewidth/6}
-        \includegraphics[width=\linewidth]{assets/PWA/English_empty.PNG}
-        \caption{
-            \centering
-            EN: Default State\\
-            \vphantom{()}
-        }
-    \end{subfigure}
-    \begin{subfigure}{\linewidth/6}
-        \includegraphics[width=\linewidth]{assets/PWA/English_Disclaimer.PNG}
-        \caption{
-            \centering
-            EN: Disclaimer\\
-            (+ Prompt in BG)
-        }
-    \end{subfigure}
-    \begin{subfigure}{\linewidth/6}
-        \includegraphics[width=\linewidth]{assets/PWA/Englisch_Answer_Full_Disclaimer.PNG}
-        \caption{
-            \centering
-            EN: Answer\\
-            + inline Disclaimer
-        }
-    \end{subfigure}
-    \begin{subfigure}{\linewidth/6}
-        \includegraphics[width=\linewidth]{assets/PWA/German_Answer_Full_No_Disclaimer.PNG}
-        \caption{
-            \centering
-            DE: Answer\\
-            \vphantom{()}
-        }
-    \end{subfigure}
-    \begin{subfigure}{\linewidth/6}
-        \includegraphics[width=\linewidth]{assets/PWA/German_No_Disclaimer_Inline.PNG}
-        \caption{
-            \centering
-            DE: Sent\\
-            no Disclaimer
-        }
-    \end{subfigure}
-    \caption{Progressive Web App}
-    \Description{Example screenshots of our progressive web app showing disclaimers, prompts, and answers in in differing languages.}
-    \label{fig:pwa}
-\end{figure*}
 
 
 \subsection{Session 1}
 
-Participants assigned to the \textit{Active} group received two disclaimer interventions during Session~1:
+Participants assigned to the \textit{Active} group received two disclaimer interventions per use during Session~1:
 
 \begin{enumerate}
 \item A full-screen disclaimer before interacting with the application.
@@ -566,12 +451,6 @@ Participants again provided consent, were reminded of the study context, and wer
 
 To investigate potential persistence effects, no disclaimer messages were shown during Session~2, regardless of the participant's original group assignment. All participants therefore interacted with the application under identical conditions during the second session.
 
-\subsection{Automation Bias Assessment}
-
-Automation bias was operationalized using the bias score \(B(i,r,c)\) defined in Section~\ref{sec:automation-bias}.
-For each evaluated AI recommendation, the correctness of the recommendation \((i)\), the participant's quality rating \((r)\), and the participant's confidence \((c)\) were recorded.
-
-
 \subsection{Hypotheses}
 We conducted our study under the following hypotheses:
 
@@ -584,19 +463,53 @@ We conducted our study under the following hypotheses:
 \subsection{The shape of our data}
 
 \section{Results}
+% A Wilcoxon test for our data was conducted, and revealed that our data was normally distributed. Ein Wilcoxon Signed-Rank Test ergab keinen signifikanten Unterschied zwischen den Messzeitpunkten, W = 117, p = .533, rrb = .152.Therefore we
+\subsection{2-Factorial Mixed ANOVA}
+A Shapiro-Wilk-Test was conducted, and revealed that no violation of normally distributed data was found so we conducted a 2-factorial mixed ANOVA to test the interaction between the effects of session and group.
+It revealed that there was no difference between the active and control group throughout both sessions (\(F(1,22)=0.00\), \(p = 0.983\), \(\eta^2p < 0.001\)).
+There was also no change from session 1 to session 2 (\(F(1,22)=0.64\), \(p = 0.434\), \(\eta^2p < 0.028\)).
+The interesting effect, which slightly missed statistical significance, was that the groups changed differently over time (\(F(1,22)=3.68\), \(p = 0.068\), \(\eta^2p < .143\)). 
+Even more interesting is that the active group exhibited a positive trend in automation bias, so more automation bias in session 2 compared to session 1 \((0.458 \to 0.495)\), while the control group exhibited a negative trend in automation bias, so less automation bias in session 2 compared to session 1 \((0.562 \to 0.388)\). 
+
 
 \section{Discussion}
+
 \subsection{Automation Bias}
-A potential limitation of the present study is the operationalization of automation bias through participants’ ratings and confidence ratings rather than through an explicit measure of AI recommendation acceptance. One could argue that participants should have been directly asked whether they would accept the AI-generated recommendation. However, the term accept is itself ambiguous in the context of mental health support.
+One of the core decisions taken in the context of our study is the definition and operationalization of Automation Bias.
+Our final approach thereof was informed by the methodology described by Kücking et al., who measured Automation Bias as agreement with objectively false automated recommendations \autocite[]{kucking_automation_2026}.
+While this approach provides a robust basis for assessing susceptibility to erroneous AI outputs, adapting it to the context of the present study required a shift in operationalization.
+Because mental health experiences are inherently subjective and often not directly observable \autocite[]{mocnik_multimodal_2025}, the focus of this study was not on behavioral manifestations of Automation Bias but rather on participants' endorsement of automated recommendations.
+Subjective endorsement offers insight into the propensity to trust erroneous AI-generated advice, which constitutes a central aspect of Automation Bias \autocite[]{parasuraman_complacency_2010}.
+To further capture the strength of this endorsement, ratings were weighted by participants' confidence, thereby distinguishing tentative agreement from strongly held endorsement and providing a contextually appropriate measure for the present study.
 
-Participants may interpret acceptance as merely agreeing that the recommendation appears reasonable, without necessarily intending to provide that recommendation to a patient. In contrast, from a clinical perspective, truly accepting an AI recommendation would imply endorsing it and communicating it to the patient as advice. We argue that these two interpretations differ substantially. While many participants might report that they would accept a recommendation when acceptance is understood as simple agreement, considerably fewer participants—particularly those who are generally reluctant to rely on AI in mental health contexts—would be willing to pass the recommendation on to a patient. Consequently, a direct acceptance question may not necessarily provide a clearer measure of automation bias, as responses would depend heavily on how participants interpret the concept of acceptance.
+A potential limitation of the present study is the operationalization of automation bias through participants’ ratings and confidence ratings rather than through an explicit measure of AI recommendation acceptance.
+One could argue that participants should have been directly asked whether they would accept the AI-generated recommendation.
+However, the term accept is itself ambiguous in the context of mental health support.
 
-Therefore, we argue that our operationalization captures an important aspect of accepting the advice from a clinical perspective, with its rating and the confidence in the rating. Still, it misses the other just as important aspect of automation bias, as it does not specifically ask if the advice was accepted. That is why we would suggest a combination of asking for acceptance-with proper formulation-and rating with confidence.
+Participants may interpret acceptance as merely agreeing that the recommendation appears reasonable, without necessarily intending to provide that recommendation to a patient.
+In contrast, from a clinical perspective, truly accepting an AI recommendation would imply endorsing it and communicating it to the patient as advice. We argue that these two interpretations differ substantially.
+While many participants might report that they would accept a recommendation when acceptance is understood as simple agreement, considerably fewer participants—particularly those who are generally reluctant to rely on AI in mental health contexts—would be willing to pass the recommendation on to a patient.
+Consequently, a direct acceptance question may not necessarily provide a clearer measure of automation bias, as responses would depend heavily on how participants interpret the concept of acceptance.
+
+Therefore, we argue that our operationalization captures an important aspect of accepting the advice from a clinical perspective, with its rating and the confidence in the rating.
+Still, it misses the other just as important aspect of automation bias, as it does not specifically ask if the advice was accepted.
+That is why we would suggest a combination of asking for acceptance-with proper formulation-with rating and confidence in the rating.
+
+\subsection{Case vignettes}
+
+In order to create a realistic medical scenario for our participants, we sourced 5 patient vignettes \autocite[]{ bar_fallbeispiel_psyche_psychosomatik, theraphysia_mentale_gesundheit, dbjr_stoerungsbilder}.
+Since these sources are aimed at people with advanced medical knowledge, they incorporate complex terms and concepts.
+This could be seen as clashing with our study's pool of participants, which exclusively consisted of laypersons.
+However, we decided 
+
 
 \section{Conclusion}
+Interestingly, the results are not what we have assumed them to be. Our assumption that people within the active group would have less automation bias was correct, although this effect does not have statistical significance \((p = .463)\). 
+We also assumed that over time there would be a prolonged, positive effect of disclaimers on automation bias. Our results have proven this to be a false assumption, as people from the active group exhibited noticeably more automation bias in session 2 compared to session 1.
+Interestingly the control group has exhibited noticeably less automation bias in session 2 compared to session 1. Moreover, the effect was medium to strong \((F(1,22)=3.68)\). But, statistical significance was slightly missed \((p=.068)\).
+Considering the small size of our study and the potential significance of the results, it would be interesting to see if the negative for the active group and the positive trend for the control group would still persist in a larger study. 
 
 \printbibliography
-
 %%
 %% The acknowledgments section is defined using the "acks" environment
 %% (and NOT an unnumbered section). This ensures the proper
@@ -611,13 +524,19 @@ We also thank all testers who participated in the study and made this work possi
 
 \appendix
 \listoffigures
-\listoftables
+% \listoftables
+\tableofcontents
 \printglossaries
+% \clearpage
 
 
 \section{Participant Allocation Python Implementation}
 \label{sec:palloc}
 \textattachfile[color=0 0 0]{allocate.py}{allocate.py} \faDownload
+
+% \section{Raw Data}
+% \label{sec:rawdata}
+% \textattachfile[color=0 0 0]{collected.csv}{collected.csv} \faDownload
 
 \section{Case vignettes}
 % TODO: Write this
@@ -720,5 +639,137 @@ Cognitive behavioral therapy (CBT) is appropriate for Mathias because it specifi
 \subsubsection{Bad Answer}
 For Mathias, intensive trauma-focused therapy makes sense because it specifically addresses the root causes of his negative thoughts and can help him rebuild empowering structures in his daily life, as well as better manage pain and stress. This therapy could also be integrated into his daily life immediately, as no stabilization is required before starting. Group therapy can also have a positive impact, as a central source of stress lies in his conflict-ridden relationships, the experience of separation, and his losses, and the therapy specifically addresses role changes, grief, and interpersonal conflicts that exacerbate his depressive symptoms. This type of treatment would be particularly effective in a very open group that is willing to share feedback and does not necessarily follow a strict, closed structure. Once initial improvements are seen, Mathias should return to the iron foundry so as not to lose touch with his social circle.
 
+\section{Graphs}
+
+\subsection{Plots}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{assets/graphs/automation bias graph.png}
+    \caption{Caption}
+    \label{fig:placeholder}
+\end{figure}
+\begin{figure}[H]
+    \centering
+
+    \begin{subfigure}{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{assets/graphs/active.png}
+        \caption{Active}
+        \label{fig:active}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{assets/graphs/control.png}
+        \caption{Control}
+        \label{fig:control}
+    \end{subfigure}
+
+    \caption{Comparison of Active and Control conditions.}
+    \label{fig:active-control}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+
+    \begin{subfigure}{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{assets/graphs/session1.png}
+        \caption{Session 1}
+        \label{fig:session1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{assets/graphs/session2.png}
+        \caption{Session 2}
+        \label{fig:session2}
+    \end{subfigure}
+
+    \caption{Comparison of Session 1 and Session 2.}
+    \label{fig:sessions}
+\end{figure}
+
+
+\subsection{PWA}
+\begin{figure}[H]
+    \centering
+
+    \begin{subfigure}{\textwidth/7}
+        \includegraphics[width=\linewidth]{assets/Design/Disclaimer.jpg}
+        \caption{Disclaimer}
+    \end{subfigure}
+    \begin{subfigure}{\textwidth/7}
+        \includegraphics[width=\linewidth]{assets/Design/Disclaimer 2.jpg}
+        \caption{Disclaimer done}
+    \end{subfigure}
+    \begin{subfigure}{\textwidth/7}
+        \includegraphics[width=\linewidth]{assets/Design/Auto Eingabe.jpg}
+        \caption{Prompt}
+    \end{subfigure}
+    \begin{subfigure}{\textwidth/7}
+        \includegraphics[width=\linewidth]{assets/Design/Senden.jpg}
+        \caption{Sent}
+    \end{subfigure}
+    \begin{subfigure}{\textwidth/7}
+        \includegraphics[width=\linewidth]{assets/Design/Disclaimer Inline.jpg}
+        \caption{Inline Disclaimer}
+    \end{subfigure}
+    \begin{subfigure}{\textwidth/7}
+        \includegraphics[width=\linewidth]{assets/Design/Result.jpg}
+        \caption{Response}
+    \end{subfigure}
+
+    \caption{App Design}
+    \Description{Six screens we designed in the ideation phase for our testing application.}
+    \label{fig:design}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{\textwidth/6}
+        \includegraphics[width=\linewidth]{assets/PWA/English_empty.PNG}
+        \caption{
+            \centering
+            EN: Default State\\
+            \vphantom{()}
+        }
+    \end{subfigure}
+    \begin{subfigure}{\textwidth/6}
+        \includegraphics[width=\linewidth]{assets/PWA/English_Disclaimer.PNG}
+        \caption{
+            \centering
+            EN: Disclaimer\\
+            (+ Prompt in BG)
+        }
+    \end{subfigure}
+    \begin{subfigure}{\textwidth/6}
+        \includegraphics[width=\linewidth]{assets/PWA/Englisch_Answer_Full_Disclaimer.PNG}
+        \caption{
+            \centering
+            EN: Answer\\
+            + inline Disclaimer
+        }
+    \end{subfigure}
+    \begin{subfigure}{\textwidth/6}
+        \includegraphics[width=\linewidth]{assets/PWA/German_Answer_Full_No_Disclaimer.PNG}
+        \caption{
+            \centering
+            DE: Answer\\
+            \vphantom{()}
+        }
+    \end{subfigure}
+    \begin{subfigure}{\textwidth/6}
+        \includegraphics[width=\linewidth]{assets/PWA/German_No_Disclaimer_Inline.PNG}
+        \caption{
+            \centering
+            DE: Sent\\
+            no Disclaimer
+        }
+    \end{subfigure}
+    \caption{Progressive Web App}
+    \Description{Example screenshots of our progressive web app showing disclaimers, prompts, and answers in in differing languages.}
+    \label{fig:pwa}
+\end{figure}
 
 \end{document}
