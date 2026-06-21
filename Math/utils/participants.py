@@ -2,6 +2,7 @@ from __future__ import annotations
 from utils import automationBiasFunction, ROUNDING
 from utils.likert import Likert5
 from utils import parse_bool
+from utils.ueq import UEQRound
 from dataclasses import dataclass
 from enum import StrEnum
 import pandas as pd
@@ -56,8 +57,11 @@ class Session:
     acceptability_gen: Likert5
     acceptability_men: Likert5
     vignette1: Vignette
+    ueq1: UEQRound
     vignette2: Vignette
+    ueq2: UEQRound
     vignette3: Vignette
+    ueq3: UEQRound
 
     @property
     def mean_bias_score(self) -> float:
@@ -79,8 +83,11 @@ class Session:
             acceptability_gen=Likert5(int(row["acceptability"])),
             acceptability_men=Likert5(int(row["acceptability (mental health)"])),
             vignette1=Vignette.from_df_row(row, 1),
+            ueq1=UEQRound.from_df_row(row,1),
             vignette2=Vignette.from_df_row(row, 2),
+            ueq2=UEQRound.from_df_row(row,2),
             vignette3=Vignette.from_df_row(row, 3),
+            ueq3=UEQRound.from_df_row(row,3),
         )
 
     def to_dict(self) -> dict:
@@ -92,8 +99,11 @@ class Session:
             "mean_bias_score": round(self.mean_bias_score, ROUNDING),
         }
         row.update(self.vignette1.to_dict(1))
+        row.update(self.ueq1.to_dict(1))
         row.update(self.vignette2.to_dict(2))
+        row.update(self.ueq2.to_dict(2))
         row.update(self.vignette3.to_dict(3))
+        row.update(self.ueq3.to_dict(3))
         return row
 
 
