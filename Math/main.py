@@ -25,6 +25,11 @@ def main():
     # --------------------------------------------------------- #
     Path("out").mkdir(parents=True, exist_ok=True)
     print_formula_graph("out/min automation bias graph", ["png", "svg"])
+    plots.mental_usefulness(
+        dataframe,
+        "out/corr_usefulness_bias",
+        ["png", "svg"],
+    )
 
     Path("out/strip").mkdir(parents=True, exist_ok=True)
     plots.groups(

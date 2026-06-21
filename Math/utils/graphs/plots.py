@@ -6,6 +6,57 @@ import seaborn as sns
 from utils import parse_bool
 
 
+def mental_usefulness(
+    df: pd.DataFrame,
+    out_path: str,
+    formats: list[str] = ["png"],
+    display: bool = False,
+):
+    dataframe = df.copy()
+
+    # identify usefulness columns across sessions
+    usefulness_cols = [
+        col for col in dataframe.columns if col.startswith("usefulness (mental health)")
+    ]
+
+    if not usefulness_cols:
+        raise ValueError("No usefulness (mental health) columns found.")
+
+    # convert to numeric and compute per-person mean
+    dataframe[usefulness_cols] = dataframe[usefulness_cols].apply(
+        pd.to_numeric, errors="coerce"
+    )
+    dataframe["mean_usefulness"] = dataframe[usefulness_cols].mean(axis=1)
+
+    # ensure bias score exists (fallback safety)
+    if "mean_bias_score" not in dataframe.columns:
+        raise ValueError("mean_bias_score column missing in dataframe.")
+
+    plt.figure(figsize=(7, 5))
+
+    sns.boxplot(
+        data=dataframe,
+        x=pd.cut(dataframe["mean_usefulness"], bins=5),
+        y="mean_bias_score",
+    )
+
+    plt.title("Rated Usefulness of AI in Mental Health vs mean Automation Bias")
+    plt.xlabel("Mean rated Mental Health Usefulness (binned)")
+    plt.ylabel("Mean Automation Bias")
+
+    plt.tight_layout()
+
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
+
+    for fmt in formats:
+        plt.savefig(f"{out_path}.{fmt}", dpi=300, bbox_inches="tight")
+
+    if display:
+        plt.show()
+
+    plt.close()
+
+
 def groups(
     plot,
     df: pd.DataFrame,
