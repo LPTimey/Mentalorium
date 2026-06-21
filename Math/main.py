@@ -30,6 +30,11 @@ def main():
         "out/corr_usefulness_bias",
         ["png", "svg"],
     )
+    plots.gender_score(
+        dataframe,
+        "out/corr_gender_bias",
+        ["png", "svg"],
+    )
 
     Path("out/strip").mkdir(parents=True, exist_ok=True)
     plots.groups(
