@@ -1,30 +1,131 @@
-\usepackage[acronym]{glossaries}
+\usepackage[acronym, symbols]{glossaries-extra}
+\usepackage{hyperref}
 
+% -------------------------
+% Glossary groups (ACM-style separation)
+% -------------------------
 
 \makeglossaries
+\setabbreviationstyle[acronym]{long-short}
+\newcommand{\sym}[1]{%
+  \glsentrydesc{#1} (\gls{#1})%
+}
+
 
 % -------------------------
 % Acronyms
 % -------------------------
 
 \newacronym{ai}{AI}{Artificial Intelligence}
-\newacronym{abs}{\(B\)}{Automation Bias Score}
-\newacronym{mean abs}{\(\bar{B}\)}{Mean Automation Bias Score}
-\newacronym{ueqplus}{UEQ+}{User Experience Questionnaire Plus}
+
+\newacronym{ueq-plus}{UEQ+}{User Experience Questionnaire Plus}
+
 \newacronym{thi}{THI}{Technische Hochschule Ingolstadt}
-\newacronym[
-    description={A web application that uses modern web technologies to provide an app-like experience, including offline functionality, responsiveness, and installability across different devices and platforms}
-]{pwa}{PWA}{Progressive Web App}
+
+\newacronym
+% [
+%   description={
+%     A web application that leverages modern web technologies to provide an
+%     app-like experience, including offline functionality, responsiveness,
+%     and installability across devices and platforms
+%   }
+% ]
+{pwa}{PWA}{Progressive Web App}
+
+% -------------------------
+% Symbols (Notation)
+% -------------------------
+
+
+\newglossaryentry{h1}{
+  type=symbols,
+  name={\(H_1\)},
+  sort={H1},
+  description={Hypothesis 1: Short Term Effect}
+}
+
+\newglossaryentry{h2}{
+  type=symbols,
+  name={\(H_2\)},
+  sort={H2},
+  description={Hypothesis 2: Long Term Effect}
+}
+
+
+\newglossaryentry{groups}{
+  type=symbols,
+  name={\(G\)},
+  sort={G},
+  description={possible participant groups}
+}
+
+\newglossaryentry{cases}{
+  type=symbols,
+  name={\(C\)},
+  sort={C},
+  description={possible case vignettes}
+}
+
+\newglossaryentry{truthfulness}{
+  type=symbols,
+  name={\(T\)},
+  sort={T},
+  description={possible truth values}
+}
+
+\newglossaryentry{rounds}{
+  type=symbols,
+  name={\(R\)},
+  sort={R},
+  description={possible rounds for participants}
+}
+
+\newglossaryentry{sessions}{
+  type=symbols,
+  name={\(S\)},
+  sort={S},
+  description={possible sessions for participants}
+}
+
+\newglossaryentry{session-pairs}{
+  type=symbols,
+  name={\(S^2\)},
+  sort={S2},
+  description={possible session combinations for participants}
+}
+
+\newglossaryentry{participants}{
+  type=symbols,
+  name={\(P\)},
+  sort={P},
+  description={possible participants}
+}
+
+\newglossaryentry{abs}{
+  type=symbols,
+  name={\(B\)},
+  sort={B},
+  description={Automation Bias Score}
+}
+
+\newglossaryentry{mean-abs}{
+  type=symbols,
+  name={\(\bar{B}\)},
+  sort={B-bar},
+  description={Mean Automation Bias Score}
+}
 
 % -------------------------
 % Glossary Entries
 % -------------------------
 
-
-\newglossaryentry{pseudorandom seed}
-{
-name=pseudo-random seed,
-plural=pseudo-random seeds,
-description={A fixed numerical value used to ensure reproducibility of pseudo-random participant allocation}
+\newglossaryentry{pseudo-random-seed}{
+  type=main,
+  name={pseudo-random seed},
+  text={pseudo-random seed},
+  plural={pseudo-random seeds},
+  description={
+    A fixed numerical value used to ensure reproducibility of pseudo-random
+    processes, such as participant allocation
+  }
 }
-
