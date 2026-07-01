@@ -18,7 +18,7 @@
 
 \RequirePackage[
   datamodel=acmdatamodel,
-  style=acmauthoryear,
+  style=numeric,
   ]{biblatex}
 
 \addbibresource{ai-automation-bias.bib}
@@ -46,7 +46,7 @@
   \country{Germany}}
 \email{emr@thi.de}
 
-\renewcommand{\shortauthors}{Gerhardinger et al.}
+\renewcommand{\shortauthors}{Ruland et al.}
 
 \input{glossary}
 
@@ -61,12 +61,12 @@
 \Urlmuskip=0mu plus 1mu\relax
 
 \begin{abstract}
-This study examined the short and long-term effects of disclaimer messages on participants’ evaluations of \gls{ai}-generated mental health recommendations, focusing on automation bias.
+This study examined the short and long-term effects of disclaimer messages on participants’ evaluations of \acrfull{ai}-generated mental health recommendations, focusing on automation bias.
 A mixed longitudinal design with two sessions, separated by one week, was used.
-Participants first completed a questionnaire on their attitudes toward \Gls{ai}, reviewed a mental health case vignette, and requested an \gls{ai}-based assessment. After evaluating the generated recommendation, they completed a post-interaction questionnaire.
+Participants first completed a questionnaire on their attitudes toward \acrshort{ai}, reviewed a mental health case vignette, and requested an \acrshort{ai}-based assessment. After evaluating the generated recommendation, they completed a post-interaction questionnaire.
 Participants in the active group received two disclaimers during Session 1: a full-screen disclaimer and an inline disclaimer.
-Results indicate that disclaimers may reduce automation bias initially, but this effect did not persist over time. In Session 2, a rebound effect emerged, with the active group showing higher automation bias scores.
-In contrast, the control group displayed lower automation bias in Session 2 compared to Session 1, suggesting a shift toward more critical evaluation of \gls{ai}-generated recommendations.
+Results indicate that disclaimers may reduce automation bias initially, but this effect did not persist over time. In Session 2, a rebound effect emerged, with the active group showing higher \acrfullpl{abs}.
+In contrast, the control group displayed lower automation bias in Session 2 compared to Session 1, suggesting a shift toward more critical evaluation of \acrshort{ai}-generated recommendations.
 \end{abstract}
 
 \input{ccs}
@@ -86,7 +86,7 @@ Despite these opportunities, however, this growing integration into mental healt
 
 One such phenomenon is automation bias, which describes the tendency of users to over-rely on automated systems and accept their recommendations without sufficient critical evaluation \autocite[p.~391]{parasuraman_complacency_2010}. This issue is especially relevant in the context of mental health, as decisions based on \Gls{ai}-generated advice may have substantial consequences for an individual’s well-being. Therefore, the human factor should not be overlooked when evaluating the safe and responsible implementation of \Gls{ai} in mental health applications.
 
-The present study investigates human automation bias in the use of \Gls{ai} for mental health support.More specifically, we examine whether the implementation of visual disclaimers can influence users’ interactions with \Gls{ai}-generated recommendations and encourage a more critical evaluation of the provided information.
+The present study investigates human automation bias in the use of \Gls{ai} for mental health support. More specifically, we examine whether the implementation of visual disclaimers can influence users’ interactions with \Gls{ai}-generated recommendations and encourage a more critical evaluation of the provided information.
 
 
 
@@ -103,7 +103,7 @@ The present study investigates human automation bias in the use of \Gls{ai} for 
 \label{sec:related-work}
 
 \subsection{AI Integration}
-\Gls{ai} is increasingly being integrated into mental health care, where it is used for diagnostic suport, therapy assistance, behavioral monitoring, and clinical decision-making \autocite[]{ali_artificial_2025}.
+\Gls{ai} is increasingly being integrated into mental health care, where it is used for diagnostic support, therapy assistance, behavioral monitoring, and clinical decision-making \autocite[]{ali_artificial_2025}.
 \citeauthor[]{ali_artificial_2025} provide a comprehensive overview of current \Gls{ai} applications in mental health and highlight the potential of machine learning, deep learning, and natural language processing to improve accessibility, personalization, and early detection of mental health conditions.
 Particularly \Gls{ai}-powered chatbots and recommendation systems have emerged as scalable tools capable of providing therapeutic support and psychoeducation. 
 
@@ -114,6 +114,12 @@ Automation bias describes the tendency of users to place excessive trust in auto
 \citeauthor[]{wingerter_mitigating_2025} investigated this effect using a cognitive reflection test (CRT) in which participants received deliberately incorrect \Gls{ai}-generated recommendations.
 Their results demonstrated that participants exposed to faulty \Gls{ai} advice performed significantly worse than participants without \Gls{ai} support, indicating a substantial automation bias effect \autocite[]{wingerter_mitigating_2025}.
 
+\subsection{Automation Bias}
+%% TODO:
+\blindtext
+
+
+
 \subsection{Automation Bias Mitigation}
 To mitigate this effect, \citeauthor[]{wingerter_mitigating_2025} introduced a warning nudge reminding users that \gls{ai}-generated outputs may be inaccurate or biased.
 Participants who received this warning achieved substantially better performance than participants who received incorrect \gls{ai} advice without a warning.
@@ -122,14 +128,7 @@ Interestingly, self-reported \Gls{ai} literacy did not significantly reduce susc
 
 
 
-
-
-
-
-
-
-
-\section{Research Gap}
+\subsection{Research Gap}
 As already stated in section~\ref{sec:related-work}, previous research by \citeauthor[]{wingerter_mitigating_2025} showed that warning nudges communicating the fallibility of \Gls{ai} can mitigate automation bias to a certain extent \autocite[]{wingerter_mitigating_2025}.
 However, these findings were obtained in a different application context and cannot necessarily be generalized to mental health scenarios.
 Given the sensitivity and potential risk associated with mental health support, it is essential to investigate whether similar interventions are effective in this domain.
@@ -144,6 +143,25 @@ Consequently, this study examines the impact of warning nudges in the form of vi
 
 
 \section{Definitions}
+
+\subsection{Research question}
+%% TODO: 
+\blindtext
+
+This lead us to the following research question:
+\begin{quote}
+    \enquote{How do design interventions like disclaimers affect automation bias in Mental Health Application users in both the short and long term?}
+\end{quote}
+
+\subsection{Hypotheses}
+
+We conducted our study with the following hypotheses:
+
+\begin{description}
+\item[$H_1$] Exposure to a design intervention in a mental health \Gls{ai} application will lead to a substantial reduction in \glspl{abs}, such that participants in the intervention group will exhibit lower \glspl{abs} than participants in the control group.
+
+\item[$H_2$] There will be a prolonged effect of indicating \gls{ai} fallibility, so that participants from the active group will exhibit lower \glspl{abs} even after a time gap of 1 week between session 1 and session 2, and without being shown the design intervention again.
+\end{description}
 
 \subsection{Input Data}
 \subsubsection{Participants}
@@ -248,7 +266,7 @@ The reference Python implementation is provided in the attached file allocate.py
 \subsubsection{Automation Bias}
 \label{sec:automation-bias}
 
-For the purposes of this study, we define a heuristic automation bias-score $B$ that serves as an operational measure of automation bias.
+For the purposes of this study, we define a heuristic \acrfull{abs} that serves as an operational measure of automation bias.
 $B$ is modeled as a continuous function that maps the evaluation parameters to a non linear scalar value in the interval $[0,1]$, representing the degree of evidence that automation bias has occurred.
 
 The function is defined as:
@@ -262,11 +280,11 @@ B(i,r,c),
 
 where:
 \begin{itemize}
-    \item $B(i,r,c) \in [0,1]$ denotes the automation bias score,
+    \item $B(i,r,c) \in [0,1]$ denotes the \acrlong{abs},
     \item $i \in \{0,1\}$ indicates correctness of the automated answer
-          ($1$ = correct, $0$ = incorrect),
+          ($1 = \text{correct}$, $0 = \text{incorrect}$),
     \item $r \in \{1,2,3,4,5\}$ denotes the evaluator's rating of the answer
-          (1 = very bad, 5 = very good),
+          ($1 = \text{very bad}$, $5 = \text{very good}$),
     \item $c \in [0,100]$ denotes the evaluator's confidence in the rating.
 \end{itemize}
 
@@ -302,11 +320,8 @@ The term
 \(
 \frac{r - 1}{4}
 \)
-maps the rating to a normalized interval $[0,1]$, where higher ratings
-indicate stronger perceived quality of the answer.
-In the context of
-automation bias, higher ratings for incorrect answers indicate a stronger
-tendency toward bias.
+maps the rating to a normalized interval $[0,1]$, where higher ratings indicate stronger perceived quality of the answer.
+In the context of \gls{abs}, higher ratings for incorrect answers indicate a stronger tendency toward bias.
 
 The term
 \(
@@ -333,11 +348,11 @@ Conversely, if the data were normally distributed, a two-factor mixed ANOVA woul
 
 \paragraph{Demographics Data}
 
-Rated Usefulness of \Gls{ai} in mental health vs. Automation Bias score\\
-To establish a potential correlation between attitudes and automation bias scores, we collected a subjective \Gls{ai} usefulness rating which we would later be able to put into relation with the individual bias scores. This would allow us to identify potential patterns between these two scales.
+Rated Usefulness of \Gls{ai} in mental health vs. \acrfull{abs}\\
+To establish a potential correlation between attitudes and \glspl{abs}, we collected a subjective \Gls{ai} usefulness rating which we would later be able to put into relation with the individual bias scores. This would allow us to identify potential patterns between these two scales.
 
-Gender vs. Automation Bias score\\
-We applied the same procedure to establish a possible connection between gender identity and the measured automation bias scores.
+Gender vs. \acrfull{abs}\\
+We applied the same procedure to establish a possible connection between gender identity and the measured \glspl{abs}.
 
 \paragraph{UEQ+ evaluation}
 
@@ -366,11 +381,66 @@ The participants for our study were sourced through in-person recruitment, accou
 
 Our study included 5 different case vignettes, which were representative for real life examples for patients in the field of mental health. To ensure that they maintained authenticity and integrity, we decided to source them from preexisting databases. We additionally extended the purely textual descriptions by adding portraits for each patient to further boost empathy among our participants.
 
+\begin{itemize}
+    \item Amina \autocite[slide~8]{dbjr_stoerungsbilder}
+    \item Martina \autocite[\#tab\_fallbeispiel\-1]{theraphysia_mentale_gesundheit}
+    \item Aylin \autocite[slide~15]{dbjr_stoerungsbilder}
+    \item Lena \autocite[slide~26]{dbjr_stoerungsbilder}
+    \item Mathias \autocite[p~1]{bar_fallbeispiel_psyche_psychosomatik}
+\end{itemize}
+
 \subsection{Progressive Web Application}
 
 To adequately test our hypotheses, we required an application that closely replicates the functionality and visual design that users would normally expect from well-known \Gls{ai} applications such as ChatGPT.
 To achieve this, we developed a \Gls{pwa} that mimics the interaction patterns, interface elements, and overall user experience commonly found in contemporary conversational \Gls{ai} systems.
-(See Appendix~\ref{app:pwa})
+
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{\textwidth/11}
+        \includegraphics[width=\linewidth]{assets/PWA/English_empty.PNG}
+        \caption{
+            \centering
+            EN: Default State\\
+            \vphantom{()}
+        }
+    \end{subfigure}
+    \begin{subfigure}[t]{\textwidth/11}
+        \includegraphics[width=\linewidth]{assets/PWA/English_Disclaimer.PNG}
+        \caption{
+            \centering
+            EN: Disclaimer\\
+            (+ Prompt in BG)
+        }
+    \end{subfigure}
+    \begin{subfigure}[t]{\textwidth/11}
+        \includegraphics[width=\linewidth]{assets/PWA/Englisch_Answer_Full_Disclaimer.PNG}
+        \caption{
+            \centering
+            EN: Answer\\
+            + inline Disclaimer
+        }
+    \end{subfigure}
+    \begin{subfigure}[t]{\textwidth/11}
+        \includegraphics[width=\linewidth]{assets/PWA/German_Answer_Full_No_Disclaimer.PNG}
+        \caption{
+            \centering
+            DE: Answer\\
+            \vphantom{()}
+        }
+    \end{subfigure}
+    \begin{subfigure}[t]{\textwidth/11}
+        \includegraphics[width=\linewidth]{assets/PWA/German_No_Disclaimer_Inline.PNG}
+        \caption{
+            \centering
+            DE: Sent\\
+            no Disclaimer
+        }
+    \end{subfigure}
+    \caption{The used Progressive Web App}
+    \Description{Example screenshots of our progressive web app showing disclaimers, prompts, and answers in in differing languages.}
+    \label{fig:app:pwa}
+\end{figure}
 
 Developing a custom application allowed us to maintain full control over the experimental environment while ensuring a consistent experience for all participants.
 This enabled the implementation of experimental conditions without interference from external platform features, personalization settings, or software updates.
@@ -403,7 +473,7 @@ Participants were allocated to either the \textit{Active} or \textit{Control} gr
 Each participant completed two sessions \(s_1\) and \(s_2\), where each session consisted of three rounds as defined in Section~\ref{sec:participants}.
 In every session, exactly one round contained a truthful \Gls{ai} recommendation and two rounds contained intentionally untruthful recommendations.
 Furthermore, the two sessions shared exactly one case vignette, as specified by the participant construction constraints.
-The primary objective of the study was to investigate the direct and long-term influence of disclaimer messages on participants' evaluations of \Gls{ai}-generated mental-health recommendations and on the occurrence of automation bias.
+The primary objective of the study was to investigate the direct and long-term influence of disclaimer messages on participants' evaluations of \Gls{ai}-generated mental-health recommendations and on the occurrence of \acrfull{abs}.
 
 \subsection{Experimental conditions}
 
@@ -411,52 +481,6 @@ Our study was designed to be conducted in an in-the-lab environment, with both t
 We used our personal phones to deploy the mock application, purposely avoiding the use of a desktop environment / launcher as it would not have fit the context of our study.
 More specifically, we disguised the \Gls{pwa} as a normal application and not as a website in order to establish greater authenticity for the participant.
 
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}{\textwidth/11}
-        \includegraphics[width=\linewidth]{assets/PWA/English_empty.PNG}
-        \caption{
-            \centering
-            EN: Default State\\
-            \vphantom{()}
-        }
-    \end{subfigure}
-    \begin{subfigure}{\textwidth/11}
-        \includegraphics[width=\linewidth]{assets/PWA/English_Disclaimer.PNG}
-        \caption{
-            \centering
-            EN: Disclaimer\\
-            (+ Prompt in BG)
-        }
-    \end{subfigure}
-    \begin{subfigure}{\textwidth/11}
-        \includegraphics[width=\linewidth]{assets/PWA/Englisch_Answer_Full_Disclaimer.PNG}
-        \caption{
-            \centering
-            EN: Answer\\
-            + inline Disclaimer
-        }
-    \end{subfigure}
-    \begin{subfigure}{\textwidth/11}
-        \includegraphics[width=\linewidth]{assets/PWA/German_Answer_Full_No_Disclaimer.PNG}
-        \caption{
-            \centering
-            DE: Answer\\
-            \vphantom{()}
-        }
-    \end{subfigure}
-    \begin{subfigure}{\textwidth/11}
-        \includegraphics[width=\linewidth]{assets/PWA/German_No_Disclaimer_Inline.PNG}
-        \caption{
-            \centering
-            DE: Sent\\
-            no Disclaimer
-        }
-    \end{subfigure}
-    \caption{The used Progressive Web App}
-    \Description{Example screenshots of our progressive web app showing disclaimers, prompts, and answers in in differing languages.}
-    \label{fig:app:pwa}
-\end{figure}
 
 \subsection{Procedure}
 
@@ -526,7 +550,7 @@ Following each \Gls{ai} recommendation, participants evaluated the generated ans
 
 \end{itemize}
 
-The initial quality scale is designed to be the core of our automation bias measurement, which would then later be scaled by the subsequent confidence inquiry.
+The initial quality scale is designed to be the core of our \acrfull{abs} measurement, which would then later be scaled by the subsequent confidence inquiry.
 Additionally, we utilized standardized \gls{ueqplus} scales in order to gain insights on the participants' perception of the \gls{pwa}.
 This would later allow us to identify possible factors in which the app influenced the user's trust in the system.
 
@@ -551,15 +575,6 @@ They then completed the same \Gls{ai}-attitude questionnaire and proceeded throu
 To investigate potential persistence effects, no disclaimer messages were shown during Session~2, regardless of the participant's original group assignment.
 Therefore, all participants interacted with the application under identical conditions during the second session.
 
-\subsection{Hypotheses}
-
-We conducted our study with the following hypotheses:
-
-\begin{description}
-\item[$H_1$] Exposure to a design intervention in a mental health \Gls{ai} application will lead to a substantial reduction in automation bias scores, such that participants in the intervention group will exhibit lower automation bias scores than participants in the control group.
-
-\item[$H_2$] There will be a prolonged effect of indicating \gls{ai} fallibility, so that participants from the active group will exhibit lower automation bias scores even after a time gap of 1 week between session 1 and session 2, and without being shown the design intervention again.
-\end{description}
 
 
 
@@ -576,9 +591,9 @@ We conducted our study with the following hypotheses:
 
 \subsection{Mean Automation Bias}
 
-The active group had a mean automation bias of 0.45792 in the first session, and a mean automation bias of $0.49458$ in the second session. The control group had a mean automation bias of 0.5618 in the first session, and a mean automation bias of $0.3875$ in the second session.
+The active group had a \gls{mean abs} of 0.45792 in the first session, and a \gls{mean abs} of $0.49458$ in the second session. The control group had a \gls{mean abs} of 0.5618 in the first session, and a \gls{mean abs} of $0.3875$ in the second session.
 
-The following figures show box plots of the results for automation bias within the active as well as the control group throughout both sessions.
+The following figures show box plots of the results for \acrfull{mean abs} within the active as well as the control group throughout both sessions.
 
 \begin{figure}[H]
     \centering
@@ -762,14 +777,10 @@ Since we have conducted the study as a mixed longitudinal design it would be pla
 \section{Conclusion}
 
 
-Firstly, our results suggest that disclaimers informing users about the fallibility of \Gls{ai} can have a positive effect on reducing automation bias.
-By explicitly reminding users that \Gls{ai} systems are not infallible, users may be encouraged to critically evaluate \Gls{ai}-generated recommendations instead of accepting them without reflection.
-Secondly, our findings do not indicate that this effect persists over the long term, suggesting that a single or short-term exposure to such disclaimers may not be sufficient to produce lasting changes in users’ behavior.
-Finally, the results indicate that removing these disclaimers after one week may have negative consequences, potentially leading users to become more reliant on \Gls{ai} recommendations once the reminders are no longer present.
-However, the results obtained from the \gls{ueqplus} suggest that disclaimers alone are insufficient to ensure appropriate risk handling when interacting with \Gls{ai} systems. 
-Therefore, additional interventions or design strategies may be necessary to effectively support users in maintaining a critical attitude toward \Gls{ai}-generated output. 
-Furthermore, this study was conducted with a relatively small sample size, which may have influenced the results and limits the extent to which the findings can be generalized. 
-Future research with larger and more diverse participant groups is therefore needed to further validate these findings and explore more effective approaches to mitigating automation bias.
+Our results provide tentative indications that disclaimers informing users about the fallibility of \Gls{ai} may help reduce automation bias. By explicitly reminding users that \Gls{ai} systems are not infallible, users may be more likely to critically evaluate \Gls{ai}-generated recommendations rather than accepting them without reflection. However, these observed trends were not statistically significant and should therefore be interpreted with caution.
+Similarly, our findings do not provide evidence that any potential effect persists over the long term, suggesting that a single or short-term exposure to such disclaimers may be insufficient to produce lasting changes in users' behavior. The data also indicate a possible increase in reliance on \Gls{ai} recommendations after the disclaimers were removed following one week, although this pattern was likewise not statistically significant.
+Furthermore, the results obtained from the \gls{ueqplus} suggest that disclaimers alone may not be sufficient to ensure appropriate risk handling when interacting with \Gls{ai} systems. This points to the possibility that additional interventions or design strategies could be needed to better support users in maintaining a critical attitude toward \Gls{ai}-generated output.
+Finally, this study was conducted with a relatively small sample size, which may have reduced the statistical power of the analyses and limits the generalizability of the findings. Future research with larger and more diverse participant groups is therefore needed to determine whether the observed trends can be replicated and to explore more effective approaches to mitigating automation bias.
 
 
 
@@ -789,19 +800,29 @@ We also thank all testers who participated in the study and made this work possi
 These adjustments were made carefully, considering the original content, and aim to optimize the quality and comprehensibility of this work.}\autocite[slide 54]{ai-usage-disclaimer}
 \end{acks}
 
-\section{Ethics}
 
 
-\clearpage
-%% TODO: single column from here
-\section{Appendix}
+\section*{Ethics}
+\addcontentsline{toc}{section}{Ethics}
+%% TODO
+
+
+\onecolumn
+
 \appendix
-\tableofcontents
+\section*{Appendix}
+\addcontentsline{toc}{section}{Appendix}
+
 \listoffigures
 \listoftables
-\printglossaries
-\clearpage
+\printglossary[type=\acronymtype]
+
+\printglossary
+
 
 \input{appendix}
+\clearpage
+
+\tableofcontents
 
 \end{document}
