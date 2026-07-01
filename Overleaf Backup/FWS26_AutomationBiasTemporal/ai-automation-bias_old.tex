@@ -1,4 +1,5 @@
-\documentclass[sigconf,authordraft,natbib=false]{acmart}
+% \documentclass[sigconf,authordraft,natbib=false]{acmart}
+\documentclass[sigconf,natbib=false]{acmart}
 
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}
@@ -269,6 +270,12 @@ B(i,r,c)
 \frac{c}{100}
 \label{eq:B}
 \end{equation}
+where:
+\begin{itemize}
+    \item \(i\in\{0,1\}\) Boolean
+    \item \(r\in\{1,2,3,4,5\}\) Likert scale
+    \item \(c \in [0,1]\) (originally given as percent)
+\end{itemize}
 
 \subsubsection{Interpretation}
 
@@ -279,7 +286,7 @@ $B(i,r,c)=0$ regardless of the other parameters.
 
 The term
 \(
-\frac{r - 1}{4}
+\frac{r - 1}{5-1}
 \)
 maps the rating to a normalized interval $[0,1]$, where higher ratings
 indicate stronger perceived quality of the answer.
@@ -292,8 +299,7 @@ The term
 \frac{c}{100}
 \)
 represents the evaluator's confidence in their rating.
-Higher confidence
-strengthens the evidence of automation bias.
+Higher confidence strengthens the evidence of automation bias.
 
 By construction, \(B(i,r,c) \in [0,1]\).
 

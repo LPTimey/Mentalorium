@@ -284,6 +284,12 @@ B(i,r,c)
 \frac{c}{100}
 \label{eq:B}
 \end{equation}
+where:
+\begin{itemize}
+    \item \(i\in\{0,1\}\) Boolean
+    \item \(r\in\{1,2,3,4,5\}\) Likert scale
+    \item \(c \in [0,1]\) (originally given as percent)
+\end{itemize}
 
 \paragraph{Interpretation}
 
@@ -389,7 +395,8 @@ Participants were allocated to either the \textit{Active} or \textit{Control} gr
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{assets/figure/Mixed Longitudinal Design.png}
-    \caption{Study Design}
+    \caption{Mixed Longitudinal Study Design. Top: Active group with Disclaimers in first Session, Bottom: Control without any Disclaimers}
+    \Description{}
     \label{fig:study-design}
 \end{figure}
 
@@ -402,7 +409,54 @@ The primary objective of the study was to investigate the direct and long-term i
 
 Our study was designed to be conducted in an in-the-lab environment, with both the conductor and the participant present in the same room.
 We used our personal phones to deploy the mock application, purposely avoiding the use of a desktop environment / launcher as it would not have fit the context of our study.
-More specifically, we disguised the \Gls{pwa} as a normal application and not as a website in order to establish greater authenticity for the participant (see \ref{sec:pwa}).
+More specifically, we disguised the \Gls{pwa} as a normal application and not as a website in order to establish greater authenticity for the participant.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{\textwidth/11}
+        \includegraphics[width=\linewidth]{assets/PWA/English_empty.PNG}
+        \caption{
+            \centering
+            EN: Default State\\
+            \vphantom{()}
+        }
+    \end{subfigure}
+    \begin{subfigure}{\textwidth/11}
+        \includegraphics[width=\linewidth]{assets/PWA/English_Disclaimer.PNG}
+        \caption{
+            \centering
+            EN: Disclaimer\\
+            (+ Prompt in BG)
+        }
+    \end{subfigure}
+    \begin{subfigure}{\textwidth/11}
+        \includegraphics[width=\linewidth]{assets/PWA/Englisch_Answer_Full_Disclaimer.PNG}
+        \caption{
+            \centering
+            EN: Answer\\
+            + inline Disclaimer
+        }
+    \end{subfigure}
+    \begin{subfigure}{\textwidth/11}
+        \includegraphics[width=\linewidth]{assets/PWA/German_Answer_Full_No_Disclaimer.PNG}
+        \caption{
+            \centering
+            DE: Answer\\
+            \vphantom{()}
+        }
+    \end{subfigure}
+    \begin{subfigure}{\textwidth/11}
+        \includegraphics[width=\linewidth]{assets/PWA/German_No_Disclaimer_Inline.PNG}
+        \caption{
+            \centering
+            DE: Sent\\
+            no Disclaimer
+        }
+    \end{subfigure}
+    \caption{The used Progressive Web App}
+    \Description{Example screenshots of our progressive web app showing disclaimers, prompts, and answers in in differing languages.}
+    \label{fig:app:pwa}
+\end{figure}
 
 \subsection{Procedure}
 
@@ -735,7 +789,12 @@ We also thank all testers who participated in the study and made this work possi
 These adjustments were made carefully, considering the original content, and aim to optimize the quality and comprehensibility of this work.}\autocite[slide 54]{ai-usage-disclaimer}
 \end{acks}
 
+\section{Ethics}
 
+
+\clearpage
+%% TODO: single column from here
+\section{Appendix}
 \appendix
 \tableofcontents
 \listoffigures
