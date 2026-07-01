@@ -198,6 +198,14 @@ P &:= G \times S^2.
 \label{eq:Sets}
 \end{equation}
 
+\glslink{G}{}
+\glslink{C}{}
+\glslink{T}{}
+\glslink{R}{}
+\glslink{S}{}
+\glslink{S2}{}
+\glslink{P}{}
+
 
 Let $G$ be the set of all possible groups participants can be assigned to,
 $C$ the set of all possible case vignettes,
@@ -233,7 +241,7 @@ p = (&\\
 To generate participants satisfying the constraints defined in the
 previous subsection, we employ a deterministic pseudo-random allocation
 algorithm, denoted by \(A_s\) (participant allocator).\\
-For a fixed \gls{pseudorandom seed} \(s\), the algorithm defines a mapping
+For a fixed \gls{pseudo-random-seed} \(s\), the algorithm defines a mapping
 
 \begin{equation*}
 A_s : \mathbb{N}_0 \to P
@@ -252,7 +260,7 @@ with
     \item \(P\) denoting the set of valid participants defined previously in Eq.~\eqref{eq:Sets},
     \item \(n \in \mathbb{N}_0\) denoting the participant index,
     \item \(p_n \in P\) denoting the generated participants corresponding to the index \(n\),
-    \item \(s \in \mathbb{N}\) denoting the global \gls{pseudorandom seed}.
+    \item \(s \in \mathbb{N}\) denoting the global \gls{pseudo-random-seed}.
 \end{itemize}
 
 In the present study, the seed value \(s = 403\) was used.
@@ -356,7 +364,7 @@ We applied the same procedure to establish a possible connection between gender 
 
 \paragraph{UEQ+ evaluation}
 
-We utilized several standardized \gls{ueqplus} scales in order to gain contextual information for each individual  participant. This would allow us to gain insights on the subjective perception of our study design in order to find potential factors that influenced our collected data.
+We utilized several standardized \gls{ueq-plus} scales in order to gain contextual information for each individual  participant. This would allow us to gain insights on the subjective perception of our study design in order to find potential factors that influenced our collected data.
 
 
 
@@ -538,7 +546,7 @@ Following each \Gls{ai} recommendation, participants evaluated the generated ans
     \item Scale from 0 to 100
 \end{itemize}
 
-\item \gls{ueqplus} scales
+\item \gls{ueq-plus} scales
 \begin{itemize}
     \item Intuitive Use
     \item Trustworthiness of Content
@@ -551,7 +559,7 @@ Following each \Gls{ai} recommendation, participants evaluated the generated ans
 \end{itemize}
 
 The initial quality scale is designed to be the core of our \acrfull{abs} measurement, which would then later be scaled by the subsequent confidence inquiry.
-Additionally, we utilized standardized \gls{ueqplus} scales in order to gain insights on the participants' perception of the \gls{pwa}.
+Additionally, we utilized standardized \gls{ueq-plus} scales in order to gain insights on the participants' perception of the \gls{pwa}.
 This would later allow us to identify possible factors in which the app influenced the user's trust in the system.
 
  \subsubsection{Session 1}
@@ -591,9 +599,9 @@ Therefore, all participants interacted with the application under identical cond
 
 \subsection{Mean Automation Bias}
 
-The active group had a \gls{mean abs} of 0.45792 in the first session, and a \gls{mean abs} of $0.49458$ in the second session. The control group had a \gls{mean abs} of 0.5618 in the first session, and a \gls{mean abs} of $0.3875$ in the second session.
+The active group had a \gls{mean-abs} of 0.45792 in the first session, and a \gls{mean-abs} of $0.49458$ in the second session. The control group had a \gls{mean-abs} of 0.5618 in the first session, and a \gls{mean-abs} of $0.3875$ in the second session.
 
-The following figures show box plots of the results for \acrfull{mean abs} within the active as well as the control group throughout both sessions.
+The following figures show box plots of the results for \acrfull{mean-abs} within the active as well as the control group throughout both sessions.
 
 \begin{figure}[H]
     \centering
@@ -666,7 +674,7 @@ The following figure shows the results for mean automation bias with figure one 
 
 \subsection{UEQ+}
 
-We deployed several scales from the \gls{ueqplus} in order to keep track on potential underlying factors that might have influence on the participants' responses.
+We deployed several scales from the \gls{ueq-plus} in order to keep track on potential underlying factors that might have influence on the participants' responses.
 More specifically, we tried to assess if our \Gls{pwa} design had flaws that would impair the effectiveness of the design interventions or the visual identity of the \Gls{ai} interaction as a whole.
 Regarding the results drawn from these scales, we found the following core insights:
 \begin{enumerate}
@@ -752,10 +760,10 @@ However, it was our decision to accept this discrepancy, as a lack of understand
 
 \subsection{UEQ+}
 
-Regarding the results drawn from our \Gls{ueqplus} collection, two major issues have to be pointed out.
-Firstly, as described in the study results \hyperref[res:ueq_control]{\gls{ueqplus}~(\ref*{res:ueq_control})}, there was a notable difference in the control group’s responses from session 1 to session 2, and thus also in comparison to the active group.
+Regarding the results drawn from our \Gls{ueq-plus} collection, two major issues have to be pointed out.
+Firstly, as described in the study results \hyperref[res:ueq_control]{\gls{ueq-plus}~(\ref*{res:ueq_control})}, there was a notable difference in the control group’s responses from session 1 to session 2, and thus also in comparison to the active group.
 This is especially of importance since it can not be traced back to a concrete factor, as there was no change within the study design between the two sessions for the control group.
-Furthermore, showing the design intervention lowered the risk handling score \hyperref[res:ueq_risk]{\gls{ueqplus}~(\ref*{res:ueq_risk})}.
+Furthermore, showing the design intervention lowered the risk handling score \hyperref[res:ueq_risk]{\gls{ueq-plus}~(\ref*{res:ueq_risk})}.
 We assume it is possible that this happened because participants that were primed increasingly fixated on automation errors, thus consequently having higher standards for risk handling inside the \Gls{ai} text.
 Looking at the results for the evaluation of the risk handling one could argue that the disclaimers may themselves have not been effective enough.
 The participants have not rated the risk handling with the disclaimers significantly better compared to having no disclaimers.
@@ -779,7 +787,7 @@ Since we have conducted the study as a mixed longitudinal design it would be pla
 
 Our results provide tentative indications that disclaimers informing users about the fallibility of \Gls{ai} may help reduce automation bias. By explicitly reminding users that \Gls{ai} systems are not infallible, users may be more likely to critically evaluate \Gls{ai}-generated recommendations rather than accepting them without reflection. However, these observed trends were not statistically significant and should therefore be interpreted with caution.
 Similarly, our findings do not provide evidence that any potential effect persists over the long term, suggesting that a single or short-term exposure to such disclaimers may be insufficient to produce lasting changes in users' behavior. The data also indicate a possible increase in reliance on \Gls{ai} recommendations after the disclaimers were removed following one week, although this pattern was likewise not statistically significant.
-Furthermore, the results obtained from the \gls{ueqplus} suggest that disclaimers alone may not be sufficient to ensure appropriate risk handling when interacting with \Gls{ai} systems. This points to the possibility that additional interventions or design strategies could be needed to better support users in maintaining a critical attitude toward \Gls{ai}-generated output.
+Furthermore, the results obtained from the \gls{ueq-plus} suggest that disclaimers alone may not be sufficient to ensure appropriate risk handling when interacting with \Gls{ai} systems. This points to the possibility that additional interventions or design strategies could be needed to better support users in maintaining a critical attitude toward \Gls{ai}-generated output.
 Finally, this study was conducted with a relatively small sample size, which may have reduced the statistical power of the analyses and limits the generalizability of the findings. Future research with larger and more diverse participant groups is therefore needed to determine whether the observed trends can be replicated and to explore more effective approaches to mitigating automation bias.
 
 
