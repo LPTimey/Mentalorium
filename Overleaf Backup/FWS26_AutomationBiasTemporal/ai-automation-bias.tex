@@ -65,7 +65,7 @@ This study examined the short and long-term effects of disclaimer messages on pa
 A mixed longitudinal design with two sessions, separated by one week, was used.
 Participants first completed a questionnaire on their attitudes toward \acrshort{ai}, reviewed a mental health case vignette, and requested an \acrshort{ai}-based assessment. After evaluating the generated recommendation, they completed a post-interaction questionnaire.
 Participants in the active group received two disclaimers during Session 1: a full-screen disclaimer and an inline disclaimer.
-Results indicate that disclaimers may reduce automation bias initially, but this effect did not persist over time. In Session 2, a rebound effect emerged, with the active group showing higher \sym{abs}.
+Results indicate that disclaimers may reduce automation bias initially, but this effect did not persist over time. In Session 2, a rebound effect emerged, with the active group showing higher \acrfullpl{abs}.
 In contrast, the control group displayed lower automation bias in Session 2 compared to Session 1, suggesting a shift toward more critical evaluation of \acrshort{ai}-generated recommendations.
 \end{abstract}
 
@@ -197,21 +197,15 @@ P &:= G \times S^2.
 \end{aligned}
 \label{eq:Sets}
 \end{equation}
-\glslink{groups}{}
-\glslink{cases}{}
-\glslink{rounds}{}
-\glslink{sessions}{}
-\glslink{session-pairs}{}
-\glslink{participants}{}
 
 
-Let \gls{groups} be the set of all possible groups participants \gls{participants} can be assigned to,
-\gls{cases} the set of all possible case vignettes,
-\gls{truthfulness} the set of truthfulness conditions of the \Gls{ai}-generated answer,
-and therefore \gls{rounds} the set of all possible rounds.\\
-Furthermore, let \gls{sessions} denote the set of all valid sessions consisting of three rounds such that no case vignette occurs twice within a session and only one is truthful.
+Let $G$ be the set of all possible groups participants can be assigned to,
+$C$ the set of all possible case vignettes,
+$T$ the set of truthfulness conditions of the \Gls{ai}-generated answer,
+and therefore $R$ the set of all possible rounds.\\
+Furthermore, let $S$ denote the set of all valid sessions consisting of three rounds such that no case vignette occurs twice within a session and only one is truthful.
 Also, each session pair $(s_1,s_2) \in S^2$ is only allowed to share exactly one case vignette.\\
-It follows that \gls{participants} is the set of all valid participant allocations, where each participant is assigned
+It follows that $P$ is the set of all valid participant allocations, where each participant is assigned
 to a group and a valid pair of sessions.
 
 
@@ -239,7 +233,7 @@ p = (&\\
 To generate participants satisfying the constraints defined in the
 previous subsection, we employ a deterministic pseudo-random allocation
 algorithm, denoted by \(A_s\) (participant allocator).\\
-For a fixed \gls{pseudo-random-seed} \(s\), the algorithm defines a mapping
+For a fixed \gls{pseudorandom seed} \(s\), the algorithm defines a mapping
 
 \begin{equation*}
 A_s : \mathbb{N}_0 \to P
@@ -258,7 +252,7 @@ with
     \item \(P\) denoting the set of valid participants defined previously in Eq.~\eqref{eq:Sets},
     \item \(n \in \mathbb{N}_0\) denoting the participant index,
     \item \(p_n \in P\) denoting the generated participants corresponding to the index \(n\),
-    \item \(s \in \mathbb{N}\) denoting the global \gls{pseudo-random-seed}.
+    \item \(s \in \mathbb{N}\) denoting the global \gls{pseudorandom seed}.
 \end{itemize}
 
 In the present study, the seed value \(s = 403\) was used.
@@ -272,7 +266,7 @@ The reference Python implementation is provided in the attached file allocate.py
 \subsubsection{Automation Bias}
 \label{sec:automation-bias}
 
-For the purposes of this study, we define a heuristic \sym{abs} that serves as an operational measure of automation bias.
+For the purposes of this study, we define a heuristic \acrfull{abs} that serves as an operational measure of automation bias.
 $B$ is modeled as a continuous function that maps the evaluation parameters to a non linear scalar value in the interval $[0,1]$, representing the degree of evidence that automation bias has occurred.
 
 The function is defined as:
@@ -308,7 +302,6 @@ B(i,r,c)
 \frac{c}{100}
 \label{eq:B}
 \end{equation}
-\glslink{abs}{}
 where:
 \begin{itemize}
     \item \(i\in\{0,1\}\) Boolean
@@ -355,15 +348,15 @@ Conversely, if the data were normally distributed, a two-factor mixed ANOVA woul
 
 \paragraph{Demographics Data}
 
-Rated Usefulness of \Gls{ai} in mental health vs. \sym{abs}\\
+Rated Usefulness of \Gls{ai} in mental health vs. \acrfull{abs}\\
 To establish a potential correlation between attitudes and \glspl{abs}, we collected a subjective \Gls{ai} usefulness rating which we would later be able to put into relation with the individual bias scores. This would allow us to identify potential patterns between these two scales.
 
-Gender vs. \sym{abs}\\
+Gender vs. \acrfull{abs}\\
 We applied the same procedure to establish a possible connection between gender identity and the measured \glspl{abs}.
 
 \paragraph{UEQ+ evaluation}
 
-We utilized several standardized \gls{ueq-plus} scales in order to gain contextual information for each individual  participant. This would allow us to gain insights on the subjective perception of our study design in order to find potential factors that influenced our collected data.
+We utilized several standardized \gls{ueqplus} scales in order to gain contextual information for each individual  participant. This would allow us to gain insights on the subjective perception of our study design in order to find potential factors that influenced our collected data.
 
 
 
@@ -480,7 +473,7 @@ Participants were allocated to either the \textit{Active} or \textit{Control} gr
 Each participant completed two sessions \(s_1\) and \(s_2\), where each session consisted of three rounds as defined in Section~\ref{sec:participants}.
 In every session, exactly one round contained a truthful \Gls{ai} recommendation and two rounds contained intentionally untruthful recommendations.
 Furthermore, the two sessions shared exactly one case vignette, as specified by the participant construction constraints.
-The primary objective of the study was to investigate the direct and long-term influence of disclaimer messages on participants' evaluations of \Gls{ai}-generated mental-health recommendations and on the occurrence of \sym{abs}.
+The primary objective of the study was to investigate the direct and long-term influence of disclaimer messages on participants' evaluations of \Gls{ai}-generated mental-health recommendations and on the occurrence of \acrfull{abs}.
 
 \subsection{Experimental conditions}
 
@@ -545,7 +538,7 @@ Following each \Gls{ai} recommendation, participants evaluated the generated ans
     \item Scale from 0 to 100
 \end{itemize}
 
-\item \gls{ueq-plus} scales
+\item \gls{ueqplus} scales
 \begin{itemize}
     \item Intuitive Use
     \item Trustworthiness of Content
@@ -557,8 +550,8 @@ Following each \Gls{ai} recommendation, participants evaluated the generated ans
 
 \end{itemize}
 
-The initial quality scale is designed to be the core of our \sym{abs} measurement, which would then later be scaled by the subsequent confidence inquiry.
-Additionally, we utilized standardized \gls{ueq-plus} scales in order to gain insights on the participants' perception of the \gls{pwa}.
+The initial quality scale is designed to be the core of our \acrfull{abs} measurement, which would then later be scaled by the subsequent confidence inquiry.
+Additionally, we utilized standardized \gls{ueqplus} scales in order to gain insights on the participants' perception of the \gls{pwa}.
 This would later allow us to identify possible factors in which the app influenced the user's trust in the system.
 
  \subsubsection{Session 1}
@@ -598,9 +591,9 @@ Therefore, all participants interacted with the application under identical cond
 
 \subsection{Mean Automation Bias}
 
-The active group had a \gls{mean-abs} of 0.45792 in the first session, and a \gls{mean-abs} of $0.49458$ in the second session. The control group had a \gls{mean-abs} of 0.5618 in the first session, and a \gls{mean-abs} of $0.3875$ in the second session.
+The active group had a \gls{mean abs} of 0.45792 in the first session, and a \gls{mean abs} of $0.49458$ in the second session. The control group had a \gls{mean abs} of 0.5618 in the first session, and a \gls{mean abs} of $0.3875$ in the second session.
 
-The following figures show box plots of the results for \sym{mean-abs} within the active as well as the control group throughout both sessions.
+The following figures show box plots of the results for \acrfull{mean abs} within the active as well as the control group throughout both sessions.
 
 \begin{figure}[H]
     \centering
@@ -673,7 +666,7 @@ The following figure shows the results for mean automation bias with figure one 
 
 \subsection{UEQ+}
 
-We deployed several scales from the \gls{ueq-plus} in order to keep track on potential underlying factors that might have influence on the participants' responses.
+We deployed several scales from the \gls{ueqplus} in order to keep track on potential underlying factors that might have influence on the participants' responses.
 More specifically, we tried to assess if our \Gls{pwa} design had flaws that would impair the effectiveness of the design interventions or the visual identity of the \Gls{ai} interaction as a whole.
 Regarding the results drawn from these scales, we found the following core insights:
 \begin{enumerate}
@@ -759,10 +752,10 @@ However, it was our decision to accept this discrepancy, as a lack of understand
 
 \subsection{UEQ+}
 
-Regarding the results drawn from our \Gls{ueq-plus} collection, two major issues have to be pointed out.
-Firstly, as described in the study results \hyperref[res:ueq_control]{\gls{ueq-plus}~(\ref*{res:ueq_control})}, there was a notable difference in the control group’s responses from session 1 to session 2, and thus also in comparison to the active group.
+Regarding the results drawn from our \Gls{ueqplus} collection, two major issues have to be pointed out.
+Firstly, as described in the study results \hyperref[res:ueq_control]{\gls{ueqplus}~(\ref*{res:ueq_control})}, there was a notable difference in the control group’s responses from session 1 to session 2, and thus also in comparison to the active group.
 This is especially of importance since it can not be traced back to a concrete factor, as there was no change within the study design between the two sessions for the control group.
-Furthermore, showing the design intervention lowered the risk handling score \hyperref[res:ueq_risk]{\gls{ueq-plus}~(\ref*{res:ueq_risk})}.
+Furthermore, showing the design intervention lowered the risk handling score \hyperref[res:ueq_risk]{\gls{ueqplus}~(\ref*{res:ueq_risk})}.
 We assume it is possible that this happened because participants that were primed increasingly fixated on automation errors, thus consequently having higher standards for risk handling inside the \Gls{ai} text.
 Looking at the results for the evaluation of the risk handling one could argue that the disclaimers may themselves have not been effective enough.
 The participants have not rated the risk handling with the disclaimers significantly better compared to having no disclaimers.
@@ -786,7 +779,7 @@ Since we have conducted the study as a mixed longitudinal design it would be pla
 
 Our results provide tentative indications that disclaimers informing users about the fallibility of \Gls{ai} may help reduce automation bias. By explicitly reminding users that \Gls{ai} systems are not infallible, users may be more likely to critically evaluate \Gls{ai}-generated recommendations rather than accepting them without reflection. However, these observed trends were not statistically significant and should therefore be interpreted with caution.
 Similarly, our findings do not provide evidence that any potential effect persists over the long term, suggesting that a single or short-term exposure to such disclaimers may be insufficient to produce lasting changes in users' behavior. The data also indicate a possible increase in reliance on \Gls{ai} recommendations after the disclaimers were removed following one week, although this pattern was likewise not statistically significant.
-Furthermore, the results obtained from the \gls{ueq-plus} suggest that disclaimers alone may not be sufficient to ensure appropriate risk handling when interacting with \Gls{ai} systems. This points to the possibility that additional interventions or design strategies could be needed to better support users in maintaining a critical attitude toward \Gls{ai}-generated output.
+Furthermore, the results obtained from the \gls{ueqplus} suggest that disclaimers alone may not be sufficient to ensure appropriate risk handling when interacting with \Gls{ai} systems. This points to the possibility that additional interventions or design strategies could be needed to better support users in maintaining a critical attitude toward \Gls{ai}-generated output.
 Finally, this study was conducted with a relatively small sample size, which may have reduced the statistical power of the analyses and limits the generalizability of the findings. Future research with larger and more diverse participant groups is therefore needed to determine whether the observed trends can be replicated and to explore more effective approaches to mitigating automation bias.
 
 
@@ -822,8 +815,8 @@ These adjustments were made carefully, considering the original content, and aim
 
 \listoffigures
 \listoftables
-\printglossary[type=symbols]
 \printglossary[type=\acronymtype]
+
 \printglossary
 
 
