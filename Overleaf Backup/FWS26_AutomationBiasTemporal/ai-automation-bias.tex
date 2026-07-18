@@ -27,10 +27,19 @@
 
 \author{Tim Ruland}
 \authornote{These authors contributed equally to this in research, in organization, in writing as well as in everything else.}
-
+\affiliation{
+  \institution{Technische Hochschule Ingolstadt}
+  \city{Ingolstadt}
+  \country{Germany}}
+\email{tir6126@thi.de}
 
 \author{Marc Obst}
 \authornotemark[1]
+\affiliation{
+  \institution{Technische Hochschule Ingolstadt}
+  \city{Ingolstadt}
+  \country{Germany}}
+\email{mao3261@thi.de}
 
 \author{Nicolas Weber}
 \authornotemark[1]
@@ -38,13 +47,14 @@
   \institution{Technische Hochschule Ingolstadt}
   \city{Ingolstadt}
   \country{Germany}}
+\email{niw5657@thi.de}
 
 \author{Emely Rosbach}
 \affiliation{
   \institution{Technische Hochschule Ingolstadt}
   \city{Ingolstadt}
   \country{Germany}}
-\email{emr@thi.de}
+\email{emely.rosbach@thi.de}
 
 \renewcommand{\shortauthors}{Ruland et al.}
 
@@ -174,7 +184,7 @@ We conducted our study with the following hypotheses:
 \item[$H_2$] There will be a prolonged effect of indicating \gls{ai} fallibility, so that participants from the active group will exhibit lower \glspl{abs} even after a time gap of 1 week between session 1 and session 2, and without being shown the design intervention again. \glslink{h2}{}
 \end{description}
 
-\subsection{Input Data}
+\subsection{Independent Variables}
 \subsubsection{Participants}
 \label{sec:participants}
 
@@ -324,7 +334,7 @@ The initial quality scale is designed to be the core of our \acrfull{abs} measur
 Additionally, we utilized standardized \gls{ueq-plus} scales in order to gain insights on the participants' perception of the \gls{pwa}.
 This would later allow us to identify possible factors in which the app influenced the user's trust in the system.
 
-\subsection{Output Data}
+\subsection{Dependent Variables}
 \subsubsection{Automation Bias}
 \label{sec:automation-bias}
 
@@ -386,7 +396,7 @@ strengthens the evidence of automation bias.
 By construction, \(B(i,l,c) \in [0,1]\).
 
 
-\subsubsection {Core Data}
+\subsubsection {Analysis}
 \label{sec:core_data}
 
 We applied a Shapiro–Wilk test to determine whether our collected data followed a normal distribution.
@@ -395,7 +405,7 @@ If the data were found not to be normally distributed, we would need to conduct 
 Conversely, if the data were normally distributed, a two-factor mixed ANOVA would be the more appropriate method.
 
 
-\subsubsection {Contextual Data}
+% \subsubsection {Covariates / Contextual Variables}
 \label{sec:contenxt_data}
 
 \paragraph{Demographics Data}
@@ -879,15 +889,17 @@ Participation in the study was voluntary, and all participants provided informed
 \section*{Appendix}
 \addcontentsline{toc}{section}{Appendix}
 
+
+
+\input{appendix}
+
+\clearpage
 \listoffigures
 \listoftables
 \glsaddall
 \printglossary[type=\acronymtype]
 
 \printglossary
-
-
-\input{appendix}
 \clearpage
 
 \tableofcontents
